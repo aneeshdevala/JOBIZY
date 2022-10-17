@@ -1,34 +1,33 @@
+
 import 'package:flutter/material.dart';
-import 'package:jobizy/app/controller/logincontroller.dart';
 import 'package:jobizy/app/util/colors.dart';
 import 'package:jobizy/app/util/constraisns.dart';
 import 'package:jobizy/app/util/route.dart';
-import 'package:jobizy/app/view/signupscreen.dart';
+import 'package:jobizy/app/view/signupcontroller.dart';
 import 'package:jobizy/app/view/widgets/custombut.dart';
 import 'package:jobizy/app/view/widgets/textformfield.dart';
 import 'package:provider/provider.dart';
 
-class SigninPage extends StatelessWidget {
-  const SigninPage({Key? key}) : super(key: key);
+class SignupScreen extends StatelessWidget {
+  const SignupScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<SigninController>(context, listen: false);
+    final provider = Provider.of<SignupController>(context, listen: false);
     return Scaffold(
       body: SafeArea(
           child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.only(left: 16, right: 16),
         child: SingleChildScrollView(
           child: Form(
-            key: provider.signinKey,
+            key: provider.signupKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 kheight50,
-                kheight50,
                 const Center(
                   child: Text(
-                    'Welcome Back',
+                    'Create an Account',
                     style: TextStyle(
                       fontSize: 28,
                       fontWeight: FontWeight.bold,
@@ -36,6 +35,25 @@ class SigninPage extends StatelessWidget {
                   ),
                 ),
                 kheight50,
+                const Text(
+                  'Full name',
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                ),
+                kheight,
+                TextFormWidget(
+                  hiddentext: false,
+                  icon: Icons.person_outline_rounded,
+                  hintText: 'Full name',
+                  iconsize: 23,
+                  textHeight: 15,
+                  padding: 20,
+                  color: kGrey,
+                  radius: 10,
+                  iconcolor: kBlack,
+                  controller: provider.userNameController,
+                  validatorErrorMessage: "Please enter Name",
+                ),
+                kheight20,
                 const Text(
                   'Email',
                   style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
@@ -56,11 +74,30 @@ class SigninPage extends StatelessWidget {
                 ),
                 kheight20,
                 const Text(
+                  'Moblie',
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                ),
+                kheight,
+                TextFormWidget(
+                  hiddentext: false,
+                  icon: Icons.phone_android_outlined,
+                  hintText: 'Mobile Number',
+                  iconsize: 23,
+                  textHeight: 15,
+                  padding: 20,
+                  color: kGrey,
+                  radius: 10,
+                  iconcolor: kBlack,
+                  controller: provider.mobileController,
+                  validatorErrorMessage: "Please enter Mobile Number",
+                ),
+                kheight20,
+                const Text(
                   'Password',
                   style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                 ),
                 kheight,
-                Consumer<SigninController>(
+                Consumer<SignupController>(
                   builder: (context, value, child) {
                     return TextFormWidget(
                       sufixIcon: IconButton(
@@ -85,7 +122,7 @@ class SigninPage extends StatelessWidget {
                       hiddentext: value.isHidden ? false : true,
                       validatorErrorMessage: "Please enter Password",
                     );
-                  },
+                  },     
                 ),
                 kheight,
                 Row(
@@ -114,12 +151,12 @@ class SigninPage extends StatelessWidget {
                   child: CustomButton(
                     borderColor: mainColor,
                     buttonColor: mainColor,
-                    text: 'Login',
+                    text: 'Sign Up',
                     width: 300,
                     height: 70,
                     fontsize: 20,
                     ontap: () {
-                      provider.loginButton(context);
+                      provider.registerButton(context);
                     },
                     color: kWhite,
                   ),
@@ -134,7 +171,7 @@ class SigninPage extends StatelessWidget {
                       color: kWhite,
                       border: Border.all(
                         width: 2,
-                        color: mainColor,
+                        color: kBlack,
                       ),
                     ),
                     child: Row(
@@ -157,16 +194,15 @@ class SigninPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text(
-                      "You don't have an account yet?",
+                      "You have an account ?",
                       style: TextStyle(fontSize: 15),
                     ),
                     TextButton(
                         onPressed: () {
-                          RouteNavigator.pushRoute(
-                              context, const SignupScreen());
+                          RouteNavigator.popRoute(context);
                         },
                         child: const Text(
-                          'Sign up',
+                          'Sign in',
                           style: TextStyle(fontSize: 20, color: mainColor),
                         ))
                   ],
