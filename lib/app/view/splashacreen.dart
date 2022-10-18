@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:jobizy/app/util/colors.dart';
 import 'package:jobizy/app/util/route.dart';
 import 'package:jobizy/app/view/onboardings.dart';
@@ -21,25 +21,28 @@ class _SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Color.fromARGB(255, 255, 255, 255),
       body: Center(
-        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          Stack(children: [
-            Image.asset(
-              'assets/loog.png',
-              color: kWhite,
-            ),
-            const Positioned(
-                top: 270,
-                left: 113,
-                child: Text(
-                  'SOCIOUT',
-                  style: TextStyle(
-                      fontSize: 35, fontWeight: FontWeight.w900, color: kWhite),
-                ))
-          ]),
-        ]),
-      ),
+          child: Image.asset(
+        'assets/image-removebg-preview.png',
+        height: 300,
+        width: 300,
+      )
+          // child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+          //   Stack(children: [
+          //     SvgPicture.asset(
+          //         "assets/casual-life-3d-man-searching-music-with-phone.png"),
+          //     // const Positioned(
+          //     //     top: 270,
+          //     //     left: 113,
+          //     //     child: Text(
+          //     //       'JobEzy',
+          //     //       style: TextStyle(
+          //     //           fontSize: 35, fontWeight: FontWeight.w900, color: kWhite),
+          //     //     ))
+          //   ]),
+          // ]),
+          ),
     );
   }
 

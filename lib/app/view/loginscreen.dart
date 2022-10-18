@@ -15,27 +15,27 @@ class SigninPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final provider = Provider.of<SigninController>(context, listen: false);
     return Scaffold(
+      //   backgroundColor: Colors.transparent,
       body: SafeArea(
           child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: SingleChildScrollView(
           child: Form(
             key: provider.signinKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                kheight50,
-                kheight50,
-                const Center(
-                  child: Text(
-                    'Welcome Back',
-                    style: TextStyle(
-                      fontSize: 28,
-                      fontWeight: FontWeight.bold,
-                    ),
+                Center(
+                  child: Column(
+                    children: [
+                      Image.asset(
+                        'assets/business-3d-businessman-in-dark-blue-suit-waving-hello.png',
+                        height: 200,
+                      ),
+                    ],
                   ),
                 ),
-                kheight50,
+                kheight20,
                 const Text(
                   'Email',
                   style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
@@ -44,13 +44,12 @@ class SigninPage extends StatelessWidget {
                 TextFormWidget(
                   hiddentext: false,
                   icon: Icons.email_outlined,
-                  hintText: 'Email',
                   iconsize: 23,
                   textHeight: 15,
                   padding: 20,
-                  color: kGrey,
+                  color: mainColor,
                   radius: 10,
-                  iconcolor: kBlack,
+                  iconcolor: mainColor,
                   controller: provider.emailController,
                   validatorErrorMessage: "Please enter Email",
                 ),
@@ -74,13 +73,12 @@ class SigninPage extends StatelessWidget {
                             color: kBlack,
                           )),
                       icon: Icons.lock_outline_rounded,
-                      hintText: 'Password',
                       iconsize: 23,
                       textHeight: 15,
                       padding: 20,
-                      color: kGrey,
+                      color: mainColor,
                       radius: 10,
-                      iconcolor: kBlack,
+                      iconcolor: mainColor,
                       controller: provider.passwordController,
                       hiddentext: value.isHidden ? false : true,
                       validatorErrorMessage: "Please enter Password",
@@ -92,8 +90,8 @@ class SigninPage extends StatelessWidget {
                   children: [
                     Checkbox(
                       splashRadius: 10,
-                      checkColor: kWhite,
-                      activeColor: const Color.fromARGB(255, 99, 100, 100),
+                      checkColor: mainColor,
+                      activeColor: mainColor,
                       value: false,
                       onChanged: (value) {},
                     ),

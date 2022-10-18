@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:jobizy/app/util/colors.dart';
 import 'package:jobizy/app/util/constraisns.dart';
@@ -24,17 +23,12 @@ class SignupScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                kheight50,
-                const Center(
-                  child: Text(
-                    'Create an Account',
-                    style: TextStyle(
-                      fontSize: 28,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                kheight50,
+                Center(
+                    child: Image.asset(
+                  'assets/business-3d-man-making-a-task-list-on-his-phone.png',
+                  height: 200,
+                  width: 200,
+                )),
                 const Text(
                   'Full name',
                   style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
@@ -43,7 +37,6 @@ class SignupScreen extends StatelessWidget {
                 TextFormWidget(
                   hiddentext: false,
                   icon: Icons.person_outline_rounded,
-                  hintText: 'Full name',
                   iconsize: 23,
                   textHeight: 15,
                   padding: 20,
@@ -62,7 +55,6 @@ class SignupScreen extends StatelessWidget {
                 TextFormWidget(
                   hiddentext: false,
                   icon: Icons.email_outlined,
-                  hintText: 'Email',
                   iconsize: 23,
                   textHeight: 15,
                   padding: 20,
@@ -81,7 +73,6 @@ class SignupScreen extends StatelessWidget {
                 TextFormWidget(
                   hiddentext: false,
                   icon: Icons.phone_android_outlined,
-                  hintText: 'Mobile Number',
                   iconsize: 23,
                   textHeight: 15,
                   padding: 20,
@@ -111,7 +102,6 @@ class SignupScreen extends StatelessWidget {
                             color: kBlack,
                           )),
                       icon: Icons.lock_outline_rounded,
-                      hintText: 'Password',
                       iconsize: 23,
                       textHeight: 15,
                       padding: 20,
@@ -122,7 +112,7 @@ class SignupScreen extends StatelessWidget {
                       hiddentext: value.isHidden ? false : true,
                       validatorErrorMessage: "Please enter Password",
                     );
-                  },     
+                  },
                 ),
                 kheight,
                 Row(
@@ -143,7 +133,13 @@ class SignupScreen extends StatelessWidget {
                     const Spacer(),
                     TextButton(
                         onPressed: () {},
-                        child: const Text('Forgot Password ?'))
+                        child: const Text(
+                          'Forgot Password ?',
+                          style: TextStyle(
+                            fontSize: 15,
+                            color: mainColor,
+                          ),
+                        ))
                   ],
                 ),
                 kheight20,
@@ -171,7 +167,7 @@ class SignupScreen extends StatelessWidget {
                       color: kWhite,
                       border: Border.all(
                         width: 2,
-                        color: kBlack,
+                        color: mainColor,
                       ),
                     ),
                     child: Row(

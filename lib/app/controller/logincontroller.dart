@@ -5,6 +5,7 @@ import 'package:jobizy/app/model/login/loginrespo.dart';
 import 'package:jobizy/app/services/loginservice.dart';
 import 'package:jobizy/app/util/route.dart';
 import 'package:jobizy/app/util/snackbar.dart';
+import 'package:jobizy/app/view/bottomsrcreen.dart';
 
 class SigninController extends ChangeNotifier {
   final signinKey = GlobalKey<FormState>();
@@ -28,7 +29,7 @@ class SigninController extends ChangeNotifier {
         _isLoadingFalse();
         return;
       } else if (loginResponse.loggedin == true) {
-        RouteNavigator.pushRemoveUntil(context, MainScreen());
+        RouteNavigator.pushRemoveUntil(context, BottomScreen());
         _isLoadingFalse();
         return;
       } else if (loginResponse.success == false ||

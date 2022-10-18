@@ -20,7 +20,7 @@ class OnBoardPage extends StatelessWidget {
             children: [
               Center(
                   child: Image.asset(
-                'assets/Screenshot 2022-09-30 114026.png',
+                'assets/casual-life-3d-boy-and-girl-sitting-in-chairs.png',
                 height: 400,
               )),
               Column(
@@ -42,7 +42,7 @@ class OnBoardPage extends StatelessWidget {
                         color: mainColor),
                   ),
                   Text(
-                    'Explore all the most exciting remote job roles\n based on your interest.',
+                    'Explore all the most exciting remote job roles\nbased on your interest.',
                     style: kTextStyle,
                   )
                 ],
@@ -58,8 +58,11 @@ class OnBoardPage extends StatelessWidget {
           style: ElevatedButton.styleFrom(
               shape: const CircleBorder(),
               minimumSize: const Size(60, 100),
-              primary: mainColor),
-          child: const Icon(Icons.arrow_right_alt_sharp)),
+              backgroundColor: mainColor),
+          child: const Text(
+            'Go',
+            style: TextStyle(fontSize: 20),
+          )),
     );
   }
 }

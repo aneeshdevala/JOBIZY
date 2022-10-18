@@ -4,7 +4,7 @@ class TextFormWidget extends StatelessWidget {
   const TextFormWidget(
       {Key? key,
       required this.icon,
-      required this.hintText,
+
       required this.iconsize,
       required this.textHeight,
       required this.padding,
@@ -19,7 +19,7 @@ class TextFormWidget extends StatelessWidget {
 
   final IconData icon;
   final IconButton? sufixIcon;
-  final String hintText;
+
   final double iconsize;
   final double textHeight;
   final double padding;
@@ -36,7 +36,7 @@ class TextFormWidget extends StatelessWidget {
       controller: controller,
       decoration: InputDecoration(
         contentPadding: EdgeInsets.all(padding),
-        hintText: hintText,
+
         prefixIcon: Icon(
           icon,
           color: iconcolor,

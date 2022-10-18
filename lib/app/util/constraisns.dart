@@ -29,7 +29,7 @@ const TextStyle kTextStyle =
     TextStyle(fontSize: 18, fontWeight: FontWeight.w400);
 
 const TextStyle kTextStyle2 =
-    TextStyle(fontSize: 20, fontWeight: FontWeight.w500);
+    TextStyle(fontSize: 20, fontWeight: FontWeight.w500,);
 
 const TextStyle kTextStyleBold = TextStyle(
   fontSize: 35,

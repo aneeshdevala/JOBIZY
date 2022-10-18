@@ -5,6 +5,7 @@ import 'package:jobizy/app/model/signupmo/signupresponse.dart';
 import 'package:jobizy/app/services/registerservice.dart';
 import 'package:jobizy/app/util/route.dart';
 import 'package:jobizy/app/util/snackbar.dart';
+import 'package:jobizy/app/view/bottomsrcreen.dart';
 
 class SignupController extends ChangeNotifier {
   final signupKey = GlobalKey<FormState>();
@@ -33,7 +34,7 @@ class SignupController extends ChangeNotifier {
         _isLoadingFalse();
         return;
       } else if (registerResponse.loggedin == true) {
-        RouteNavigator.pushRemoveUntil(context, MainScreen());
+        RouteNavigator.pushRemoveUntil(context, BottomScreen());
         _isLoadingFalse();
         return;
       } else if (registerResponse.success == false ||
