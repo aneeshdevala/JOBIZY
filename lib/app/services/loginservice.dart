@@ -27,7 +27,7 @@ class LoginServices {
           return LoginResponse(message: "Email or Password Was Incorrect");
         }
       } catch (e) {
-        return LoginResponse(message: "Something Went Worg");
+        return LoginResponse(message: "Something Went wrong");
       }
     } else {
       return LoginResponse(message: "Please check internet connection");

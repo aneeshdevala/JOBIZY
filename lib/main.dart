@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jobizy/app/controller/bottomnavcon.dart';
 import 'package:jobizy/app/controller/logincontroller.dart';
-import 'package:jobizy/app/view/signupcontroller.dart';
+import 'package:jobizy/app/controller/signupcontroller.dart';
 import 'package:jobizy/app/view/splashacreen.dart';
 import 'package:provider/provider.dart';
 

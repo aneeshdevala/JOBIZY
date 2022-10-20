@@ -1,39 +1,50 @@
 import 'package:flutter/material.dart';
-import 'package:jobizy/app/controller/logincontroller.dart';
 import 'package:jobizy/app/util/colors.dart';
 import 'package:jobizy/app/util/constraisns.dart';
 import 'package:jobizy/app/util/route.dart';
-import 'package:jobizy/app/view/signupscreen.dart';
+import 'package:jobizy/app/controller/signupcontroller.dart';
 import 'package:jobizy/app/view/widgets/custombut.dart';
 import 'package:jobizy/app/view/widgets/textformfield.dart';
 import 'package:provider/provider.dart';
 
-class SigninPage extends StatelessWidget {
-  const SigninPage({Key? key}) : super(key: key);
+class SignupScreen extends StatelessWidget {
+  const SignupScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<SigninController>(context, listen: false);
+    final provider = Provider.of<SignupController>(context, listen: false);
     return Scaffold(
-      //   backgroundColor: Colors.transparent,
       body: SafeArea(
           child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        padding: const EdgeInsets.only(left: 16, right: 16),
         child: SingleChildScrollView(
           child: Form(
-            key: provider.signinKey,
+            key: provider.signupKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Center(
-                  child: Column(
-                    children: [
-                      Image.asset(
-                        'assets/business-3d-businessman-in-dark-blue-suit-waving-hello.png',
-                        height: 200,
-                      ),
-                    ],
-                  ),
+                    child: Image.asset(
+                  'assets/business-3d-man-making-a-task-list-on-his-phone.png',
+                  height: 200,
+                  width: 200,
+                )),
+                const Text(
+                  'Full name',
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                ),
+                kheight,
+                TextFormWidget(
+                  hiddentext: false,
+                  icon: Icons.person_outline_rounded,
+                  iconsize: 23,
+                  textHeight: 15,
+                  padding: 20,
+                  color: kGrey,
+                  radius: 10,
+                  iconcolor: kBlack,
+                  controller: provider.userNameController,
+                  validatorErrorMessage: "Please enter Name",
                 ),
                 kheight20,
                 const Text(
@@ -47,11 +58,29 @@ class SigninPage extends StatelessWidget {
                   iconsize: 23,
                   textHeight: 15,
                   padding: 20,
-                  color: mainColor,
+                  color: kGrey,
                   radius: 10,
-                  iconcolor: mainColor,
+                  iconcolor: kBlack,
                   controller: provider.emailController,
                   validatorErrorMessage: "Please enter Email",
+                ),
+                kheight20,
+                const Text(
+                  'Moblie',
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                ),
+                kheight,
+                TextFormWidget(
+                  hiddentext: false,
+                  icon: Icons.phone_android_outlined,
+                  iconsize: 23,
+                  textHeight: 15,
+                  padding: 20,
+                  color: kGrey,
+                  radius: 10,
+                  iconcolor: kBlack,
+                  controller: provider.mobileController,
+                  validatorErrorMessage: "Please enter Mobile Number",
                 ),
                 kheight20,
                 const Text(
@@ -59,7 +88,7 @@ class SigninPage extends StatelessWidget {
                   style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                 ),
                 kheight,
-                Consumer<SigninController>(
+                Consumer<SignupController>(
                   builder: (context, value, child) {
                     return TextFormWidget(
                       sufixIcon: IconButton(
@@ -76,9 +105,9 @@ class SigninPage extends StatelessWidget {
                       iconsize: 23,
                       textHeight: 15,
                       padding: 20,
-                      color: mainColor,
+                      color: kGrey,
                       radius: 10,
-                      iconcolor: mainColor,
+                      iconcolor: kBlack,
                       controller: provider.passwordController,
                       hiddentext: value.isHidden ? false : true,
                       validatorErrorMessage: "Please enter Password",
@@ -90,8 +119,8 @@ class SigninPage extends StatelessWidget {
                   children: [
                     Checkbox(
                       splashRadius: 10,
-                      checkColor: mainColor,
-                      activeColor: mainColor,
+                      checkColor: kWhite,
+                      activeColor: const Color.fromARGB(255, 99, 100, 100),
                       value: false,
                       onChanged: (value) {},
                     ),
@@ -104,7 +133,13 @@ class SigninPage extends StatelessWidget {
                     const Spacer(),
                     TextButton(
                         onPressed: () {},
-                        child: const Text('Forgot Password ?'))
+                        child: const Text(
+                          'Forgot Password ?',
+                          style: TextStyle(
+                            fontSize: 15,
+                            color: mainColor,
+                          ),
+                        ))
                   ],
                 ),
                 kheight20,
@@ -112,12 +147,12 @@ class SigninPage extends StatelessWidget {
                   child: CustomButton(
                     borderColor: mainColor,
                     buttonColor: mainColor,
-                    text: 'Login',
+                    text: 'Sign Up',
                     width: 300,
                     height: 70,
                     fontsize: 20,
                     ontap: () {
-                      provider.loginButton(context);
+                      provider.registerButton(context);
                     },
                     color: kWhite,
                   ),
@@ -155,16 +190,15 @@ class SigninPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text(
-                      "You don't have an account yet?",
+                      "You have an account ?",
                       style: TextStyle(fontSize: 15),
                     ),
                     TextButton(
                         onPressed: () {
-                          RouteNavigator.pushRoute(
-                              context, const SignupScreen());
+                          RouteNavigator.popRoute(context);
                         },
                         child: const Text(
-                          'Sign up',
+                          'Sign in',
                           style: TextStyle(fontSize: 20, color: mainColor),
                         ))
                   ],

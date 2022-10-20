@@ -5,7 +5,7 @@ import 'package:jobizy/app/model/signupmo/signupresponse.dart';
 import 'package:jobizy/app/services/registerservice.dart';
 import 'package:jobizy/app/util/route.dart';
 import 'package:jobizy/app/util/snackbar.dart';
-import 'package:jobizy/app/view/bottomsrcreen.dart';
+import 'package:jobizy/app/view/bottomscreen/bottomsrcreen.dart';
 
 class SignupController extends ChangeNotifier {
   final signupKey = GlobalKey<FormState>();

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:jobizy/app/util/colors.dart';
 import 'package:jobizy/app/util/constraisns.dart';
 import 'package:jobizy/app/util/route.dart';
-import 'package:jobizy/app/view/loginscreen.dart';
+import 'package:jobizy/app/view/loginscreen/loginscreen.dart';
 
 class OnBoardPage extends StatelessWidget {
   const OnBoardPage({Key? key}) : super(key: key);
