@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:jobizy/app/model/login/loginmodel.dart';
 import 'package:jobizy/app/model/login/loginrespo.dart';
 import 'package:jobizy/app/services/loginservice.dart';
@@ -11,6 +12,7 @@ class SigninController extends ChangeNotifier {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   bool isloading = false;
+  LoginResponse? resp;
 
   void loginButton(context) async {
     if (signinKey.currentState!.validate()) {
@@ -21,14 +23,16 @@ class SigninController extends ChangeNotifier {
           email: emailController.text, password: passwordController.text);
 
       LoginResponse? loginResponse =
-          await LoginServices().signinServices(loginObj);
+          await LoginServices().signinServices(loginObj, context);
       if (loginResponse == null) {
         ScaffoldMessenger.of(context)
             .showSnackBar(ShowDialogs.popUp('Something went wrong'));
         _isLoadingFalse();
         return;
       } else if (loginResponse.loggedin == true) {
+        resp = loginResponse;
         RouteNavigator.pushRemoveUntil(context, BottomScreen());
+
         _isLoadingFalse();
         return;
       } else if (loginResponse.success == false ||
@@ -63,5 +67,13 @@ class SigninController extends ChangeNotifier {
     passwordController.clear();
     isHidden = true;
     notifyListeners();
+  }
+
+  FlutterSecureStorage storage = const FlutterSecureStorage();
+  storedatalogin(LoginResponse value) async {
+    await storage.write(key: 'token', value: value.token!);
+    await storage.write(key: 'id', value: value.id!);
+    await storage.write(key: 'loggedin', value: value.loggedin.toString());
+    await storage.write(key: 'login', value: "true");
   }
 }

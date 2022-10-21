@@ -1,53 +1,58 @@
+import 'dart:async';
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:jobizy/app/util/colors.dart';
 import 'package:jobizy/app/util/route.dart';
+import 'package:jobizy/app/view/bottomscreen/bottomsrcreen.dart';
+import 'package:jobizy/app/view/loginscreen/loginscreen.dart';
 import 'package:jobizy/app/view/onboardings.dart';
+import 'package:provider/provider.dart';
 
-class SplashPage extends StatefulWidget {
-  const SplashPage({Key? key}) : super(key: key);
-
-  @override
-  State<SplashPage> createState() => _SplashPageState();
-}
-
-class _SplashPageState extends State<SplashPage> {
-  @override
-  void initState() {
-    toOnboard(context);
-    super.initState();
-  }
+class ScreenSplash extends StatelessWidget {
+  const ScreenSplash({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color.fromARGB(255, 255, 255, 255),
-      body: Center(
-          child: Image.asset(
-        'assets/image-removebg-preview.png',
-        height: 300,
-        width: 300,
-      )
-          // child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          //   Stack(children: [
-          //     SvgPicture.asset(
-          //         "assets/casual-life-3d-man-searching-music-with-phone.png"),
-          //     // const Positioned(
-          //     //     top: 270,
-          //     //     left: 113,
-          //     //     child: Text(
-          //     //       'JobEzy',
-          //     //       style: TextStyle(
-          //     //           fontSize: 35, fontWeight: FontWeight.w900, color: kWhite),
-          //     //     ))
-          //   ]),
-          // ]),
-          ),
+    return Consumer<SplashProvider>(
+      builder: (context, value, child) => Scaffold(
+        backgroundColor: mainColor,
+        body: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Center(
+                  child: Image.asset(
+                'assets/image-removebg-preview.png',
+                height: 300,
+                width: 300,
+              ))
+            ]),
+      ),
     );
   }
+}
 
-  Future<void> toOnboard(context) async {
-    await Future.delayed(const Duration(seconds: 3));
-    RouteNavigator.pushReplacement(context, const OnBoardPage());
+class SplashProvider extends ChangeNotifier {
+  final storage = const FlutterSecureStorage();
+
+  String? data = '';
+  SplashProvider(context) {
+    storage.read(key: "login").then((value) {
+      data = value;
+      log(value.toString());
+    });
+    check();
+  }
+  check() {
+    Timer(const Duration(seconds: 2), () {
+      if (data == "true") {
+        RouteNavigator.pushreplace(screen: const SigninPage());
+      } else {
+        RouteNavigator.pushreplace(screen: const OnBoardPage());
+      }
+    });
+    notifyListeners();
   }
 }
