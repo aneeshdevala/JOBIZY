@@ -31,6 +31,7 @@ class SigninController extends ChangeNotifier {
         return;
       } else if (loginResponse.loggedin == true) {
         resp = loginResponse;
+        await storedatalogin(value: loginResponse);
         RouteNavigator.pushRemoveUntil(context, BottomScreen());
 
         _isLoadingFalse();
@@ -70,7 +71,7 @@ class SigninController extends ChangeNotifier {
   }
 
   FlutterSecureStorage storage = const FlutterSecureStorage();
-  storedatalogin(LoginResponse value) async {
+  Future<void> storedatalogin({required LoginResponse value}) async {
     await storage.write(key: 'token', value: value.token!);
     await storage.write(key: 'id', value: value.id!);
     await storage.write(key: 'loggedin', value: value.loggedin.toString());

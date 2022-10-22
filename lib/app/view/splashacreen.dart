@@ -1,58 +1,58 @@
-import 'dart:async';
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:jobizy/app/util/colors.dart';
 import 'package:jobizy/app/util/route.dart';
 import 'package:jobizy/app/view/bottomscreen/bottomsrcreen.dart';
-import 'package:jobizy/app/view/loginscreen/loginscreen.dart';
 import 'package:jobizy/app/view/onboardings.dart';
 import 'package:provider/provider.dart';
 
-class ScreenSplash extends StatelessWidget {
+class ScreenSplash extends StatefulWidget {
   const ScreenSplash({Key? key}) : super(key: key);
 
   @override
+  State<ScreenSplash> createState() => _SplashPageState();
+}
+
+class _SplashPageState extends State<ScreenSplash> {
+  @override
+  void initState() {
+    Provider.of<SplashProvider>(context, listen: false).splashCheck(context);
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Consumer<SplashProvider>(
-      builder: (context, value, child) => Scaffold(
-        backgroundColor: mainColor,
-        body: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Center(
-                  child: Image.asset(
-                'assets/image-removebg-preview.png',
-                height: 300,
-                width: 300,
-              ))
-            ]),
+    return Scaffold(
+      backgroundColor: mainColor,
+      body: Center(
+        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+          Image.asset(
+            'assets/image-removebg-preview.png',
+            height: 300,
+            width: 300,
+          ),
+        ]),
       ),
     );
   }
 }
 
 class SplashProvider extends ChangeNotifier {
+  String? data = '';
+
   final storage = const FlutterSecureStorage();
 
-  String? data = '';
-  SplashProvider(context) {
+  splashCheck(context) async {
+    await Future.delayed(const Duration(seconds: 3));
+
     storage.read(key: "login").then((value) {
       data = value;
-      log(value.toString());
-    });
-    check();
-  }
-  check() {
-    Timer(const Duration(seconds: 2), () {
-      if (data == "true") {
-        RouteNavigator.pushreplace(screen: const SigninPage());
+
+      if (data == 'true') {
+        RouteNavigator.pushReplacement(context, BottomScreen());
       } else {
-        RouteNavigator.pushreplace(screen: const OnBoardPage());
+        RouteNavigator.pushReplacement(context, const OnBoardPage());
       }
     });
-    notifyListeners();
   }
 }

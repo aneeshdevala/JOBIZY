@@ -18,14 +18,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => SplashProvider(context)),
+        ChangeNotifierProvider(create: (_) => SplashProvider()),
         ChangeNotifierProvider(create: (_) => HomeController()),
         ChangeNotifierProvider(create: (_) => SigninController()),
         ChangeNotifierProvider(create: (_) => SignupController()),
         ChangeNotifierProvider(create: (_) => BottomNavBarController()),
       ],
       child: MaterialApp(
-        navigatorKey: RouteNavigator.navigatorKey,
+       
         debugShowCheckedModeBanner: false,
         title: 'JobEzy',
         theme: ThemeData(

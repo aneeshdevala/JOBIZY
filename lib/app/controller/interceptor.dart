@@ -15,9 +15,9 @@ class Interceptorapi {
         response.headers.addAll({"Authorization": "Bearer $token"});
         return handler.next(response);
       },
-      onError: (e, handler) async{
-        if (e.response?.statusCode==403) {
-          
+      onError: (e, handler) async {
+        if (e.response?.statusCode == 403) {
+          return; 
         }
       },
       onResponse: ((e, handler) => handler.next(e)),

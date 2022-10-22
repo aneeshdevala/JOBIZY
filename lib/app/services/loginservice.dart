@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:jobizy/app/model/login/loginrespo.dart';
 import 'package:jobizy/app/services/dioservices.dart';
 import 'package:jobizy/app/services/exceptionhandling.dart';
-import 'package:jobizy/app/util/connectioncheck.dart';
+
 import 'package:jobizy/app/util/url.dart';
 
 import '../model/login/loginmodel.dart';

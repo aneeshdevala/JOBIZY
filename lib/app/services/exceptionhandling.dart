@@ -1,4 +1,3 @@
-
 import 'package:dio/dio.dart';
 
 class DioException implements Exception {
@@ -23,7 +22,7 @@ class DioException implements Exception {
         break;
       case DioErrorType.other:
         if (dioError.message.contains('SocketException')) {
-          errorMessage = 'No Internet.';
+          errorMessage = 'No Internet connection.';
           break;
         }
         errorMessage = 'Unexpected error occurred.';
