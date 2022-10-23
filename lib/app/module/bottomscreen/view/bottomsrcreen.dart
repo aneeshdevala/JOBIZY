@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:jobizy/app/controller/bottomnavcon.dart';
+import 'package:jobizy/app/module/bottomscreen/controller/bottomnavcon.dart';
 import 'package:jobizy/app/util/colors.dart';
-import 'package:jobizy/app/view/chatscreen/chatscreen.dart';
-import 'package:jobizy/app/view/homescreen/homescreen.dart';
-import 'package:jobizy/app/view/jobsscreen/job_screen.dart';
-import 'package:jobizy/app/view/postcreate.dart/postcreatescreen.dart';
-import 'package:jobizy/app/view/userprofile/userprofile.dart';
+import 'package:jobizy/app/module/chatscreen/chatscreen.dart';
+import 'package:jobizy/app/module/homescreen/view/homescreen.dart';
+import 'package:jobizy/app/module/jobsscreen/view/job_screen.dart';
+import 'package:jobizy/app/module/userprofile/userprofile.dart';
 import 'package:provider/provider.dart';
 
 class BottomScreen extends StatelessWidget {
@@ -14,7 +13,7 @@ class BottomScreen extends StatelessWidget {
   final pages = [
     const HomePage(),
     const JobScreen(),
-    const AddPost(),
+    // const AddPost(),
     const UserProfile(),
     const ChatScreen(),
     // const JobsPage(),
@@ -63,9 +62,11 @@ class BottomScreen extends StatelessWidget {
                   currentIndex: provider.currentIndex,
                   onTap: (value) {
                     provider.currentIndex = value;
+                    provider;
                   },
                   items: const [
                     BottomNavigationBarItem(
+                      
                         icon: Icon(
                           Icons.home_rounded,
                         ),
@@ -75,11 +76,11 @@ class BottomScreen extends StatelessWidget {
                           Icons.supervised_user_circle_rounded,
                         ),
                         label: 'Jobs'),
-                    BottomNavigationBarItem(
-                        icon: Icon(
-                          Icons.add,
-                        ),
-                        label: 'Create'),
+                    // BottomNavigationBarItem(
+                    //     icon: Icon(
+                    //       Icons.add,
+                    //     ),
+                    //     label: 'Create'),
                     BottomNavigationBarItem(
                         icon: Icon(
                           Icons.account_circle_outlined,

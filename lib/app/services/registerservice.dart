@@ -2,8 +2,8 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
-import 'package:jobizy/app/model/signupmo/signup_model.dart';
-import 'package:jobizy/app/model/signupmo/signupresponse.dart';
+import 'package:jobizy/app/module/register/signupscreen/model/signup_model.dart';
+import 'package:jobizy/app/module/register/signupscreen/model/signupresponse.dart';
 import 'package:jobizy/app/services/dioservices.dart';
 import 'package:jobizy/app/util/connectioncheck.dart';
 import 'package:jobizy/app/util/url.dart';

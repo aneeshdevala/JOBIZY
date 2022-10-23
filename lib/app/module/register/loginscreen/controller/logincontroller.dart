@@ -1,16 +1,20 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:jobizy/app/model/login/loginmodel.dart';
-import 'package:jobizy/app/model/login/loginrespo.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:jobizy/app/module/register/loginscreen/model/loginmodel.dart';
+import 'package:jobizy/app/module/register/loginscreen/model/loginrespo.dart';
 import 'package:jobizy/app/services/loginservice.dart';
 import 'package:jobizy/app/util/route.dart';
 import 'package:jobizy/app/util/snackbar.dart';
-import 'package:jobizy/app/view/bottomscreen/bottomsrcreen.dart';
+import 'package:jobizy/app/module/bottomscreen/view/bottomsrcreen.dart';
 
 class SigninController extends ChangeNotifier {
   final signinKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  final getStorage = GetStorage();
   bool isloading = false;
   LoginResponse? resp;
 
@@ -31,6 +35,7 @@ class SigninController extends ChangeNotifier {
         return;
       } else if (loginResponse.loggedin == true) {
         resp = loginResponse;
+        getStorage.write('name', resp!.name);
         await storedatalogin(value: loginResponse);
         RouteNavigator.pushRemoveUntil(context, BottomScreen());
 
@@ -48,6 +53,7 @@ class SigninController extends ChangeNotifier {
         _isLoadingFalse();
       }
     }
+    notifyListeners();
   }
 
   void _isLoadingFalse() {
@@ -72,7 +78,10 @@ class SigninController extends ChangeNotifier {
 
   FlutterSecureStorage storage = const FlutterSecureStorage();
   Future<void> storedatalogin({required LoginResponse value}) async {
+    notifyListeners();
+    log(value.name.toString());
     await storage.write(key: 'token', value: value.token!);
+    await storage.write(key: 'name', value: value.name.toString());
     await storage.write(key: 'id', value: value.id!);
     await storage.write(key: 'loggedin', value: value.loggedin.toString());
     await storage.write(key: 'login', value: "true");

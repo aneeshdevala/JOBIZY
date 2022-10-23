@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:jobizy/app/util/colors.dart';
 import 'package:jobizy/app/util/route.dart';
-import 'package:jobizy/app/view/bottomscreen/bottomsrcreen.dart';
-import 'package:jobizy/app/view/onboardings.dart';
+import 'package:jobizy/app/module/bottomscreen/view/bottomsrcreen.dart';
+import 'package:jobizy/app/module/splash&onboard/onboardings.dart';
 import 'package:provider/provider.dart';
 
 class ScreenSplash extends StatefulWidget {

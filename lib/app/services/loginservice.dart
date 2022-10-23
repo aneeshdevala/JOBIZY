@@ -2,13 +2,13 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:jobizy/app/model/login/loginrespo.dart';
+import 'package:jobizy/app/module/register/loginscreen/model/loginrespo.dart';
 import 'package:jobizy/app/services/dioservices.dart';
 import 'package:jobizy/app/services/exceptionhandling.dart';
 
 import 'package:jobizy/app/util/url.dart';
 
-import '../model/login/loginmodel.dart';
+import '../module/register/loginscreen/model/loginmodel.dart';
 
 class LoginServices {
  

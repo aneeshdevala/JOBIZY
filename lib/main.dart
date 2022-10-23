@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:jobizy/app/controller/bottomnavcon.dart';
-import 'package:jobizy/app/controller/homescreen/homescreen.dart';
-import 'package:jobizy/app/controller/logincontroller.dart';
-import 'package:jobizy/app/controller/signupcontroller.dart';
+import 'package:jobizy/app/module/bottomscreen/controller/bottomnavcon.dart';
+import 'package:jobizy/app/module/homescreen/controller/homescreen.dart';
+import 'package:jobizy/app/module/register/loginscreen/controller/logincontroller.dart';
+import 'package:jobizy/app/module/register/signupscreen/controller/signupcontroller.dart';
 import 'package:jobizy/app/util/route.dart';
-import 'package:jobizy/app/view/splashacreen.dart';
+import 'package:jobizy/app/module/splash&onboard/splashacreen.dart';
 import 'package:provider/provider.dart';
 
 void main() {

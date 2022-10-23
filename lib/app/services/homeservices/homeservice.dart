@@ -2,8 +2,8 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:jobizy/app/controller/logincontroller.dart';
-import 'package:jobizy/app/model/login/loginrespo.dart';
+import 'package:jobizy/app/module/register/loginscreen/controller/logincontroller.dart';
+import 'package:jobizy/app/module/register/loginscreen/model/loginrespo.dart';
 import 'package:jobizy/app/util/url.dart';
 import 'package:provider/provider.dart';
 

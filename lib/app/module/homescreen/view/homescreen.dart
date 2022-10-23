@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:jobizy/app/controller/homescreen/homescreen.dart';
-import 'package:jobizy/app/controller/logincontroller.dart';
+
+import 'package:jobizy/app/module/homescreen/controller/homescreen.dart';
+import 'package:jobizy/app/module/register/loginscreen/controller/logincontroller.dart';
 import 'package:jobizy/app/services/homeservices/homeservice.dart';
 import 'package:jobizy/app/util/colors.dart';
 import 'package:jobizy/app/util/constraisns.dart';
@@ -15,6 +18,8 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     Provider.of<HomeController>(context, listen: false);
     final HomeController homeController = context.read<HomeController>();
+    final storage = FlutterSecureStorage();
+    final getStorage = GetStorage();
 
     final signIn = Provider.of<SigninController>(context);
     return SafeArea(
@@ -81,7 +86,7 @@ class HomePage extends StatelessWidget {
                       ),
                       children: <TextSpan>[
                         TextSpan(
-                          text: 'Come\n${signIn.resp!.name!.headerCase}',
+                          text: 'Come\n ${getStorage.read('name')}',
                           style: GoogleFonts.archivo(
                             textStyle: const TextStyle(
                               color: kBlack,

@@ -1,11 +1,11 @@
 
 import 'package:flutter/material.dart';
-import 'package:jobizy/app/model/signupmo/signup_model.dart';
-import 'package:jobizy/app/model/signupmo/signupresponse.dart';
+import 'package:jobizy/app/module/register/signupscreen/model/signup_model.dart';
+import 'package:jobizy/app/module/register/signupscreen/model/signupresponse.dart';
 import 'package:jobizy/app/services/registerservice.dart';
 import 'package:jobizy/app/util/route.dart';
 import 'package:jobizy/app/util/snackbar.dart';
-import 'package:jobizy/app/view/bottomscreen/bottomsrcreen.dart';
+import 'package:jobizy/app/module/bottomscreen/view/bottomsrcreen.dart';
 
 class SignupController extends ChangeNotifier {
   final signupKey = GlobalKey<FormState>();
