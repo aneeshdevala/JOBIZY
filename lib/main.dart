@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jobizy/app/module/bottomscreen/controller/bottomnavcon.dart';
 import 'package:jobizy/app/module/homescreen/controller/homescreen.dart';
+import 'package:jobizy/app/module/jobsscreen/controller/jobcontroller.dart';
 import 'package:jobizy/app/module/jobsscreen/view/addjob.dart/controller/addjobcon.dart';
 import 'package:jobizy/app/module/register/loginscreen/controller/logincontroller.dart';
 import 'package:jobizy/app/module/register/signupscreen/controller/signupcontroller.dart';
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider(create: (_) => JobController()),
         ChangeNotifierProvider(create: (_) => SplashProvider()),
         ChangeNotifierProvider(create: (_) => JobPostController()),
         ChangeNotifierProvider(create: (_) => HomeController()),

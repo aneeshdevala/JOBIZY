@@ -1,11 +1,11 @@
 import 'dart:convert';
 
-Postedjobs postedjobsFromJson(String str) => Postedjobs.fromJson(json.decode(str));
+Postedjobsmodel postedjobsFromJson(String str) => Postedjobsmodel.fromJson(json.decode(str));
 
-String postedjobsToJson(Postedjobs data) => json.encode(data.toJson());
 
-class Postedjobs {
-    Postedjobs({
+
+class Postedjobsmodel {
+    Postedjobsmodel({
         this.id,
         this.userId,
         this.company,
@@ -49,7 +49,7 @@ class Postedjobs {
     DateTime? updatedAt;
     int? v;
 
-    factory Postedjobs.fromJson(Map<String, dynamic> json) => Postedjobs(
+    factory Postedjobsmodel.fromJson(Map<String, dynamic> json) => Postedjobsmodel(
         id: json["_id"],
         userId: json["userId"],
         company: json["company"],
@@ -72,26 +72,5 @@ class Postedjobs {
         v: json["__v"],
     );
 
-    Map<String, dynamic> toJson() => {
-        "_id": id,
-        "userId": userId,
-        "company": company,
-        "place": place,
-        "state": state,
-        "country": country,
-        "designation": designation,
-        "jobFor": jobFor,
-        "description": description,
-        "vacancy": vacancy,
-        "jobType": jobType,
-        "salaryMin": salaryMin,
-        "salaryMax": salaryMax,
-        "applicationStatus": List<dynamic>.from(applicationStatus!.map((x) => x)),
-        "isBlocked": isBlocked,
-        "isOpen": isOpen,
-        "reportMessages": List<dynamic>.from(reportMessages!.map((x) => x)),
-        "createdAt": createdAt?.toIso8601String(),
-        "updatedAt": updatedAt?.toIso8601String(),
-        "__v": v,
-    };
+ 
 }
