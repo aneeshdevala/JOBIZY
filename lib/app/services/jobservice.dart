@@ -34,3 +34,31 @@ class GetAllJobsService {
     return null;
   }
 }
+
+class GetAll {
+  Future<List<Postedjobsmodel>?> getAlljobsFor(context) async {
+    Dio dios = await Interceptorapi().getApiUser();
+
+    try {
+      final Response response = await dios.get(Url().postedjobs);
+
+      if (response.statusCode! >= 200 || response.statusCode! <= 299) {
+        final dataList = (response.data as List).map((e) {
+          return Postedjobsmodel.fromJson(e);
+        }).toList();
+        return dataList;
+      } else {
+        ScaffoldMessenger(
+            child: Text('Something went wrong ! Please try again later'));
+        return [];
+      }
+    } on DioError catch (e) {
+      final errormessage = DioException.fromDioError(e).toString();
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(errormessage)));
+    } catch (e) {
+      return [];
+    }
+    return null;
+  }
+}

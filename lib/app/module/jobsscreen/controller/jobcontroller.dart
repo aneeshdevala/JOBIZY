@@ -9,28 +9,37 @@ import 'package:jobizy/app/util/snackbar.dart';
 class JobController extends ChangeNotifier {
   List<Postedjobsmodel> alljobs = [];
   bool isLoading = false;
+  JobController(context) {
+    getAllJobs(context);
+  }
 
   // JobController() {
   //   getAllJobs(co);
   // }
 
-  Future<void> getAllJobs(context) async {
+  getAllJobs(context) async {
     if (await connectionCheck()) {
       isLoading = true;
       notifyListeners();
-      final postedresponse =
-          await GetAllJobsService().getAlljobs(context);
+      final postedresponse = await GetAll().getAlljobsFor(context);
       if (postedresponse == null) {
         ShowDialogs.popUp('Please check your internet connection');
         isLoadingFalse();
         return;
-      } else if (postedresponse.success == false) {
-        ShowDialogs.popUp(postedresponse.message ?? 'Something went wrong');
+      } else if (postedresponse.isEmpty) {
+        ShowDialogs.popUp("Nothing returned");
         return;
-      } else if (postedresponse.success == true) {
-        
+      } else if (postedresponse.isNotEmpty) {
+        alljobs.clear();
+        alljobs.addAll(postedresponse);
+
+        isLoadingFalse();
+        notifyListeners();
       }
     }
+    print("-----------------------------------------------------");
+    print(alljobs.last.country);
+    notifyListeners();
   }
 
   // -->> function to make loading false

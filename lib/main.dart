@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => JobController()),
+        ChangeNotifierProvider(create: (context) => JobController(context)),
         ChangeNotifierProvider(create: (_) => SplashProvider()),
         ChangeNotifierProvider(create: (_) => JobPostController()),
         ChangeNotifierProvider(create: (_) => HomeController()),
