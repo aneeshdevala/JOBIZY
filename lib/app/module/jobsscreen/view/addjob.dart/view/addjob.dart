@@ -28,7 +28,8 @@ class AddjobScreen extends StatelessWidget {
             icon: const Icon(Icons.arrow_back_ios, color: kBlack),
           )),
       body: SingleChildScrollView(
-        child: Container(
+        child: Form(
+          key: provider.jobFormKey,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
@@ -41,37 +42,41 @@ class AddjobScreen extends StatelessWidget {
                         fontWeight: FontWeight.w600)),
                 kheight20,
                 TextFormWidget(
+                    keyboardtype: TextInputType.text,
                     text: "Job Title",
                     controller: provider.jobDesignation,
                     validatorErrorMessage: 'Please enter job title'),
                 kheight20,
                 TextFormWidget(
+                    keyboardtype: TextInputType.text,
                     text: "Company Name",
                     controller: provider.companyName,
                     validatorErrorMessage: 'Please enter Company Name'),
                 kheight20,
                 TextFormWidget(
+                    keyboardtype: TextInputType.text,
                     text: "Job Location",
                     controller: provider.companyPlace,
                     validatorErrorMessage: 'Please enter Company Place'),
                 kheight20,
                 TextFormWidget(
+                    keyboardtype: TextInputType.text,
                     text: "State",
                     controller: provider.companystate,
                     validatorErrorMessage: 'Please enter Company Place'),
                 kheight20,
                 TextFormWidget(
+                    keyboardtype: TextInputType.text,
                     text: "country",
                     controller: provider.companyCountry,
                     validatorErrorMessage: 'Please enter Company Place'),
                 kheight20,
 
                 TextFormWidget(
-                    text: "Job Type",
-                    controller: provider.jobType.isEmpty
-                        ? TextEditingController(text: 'Select')
-                        : TextEditingController(text: provider.jobType),
-                    validatorErrorMessage: 'Please enter job title'),
+                    keyboardtype: TextInputType.text,
+                    text: "Job Vacancies",
+                    controller: provider.jobVaccancies,
+                    validatorErrorMessage: 'Please Enter Job Vacancies'),
 
                 kheight20,
                 RadioButton(),
@@ -138,7 +143,7 @@ class AddjobScreen extends StatelessWidget {
                 ElevatedButton(
                     onPressed: () {
                       provider.jobPostButton(context);
-                      //provider.dispos(context);
+                      provider.dispos(context);
                     },
                     style: ElevatedButton.styleFrom(
                         backgroundColor: mainColor,
