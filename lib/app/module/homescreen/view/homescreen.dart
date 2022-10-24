@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import 'package:jobizy/app/module/homescreen/controller/homescreen.dart';
-import 'package:jobizy/app/module/register/loginscreen/controller/logincontroller.dart';
-import 'package:jobizy/app/services/homeservices/homeservice.dart';
 import 'package:jobizy/app/util/colors.dart';
 import 'package:jobizy/app/util/constraisns.dart';
 import 'package:provider/provider.dart';
-import 'package:recase/recase.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -18,10 +13,10 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     Provider.of<HomeController>(context, listen: false);
     final HomeController homeController = context.read<HomeController>();
-    final storage = FlutterSecureStorage();
+    //  final storage = FlutterSecureStorage();
     final getStorage = GetStorage();
 
-    final signIn = Provider.of<SigninController>(context);
+    // final signIn = Provider.of<SigninController>(context);
     return SafeArea(
       child: Scaffold(
 
@@ -249,7 +244,7 @@ class PostButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
         onPressed: () {
-          ontap() {}
+          //    ontap() {}
         },
         style: ElevatedButton.styleFrom(
             backgroundColor: kWhite, minimumSize: const Size(80, 40)),

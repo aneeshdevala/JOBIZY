@@ -88,7 +88,7 @@ class JobPostController extends ChangeNotifier {
 
   validator(context) {
     if (jobFormKey.currentState!.validate() && jobType.isNotEmpty) {
-      RouteNavigator.pushRoute(context, JobScreen());
+      RouteNavigator.pushRoute(context, const JobScreen());
     } else {
       ScaffoldMessenger.of(context)
           .showSnackBar(ShowDialogs.popUp('Please select the Job Type'));

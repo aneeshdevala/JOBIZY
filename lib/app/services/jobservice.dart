@@ -1,14 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:jobizy/app/module/jobsscreen/model/jobmodel.dart';
-import 'package:jobizy/app/module/jobsscreen/model/jobrespons.dart';
-import 'package:jobizy/app/services/dioservices.dart';
 import 'package:jobizy/app/services/exceptionhandling.dart';
 import 'package:jobizy/app/services/interceptor.dart';
 import 'package:jobizy/app/util/url.dart';
 
-class GetAll {
+class GetAllJobsService {
   Future<List<Postedjobsmodel>?> getAlljobsFor(context) async {
     Dio dios = await Interceptorapi().getApiUser();
 
@@ -21,7 +18,7 @@ class GetAll {
         }).toList();
         return dataList;
       } else {
-        ScaffoldMessenger(
+        const ScaffoldMessenger(
             child: Text('Something went wrong ! Please try again later'));
         return [];
       }

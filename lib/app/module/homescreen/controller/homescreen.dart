@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:jobizy/app/module/register/loginscreen/model/loginrespo.dart';
 import 'package:jobizy/app/util/route.dart';
 import 'package:jobizy/app/module/bottomscreen/view/bottomsrcreen.dart';
 import 'package:jobizy/app/module/register/loginscreen/view/loginscreen.dart';
@@ -19,6 +18,5 @@ class HomeController extends ChangeNotifier {
 
   //fetch user details
   void userdetails() {
-    LoginResponse? userdetails;
   }
 }

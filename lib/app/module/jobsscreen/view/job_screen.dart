@@ -61,7 +61,7 @@ class JobScreen extends StatelessWidget {
               // await GetAll().getAlljobsFor(context);
               RouteNavigator.pushReplacement(context, const AddjobScreen());
             },
-            child: Icon(Icons.add),
+            child: const Icon(Icons.add),
           ),
           // Text(provider.alljobs.first.designation.toString()),
         ],

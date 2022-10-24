@@ -36,7 +36,7 @@ class CustomButton extends StatelessWidget {
               width: 5.0,
               color: borderColor,
             ),
-            primary: buttonColor,
+            backgroundColor: buttonColor,
             minimumSize: Size(width, height)),
         child: Text(
           text,
