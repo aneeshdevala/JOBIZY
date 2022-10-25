@@ -26,10 +26,10 @@ class JobPostController extends ChangeNotifier {
   String dropdownValue = 'Select';
   String jobType = '';
 
-  void jobPostButton(context) async {
+  Future<void> jobPostButton(context) async {
     if (jobFormKey.currentState!.validate() && jobType.isNotEmpty) {
       isloading = true;
-      final pro=Provider.of<JobController>(context,listen: false);
+      final pro = Provider.of<JobController>(context, listen: false);
       pro.getAllJobs(context);
       notifyListeners();
 
@@ -61,8 +61,9 @@ class JobPostController extends ChangeNotifier {
         _isLoadingFalse();
         return;
       } else if (jobResponseModel.success == true) {
-        RouteNavigator.pushRemoveUntil(context, BottomScreen());
+        await Provider.of<JobController>(context).getAllJobs(context);
         _isLoadingFalse();
+        notifyListeners();
         return;
       } else if (jobResponseModel.success == false) {
         ScaffoldMessenger.of(context)

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jobizy/app/module/bottomscreen/controller/bottomnavcon.dart';
+import 'package:jobizy/app/module/jobsscreen/controller/jobcontroller.dart';
+import 'package:jobizy/app/module/publicjobs/view/viewscreen.dart';
 import 'package:jobizy/app/util/colors.dart';
 import 'package:jobizy/app/module/chatscreen/chatscreen.dart';
 import 'package:jobizy/app/module/homescreen/view/homescreen.dart';
@@ -12,7 +14,7 @@ class BottomScreen extends StatelessWidget {
 
   final pages = [
     const HomePage(),
-    const JobScreen(),
+    const AllJobs(),
     // const AddPost(),
     const UserProfile(),
     const ChatScreen(),
@@ -23,6 +25,7 @@ class BottomScreen extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
+    final postedjobspro = Provider.of<JobController>(context);
     final provider = Provider.of<BottomNavBarController>(context);
     return Scaffold(
         extendBody: true,
@@ -61,12 +64,12 @@ class BottomScreen extends StatelessWidget {
                       const IconThemeData(size: 28, color: kGrey),
                   currentIndex: provider.currentIndex,
                   onTap: (value) {
+                    postedjobspro.getAllJobs(context);
                     provider.currentIndex = value;
                     provider;
                   },
                   items: const [
                     BottomNavigationBarItem(
-                      
                         icon: Icon(
                           Icons.home_rounded,
                         ),

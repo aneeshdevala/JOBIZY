@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:jobizy/app/module/bottomscreen/controller/bottomnavcon.dart';
+import 'package:jobizy/app/module/bottomscreen/view/bottomsrcreen.dart';
+import 'package:jobizy/app/module/jobsscreen/controller/jobcontroller.dart';
 import 'package:jobizy/app/module/jobsscreen/view/addjob.dart/controller/addjobcon.dart';
 import 'package:jobizy/app/module/jobsscreen/view/addjob.dart/view/widgets/radiobutton.dart';
 import 'package:jobizy/app/util/colors.dart';
@@ -141,9 +144,17 @@ class AddjobScreen extends StatelessWidget {
                 kheight20,
 
                 ElevatedButton(
-                    onPressed: () {
-                      provider.jobPostButton(context);
-                      provider.dispos(context);
+                    onPressed: () async {
+                      await provider
+                          .jobPostButton(context)
+                          .whenComplete(() async {
+                        Provider.of<BottomNavBarController>(context,
+                                listen: false)
+                            .currentIndex = 0;
+                        await RouteNavigator.pushRemoveUntil(
+                            context, BottomScreen());
+                        provider.dispos(context);
+                      });
                     },
                     style: ElevatedButton.styleFrom(
                         backgroundColor: mainColor,

@@ -11,6 +11,7 @@ class JobController extends ChangeNotifier {
   bool isLoading = false;
   JobController(context) {
     getAllJobs(context);
+    notifyListeners();
   }
 
   // JobController() {
