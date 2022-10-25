@@ -157,9 +157,7 @@ class JobScreen extends StatelessWidget {
                                               padding:
                                                   const EdgeInsets.all(8.0),
                                               child: Text(
-                                                provider
-                                                    .alljobs[index].description
-                                                    .toString(),
+                                                "Job Description : ${provider.alljobs[index].description.toString()}",
                                                 style: const TextStyle(
                                                   color: Colors.white,
                                                 ),
