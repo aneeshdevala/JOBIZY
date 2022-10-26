@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jobizy/app/module/jobsscreen/controller/jobcontroller.dart';
+import 'package:jobizy/app/module/jobsscreen/model/jobmodel.dart';
 import 'package:jobizy/app/module/jobsscreen/view/addjob.dart/view/addjob.dart';
 import 'package:jobizy/app/module/publicjobs/view/widgets/jobsdetails.dart';
 import 'package:jobizy/app/util/colors.dart';
@@ -13,6 +14,7 @@ class JobScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+  final Postedjobsmodel jobmodel;
     // final JobController provider = context.read<JobController>();
     final provider = Provider.of<JobController>(context);
     return SafeArea(
@@ -71,15 +73,16 @@ class JobScreen extends StatelessWidget {
                                 scrollDirection: Axis.vertical,
                                 shrinkWrap: true,
                                 itemBuilder: (context, index) {
+                                  
                                   return GestureDetector(
                                     onTap: () {
                                       Navigator.of(context).push(
                                         MaterialPageRoute(
                                           builder: (context) => JobDetails(
-                                            jobs:,
+                                            jobs: index,
                                           ),
                                         ),
-                                        );
+                                      );
                                     },
                                     child: Card(
                                       color: const Color(0xff008080),
