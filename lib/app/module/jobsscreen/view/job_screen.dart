@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jobizy/app/module/jobsscreen/controller/jobcontroller.dart';
 import 'package:jobizy/app/module/jobsscreen/view/addjob.dart/view/addjob.dart';
+import 'package:jobizy/app/module/publicjobs/view/widgets/jobsdetails.dart';
 import 'package:jobizy/app/util/colors.dart';
 import 'package:jobizy/app/util/constraisns.dart';
 import 'package:jobizy/app/util/route.dart';
@@ -72,13 +73,13 @@ class JobScreen extends StatelessWidget {
                                 itemBuilder: (context, index) {
                                   return GestureDetector(
                                     onTap: () {
-                                      // Navigator.of(context).push(
-                                      //   MaterialPageRoute(
-                                      //     builder: (context) => JobDetails(
-                                      //       jobs: job,
-                                      //     ),
-                                      //   ),
-                                      //   );
+                                      Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                          builder: (context) => JobDetails(
+                                            jobs:,
+                                          ),
+                                        ),
+                                        );
                                     },
                                     child: Card(
                                       color: const Color(0xff008080),
@@ -110,9 +111,7 @@ class JobScreen extends StatelessWidget {
                                                       const EdgeInsets.only(
                                                           left: 5.0),
                                                   child: Text(
-                                                    provider
-                                                        .alljobs[index].company
-                                                        .toString(),
+                                                    "Company Name : ${provider.alljobs[index].company.toString()}",
                                                     style: const TextStyle(
                                                       color: Colors.white,
                                                       fontSize: 18,
