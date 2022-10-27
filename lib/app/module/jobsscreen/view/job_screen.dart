@@ -14,7 +14,7 @@ class JobScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  final Postedjobsmodel jobmodel;
+    final Postedjobsmodel jobmodel;
     // final JobController provider = context.read<JobController>();
     final provider = Provider.of<JobController>(context);
     return SafeArea(
@@ -73,13 +73,13 @@ class JobScreen extends StatelessWidget {
                                 scrollDirection: Axis.vertical,
                                 shrinkWrap: true,
                                 itemBuilder: (context, index) {
-                                  
                                   return GestureDetector(
                                     onTap: () {
                                       Navigator.of(context).push(
                                         MaterialPageRoute(
                                           builder: (context) => JobDetails(
-                                            jobs: index,
+                                            jobs: provider
+                                                .getAllJobs(context)[index],
                                           ),
                                         ),
                                       );
@@ -159,11 +159,13 @@ class JobScreen extends StatelessWidget {
                                               padding:
                                                   const EdgeInsets.all(8.0),
                                               child: Text(
+                                                //********************************* */
                                                 "Job Description : ${provider.alljobs[index].description.toString()}",
                                                 style: const TextStyle(
                                                   color: Colors.white,
                                                 ),
                                                 maxLines: 4,
+                                                //***************************************** */
                                               ),
                                             ),
                                             Container(
