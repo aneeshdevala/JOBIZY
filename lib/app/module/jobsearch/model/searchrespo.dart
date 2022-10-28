@@ -28,7 +28,8 @@ class SearchResponse {
         this.reportMessages,
         this.createdAt,
         this.updatedAt,
-        this.v,
+        this.v, 
+        this.message,
     });
 
     String? id;
@@ -43,6 +44,7 @@ class SearchResponse {
     String? vacancy;
     String? jobType;
     int? salaryMin;
+    String? message;
     int? salaryMax;
     List<dynamic>? applicationStatus;
     bool ?isBlocked;

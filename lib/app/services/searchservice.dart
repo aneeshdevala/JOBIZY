@@ -1,14 +1,17 @@
+import 'dart:developer';
+
+import 'package:dio/dio.dart';
 import 'package:jobizy/app/module/jobsearch/model/searchrespo.dart';
 import 'package:jobizy/app/services/dioservices.dart';
 import 'package:jobizy/app/util/connectioncheck.dart';
 import 'package:jobizy/app/util/url.dart';
 
-class SearchService{
+class SearchService {
   Future<SearchResponse?> searchService(String data) async {
     if (await connectionCheck()) {
       try {
-        final response = await DioServices.postFunction(
-            url: Url().jobSearch, value: data.tojson());
+        final response =
+            await DioServices.postFunction(url: Url().jobSearch, value: data);
 
         if (response.statusCode! >= 200 && response.statusCode! <= 299) {
           log('Login Successful.......................');
@@ -17,8 +20,8 @@ class SearchService{
           return SearchResponse.fromJson(response.data);
         }
       } on DioError catch (e) {
-        if (e.response!.statusCode == 400) {
-          return SearchResponse(message: 'User already exists');
+        if (e.response!.statusCode == 401) {
+          return SearchResponse(message: 'Please check your credentials');
         }
       } catch (e) {
         return SearchResponse(message: 'Something Went Worng........');
