@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:jobizy/app/module/jobsscreen/model/jobmodel.dart';
 
@@ -149,7 +148,7 @@ class JobFullDetails extends StatelessWidget {
                             ),
                             Container(
                               padding: const EdgeInsets.only(left: 5.0),
-                              child:  Text(
+                              child: Text(
                                 '${jobs.vacancy} Vacancies',
                                 style: const TextStyle(
                                   fontWeight: FontWeight.bold,
@@ -194,9 +193,9 @@ class JobFullDetails extends StatelessWidget {
                               ),
                               Container(
                                 padding: const EdgeInsets.only(left: 5.0),
-                                child: const Text(
-                                  'Nigeria',
-                                  style: TextStyle(
+                                child: Text(
+                                  jobs.country.toString(),
+                                  style: const TextStyle(
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
@@ -396,6 +395,7 @@ class JobFullDetails extends StatelessWidget {
       ),
       bottomNavigationBar: BottomAppBar(
         color: Colors.transparent,
+        elevation: 0,
         child: Container(
           padding: const EdgeInsets.all(15.0),
           height: 80.0,
@@ -445,7 +445,6 @@ class JobFullDetails extends StatelessWidget {
             ],
           ),
         ),
-        elevation: 0,
       ),
     );
   }

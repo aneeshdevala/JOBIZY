@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jobizy/app/module/jobsscreen/controller/jobcontroller.dart';
+import 'package:jobizy/app/module/jobsscreen/jobfullview.dart';
 import 'package:jobizy/app/module/jobsscreen/model/jobmodel.dart';
 import 'package:jobizy/app/module/jobsscreen/view/addjob.dart/view/addjob.dart';
 import 'package:jobizy/app/module/publicjobs/view/widgets/jobsdetails.dart';
@@ -75,14 +76,19 @@ class JobScreen extends StatelessWidget {
                                 itemBuilder: (context, index) {
                                   return GestureDetector(
                                     onTap: () {
-                                      Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                          builder: (context) => JobDetails(
-                                            jobs: provider
-                                                .getAllJobs(context)[index],
-                                          ),
-                                        ),
-                                      );
+                                      // Navigator.of(context).push(
+                                      //   MaterialPageRoute(
+                                      //     builder: (context) => JobFullDetails(
+                                      //       jobs: provider
+                                      //           .getAllJobs(context)[index],
+                                      //     ),
+                                      //   ),
+                                      // );
+                                      RouteNavigator.pushRoute(
+                                          context,
+                                          JobFullDetails(
+                                            jobs: provider.alljobs[index],
+                                          ));
                                     },
                                     child: Card(
                                       color: const Color(0xff008080),
@@ -114,7 +120,7 @@ class JobScreen extends StatelessWidget {
                                                       const EdgeInsets.only(
                                                           left: 5.0),
                                                   child: Text(
-                                                    "Company Name : ${provider.alljobs[index].company.toString()}",
+                                                    "Company : ${provider.alljobs[index].company.toString()}",
                                                     style: const TextStyle(
                                                       color: Colors.white,
                                                       fontSize: 18,
