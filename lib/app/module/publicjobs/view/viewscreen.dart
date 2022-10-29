@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'package:jobizy/app/module/jobsscreen/view/job_screen.dart';
+import 'package:jobizy/app/module/publicjobs/controller/searchcontroll.dart';
 import 'package:jobizy/app/module/publicjobs/view/widgets/data.dart';
 import 'package:jobizy/app/module/publicjobs/view/widgets/jobsdetails.dart';
 import 'package:jobizy/app/util/route.dart';
+import 'package:provider/provider.dart';
 
 class AllJobs extends StatefulWidget {
   const AllJobs({Key? key}) : super(key: key);
@@ -36,6 +38,7 @@ class ColumnBody extends StatefulWidget {
 class _ColumnBodyState extends State<ColumnBody> {
   @override
   Widget build(BuildContext context) {
+   // final provider = Provider.of<SearchController>(context, listen: false);
     final _list = Jobs.generatejobs();
     return Container(
       padding: const EdgeInsets.all(15.0),
@@ -125,14 +128,21 @@ class _ColumnBodyState extends State<ColumnBody> {
             ),
             child: Material(
               child: TextField(
+                textInputAction: TextInputAction.search,
+           //     controller: provider.searchController,
                 decoration: InputDecoration(
                   fillColor: Colors.white,
                   suffixIcon: Container(
                     padding: const EdgeInsets.only(right: 10.0),
-                    child: const Icon(
-                      Icons.search,
-                      color: Color(0xff008080),
-                      size: 30.0,
+                    child: GestureDetector(
+                      onTap: () {
+                       // provider.searchButton(context);
+                      },
+                      child: const Icon(
+                        Icons.search,
+                        color: Color(0xff008080),
+                        size: 30.0,
+                      ),
                     ),
                   ),
                   focusedBorder: OutlineInputBorder(

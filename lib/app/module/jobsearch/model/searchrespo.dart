@@ -9,6 +9,10 @@ SearchResponse searchResponseFromJson(String str) => SearchResponse.fromJson(jso
 
 class SearchResponse {
     SearchResponse({
+        this.success,
+        this.status,
+        this.message,
+        this.stack,
         this.id,
         this.userId,
         this.company,
@@ -29,9 +33,11 @@ class SearchResponse {
         this.createdAt,
         this.updatedAt,
         this.v, 
-        this.message,
+        
     });
-
+    bool? success;
+    int? status;
+    String? stack;
     String? id;
     String? userId;
     String? company;
@@ -55,6 +61,10 @@ class SearchResponse {
     int? v;
 
     factory SearchResponse.fromJson(Map<String, dynamic> json) => SearchResponse(
+        success: json["success"],
+        status: json["status"],
+        message: json["message"],
+        stack: json["stack"],
         id: json["_id"],
         userId: json["userId"],
         company: json["company"],
@@ -76,6 +86,8 @@ class SearchResponse {
         updatedAt: DateTime.parse(json["updatedAt"]),
         v: json["__v"],
     );
+
+  fromJson(e) {}
 
    
 }

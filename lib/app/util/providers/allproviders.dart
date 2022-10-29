@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:jobizy/app/module/bottomscreen/controller/bottomnavcon.dart';
 import 'package:jobizy/app/module/homescreen/controller/homescreen.dart';
+import 'package:jobizy/app/module/publicjobs/controller/searchcontroll.dart';
 import 'package:jobizy/app/module/register/signupscreen/controller/signupcontroller.dart';
 import 'package:provider/provider.dart';
 
@@ -14,6 +15,7 @@ class AllProviders {
   static Widget providers() {
     return MultiProvider(
       providers: [
+      //  ChangeNotifierProvider(create: (_) => SearchController()),
         ChangeNotifierProvider(create: (context) => JobController(context)),
         ChangeNotifierProvider(create: (_) => SplashProvider()),
         ChangeNotifierProvider(create: (_) => JobPostController()),
