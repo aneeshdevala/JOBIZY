@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/widgets.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:jobizy/app/module/jobsearch/model/searchmodel.dart';
@@ -14,14 +16,16 @@ class SearchController extends ChangeNotifier {
       isloading = true;
       notifyListeners();
 
-      final searchObj = Searchmodel(
+      Searchmodel searchObj = Searchmodel(
         designation: searchController.text,
       );
+      print(searchObj);
       SearchResponse? searchResponse =
           await SearchService().searchpostservice(searchObj);
 
       if (searchResponse == null) {
         print('null');
+        log('null');
         return;
       } else {
         allsearchjobs = searchResponse as List<Searchmodel>;
