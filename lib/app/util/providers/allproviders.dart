@@ -15,7 +15,7 @@ class AllProviders {
   static Widget providers() {
     return MultiProvider(
       providers: [
-      //  ChangeNotifierProvider(create: (_) => SearchController()),
+        ChangeNotifierProvider(create: (_) => SearchController()),
         ChangeNotifierProvider(create: (context) => JobController(context)),
         ChangeNotifierProvider(create: (_) => SplashProvider()),
         ChangeNotifierProvider(create: (_) => JobPostController()),

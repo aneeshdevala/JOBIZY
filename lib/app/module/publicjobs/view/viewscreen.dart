@@ -38,7 +38,7 @@ class ColumnBody extends StatefulWidget {
 class _ColumnBodyState extends State<ColumnBody> {
   @override
   Widget build(BuildContext context) {
-   // final provider = Provider.of<SearchController>(context, listen: false);
+    final provider = Provider.of<SearchController>(context, listen: false);
     final _list = Jobs.generatejobs();
     return Container(
       padding: const EdgeInsets.all(15.0),
@@ -99,23 +99,19 @@ class _ColumnBodyState extends State<ColumnBody> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  child: const Text(
-                    'Find the worlds most',
-                    style: TextStyle(
-                      fontSize: 35,
-                      fontWeight: FontWeight.bold,
-                    ),
+              children: const [
+                Text(
+                  'Find the worlds most',
+                  style: TextStyle(
+                    fontSize: 35,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-                Container(
-                  child: const Text(
-                    'Amazing job',
-                    style: TextStyle(
-                      fontSize: 35,
-                      fontWeight: FontWeight.bold,
-                    ),
+                Text(
+                  'Amazing job',
+                  style: TextStyle(
+                    fontSize: 35,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ],
@@ -129,14 +125,14 @@ class _ColumnBodyState extends State<ColumnBody> {
             child: Material(
               child: TextField(
                 textInputAction: TextInputAction.search,
-           //     controller: provider.searchController,
+                controller: provider.searchController,
                 decoration: InputDecoration(
                   fillColor: Colors.white,
                   suffixIcon: Container(
                     padding: const EdgeInsets.only(right: 10.0),
                     child: GestureDetector(
                       onTap: () {
-                       // provider.searchButton(context);
+                        provider.searchButton(context);
                       },
                       child: const Icon(
                         Icons.search,
