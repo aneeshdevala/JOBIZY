@@ -13,7 +13,7 @@ import 'package:jobizy/app/util/snackbar.dart';
 import 'package:jobizy/app/util/url.dart';
 
 class SearchService {
-  Future<SearchResponse> searchpostservice(
+  Future<ModelSearch>? searchpostservice(
       Searchmodel searchmodel, context) async {
     if (await connectionCheck()) {
       Dio dios = await Interceptorapi().getApiUser();
@@ -23,18 +23,16 @@ class SearchService {
         log("===============");
         if (response.statusCode! >= 200 && response.statusCode! <= 299) {
           log('data passes successfully');
-          log(response.toString());
+         // log(response.toString());
 
-          return SearchResponse.fromJson(response.data[0]);
+          return ModelSearch.fromJson(response.data);
         } else {
-          return SearchResponse(
-            message: 'Something went wrong ! Please try again later',
-          );
+          return ModelSearch(message: 'Something went wrong');
           // searchResponseFromJson(response.data);
         }
       } on DioError catch (e) {
         if (e.response!.statusCode == 401) {
-          return SearchResponse(
+          return ModelSearch(
             message: 'Something went wrong ! Please try again later',
           );
           //SearchResponse(message: 'Invalid data');
@@ -45,7 +43,7 @@ class SearchService {
         }
       }
     }
-    return SearchResponse(
+    return ModelSearch(
       message: 'Something went wrong ! Please try again later',
     );
   }

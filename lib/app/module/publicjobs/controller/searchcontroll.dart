@@ -18,9 +18,9 @@ class SearchController extends ChangeNotifier {
       notifyListeners();
 
       Searchmodel searchObj = Searchmodel(
-         designation: searchController.text,
+        designation: searchController.text,
       );
-SearchResponse searchResponse =
+      ModelSearch? searchResponse =
           await SearchService().searchpostservice(searchObj, context);
 
       if (searchResponse == null) {
@@ -29,9 +29,10 @@ SearchResponse searchResponse =
         log('null');
         return;
       } else {
-        allsearchjobs = searchResponse as List<SearchResponse>;
-        log('search jobs ${allsearchjobs[0]}');
-        log(searchResponse.toString());
+        allsearchjobs.clear();
+        allsearchjobs.addAll(searchResponse.listOfSearchResponse!);
+        log(allsearchjobs.first.designation.toString());
+        //  log(searchResponse.toString());
         isloading = false;
         return;
       }

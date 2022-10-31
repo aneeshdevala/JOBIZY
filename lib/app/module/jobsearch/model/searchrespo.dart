@@ -11,7 +11,7 @@ List<SearchResponse> searchResponseFromJson(String str) =>
 class ModelSearch {
   List<SearchResponse>? listOfSearchResponse;
   String? message;
-  ModelSearch({required this.listOfSearchResponse, this.message});
+  ModelSearch({this.listOfSearchResponse, this.message});
   factory ModelSearch.fromJson(List<dynamic> json) {
     return ModelSearch(
       listOfSearchResponse: json == []
