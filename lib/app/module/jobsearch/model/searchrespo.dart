@@ -4,7 +4,7 @@
 
 import 'dart:convert';
 
-SearchResponse searchResponseFromJson(String str) => SearchResponse.fromJson(json.decode(str));
+List<SearchResponse> searchResponseFromJson(String str) => List<SearchResponse>.from(json.decode(str).map((x) => SearchResponse.fromJson(x)));
 
 
 class SearchResponse {

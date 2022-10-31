@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 import 'package:jobizy/app/module/jobsscreen/view/job_screen.dart';
@@ -124,6 +126,10 @@ class _ColumnBodyState extends State<ColumnBody> {
             ),
             child: Material(
               child: TextField(
+                onChanged: (value) {
+                  provider.searchButton(context);
+                },
+                // key: provider.searchKey,
                 textInputAction: TextInputAction.search,
                 controller: provider.searchController,
                 decoration: InputDecoration(
@@ -132,6 +138,7 @@ class _ColumnBodyState extends State<ColumnBody> {
                     padding: const EdgeInsets.only(right: 10.0),
                     child: GestureDetector(
                       onTap: () {
+                        log('search');
                         provider.searchButton(context);
                       },
                       child: const Icon(

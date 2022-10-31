@@ -1,44 +1,45 @@
 import 'dart:developer';
 
-import 'package:flutter/widgets.dart';
-import 'package:get_storage/get_storage.dart';
+import 'package:flutter/material.dart';
 import 'package:jobizy/app/module/jobsearch/model/searchmodel.dart';
 import 'package:jobizy/app/module/jobsearch/model/searchrespo.dart';
 import 'package:jobizy/app/services/searchservice.dart';
+import 'package:jobizy/app/util/connectioncheck.dart';
+import 'package:jobizy/app/util/snackbar.dart';
 
 class SearchController extends ChangeNotifier {
-  List<Searchmodel> allsearchjobs = [];
+  List<SearchResponse> allsearchjobs = [];
   final searchKey = GlobalKey<FormState>();
   final searchController = TextEditingController();
   bool isloading = false;
   void searchButton(context) async {
-    if (searchKey.currentState!.validate()) {
+    if (await connectionCheck()) {
       isloading = true;
       notifyListeners();
 
       Searchmodel searchObj = Searchmodel(
-        designation: searchController.text,
+         designation: searchController.text,
       );
-      print(searchObj);
-      SearchResponse? searchResponse =
-          await SearchService().searchpostservice(searchObj);
+SearchResponse searchResponse =
+          await SearchService().searchpostservice(searchObj, context);
 
       if (searchResponse == null) {
-        print('null');
+        ScaffoldMessenger.of(context)
+            .showSnackBar(ShowDialogs.popUp('No Response'));
         log('null');
         return;
       } else {
-        allsearchjobs = searchResponse as List<Searchmodel>;
-        print('search jobs $allsearchjobs');
+        allsearchjobs = searchResponse as List<SearchResponse>;
+        log('search jobs ${allsearchjobs[0]}');
+        log(searchResponse.toString());
         isloading = false;
-        notifyListeners();
+        return;
       }
-      notifyListeners();
     }
 
-    void _isLoadingFalse() {
-      isloading = false;
-      notifyListeners();
-    }
+    // void _isLoadingFalse() {
+    //   isloading = false;
+    //   notifyListeners();
+    // }
   }
 }
