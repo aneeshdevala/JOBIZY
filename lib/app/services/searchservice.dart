@@ -23,7 +23,7 @@ class SearchService {
         log("===============");
         if (response.statusCode! >= 200 && response.statusCode! <= 299) {
           log('data passes successfully');
-          // log(response.toString());
+          log(response.toString());
 
           return SearchResponse.fromJson(response.data[0]);
         } else {
