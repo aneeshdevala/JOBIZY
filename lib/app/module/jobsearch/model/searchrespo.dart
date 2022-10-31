@@ -29,6 +29,7 @@ class SearchResponse {
     this.message,
     this.stack,
     this.id,
+    this.image,
     this.userId,
     this.company,
     this.place,
@@ -56,6 +57,7 @@ class SearchResponse {
   String? userId;
   String? company;
   String? place;
+  String? image;
   String? state;
   String? country;
   String? designation;
@@ -73,6 +75,7 @@ class SearchResponse {
   DateTime? createdAt;
   DateTime? updatedAt;
   int? v;
+  
 
   factory SearchResponse.fromJson(Map<String, dynamic> json) => SearchResponse(
         success: json["success"],
@@ -82,6 +85,7 @@ class SearchResponse {
         id: json["_id"],
         userId: json["userId"],
         company: json["company"],
+        image: json["image"],
         place: json["place"],
         state: json["state"],
         country: json["country"],

@@ -1,9 +1,11 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:jobizy/app/module/jobsscreen/jobfullview.dart';
 
 import 'package:jobizy/app/module/jobsscreen/view/job_screen.dart';
 import 'package:jobizy/app/module/publicjobs/controller/searchcontroll.dart';
+import 'package:jobizy/app/module/publicjobs/view/jobfullview/fullview.dart';
 import 'package:jobizy/app/module/publicjobs/view/widgets/data.dart';
 import 'package:jobizy/app/module/publicjobs/view/widgets/jobsdetails.dart';
 import 'package:jobizy/app/util/route.dart';
@@ -138,7 +140,6 @@ class _ColumnBodyState extends State<ColumnBody> {
                     padding: const EdgeInsets.only(right: 10.0),
                     child: GestureDetector(
                       onTap: () {
-                        log('search');
                         provider.searchButton(context);
                       },
                       child: const Icon(
@@ -323,13 +324,12 @@ class _ColumnBodyState extends State<ColumnBody> {
             scrollDirection: Axis.vertical,
             shrinkWrap: true,
             itemBuilder: (context, index) {
-              var job = _list[index];
               return GestureDetector(
                 onTap: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (context) => JobDetails(
-                        jobs: job,
+                      builder: (context) => JobFullView(
+                        jobs: provider.allsearchjobs[index],
                       ),
                     ),
                   );
@@ -350,37 +350,59 @@ class _ColumnBodyState extends State<ColumnBody> {
                         Row(
                           children: [
                             Container(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Image.asset(
-                                job.image,
-                                width: 30,
-                                height: 30,
-                              ),
-                            ),
-                            Container(
-                              padding: const EdgeInsets.only(left: 5.0),
-                              child: Text(
-                                job.companyName,
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 18,
+                                padding: const EdgeInsets.all(8.0),
+                                child:
+                                    provider.allsearchjobs[index].image == null
+                                        ? const CircleAvatar(
+                                            radius: 25,
+                                            backgroundColor: Colors.white,
+                                            child: Icon(
+                                              Icons.business,
+                                              color: Colors.black,
+                                              size: 25,
+                                            ),
+                                          )
+                                        : Container(
+                                            width: 50,
+                                            height: 50,
+                                            decoration: BoxDecoration(
+                                              shape: BoxShape.circle,
+                                              image: DecorationImage(
+                                                image: NetworkImage(provider
+                                                    .allsearchjobs[index].image
+                                                    .toString()),
+                                                fit: BoxFit.fill,
+                                              ),
+                                            ),
+                                          )),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  provider.allsearchjobs[index].company
+                                      .toString(),
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 22,
+                                  ),
                                 ),
-                              ),
+                                Text(
+                                  '${provider.allsearchjobs[index].state} , ${provider.allsearchjobs[index].country}',
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 13,
+                                  ),
+                                ),
+                              ],
                             ),
                             const Spacer(),
-                            Container(
-                              height: 30,
-                              decoration: const BoxDecoration(
-                                color: Colors.white,
-                                shape: BoxShape.circle,
-                              ),
-                              child: Center(
-                                child: IconButton(
-                                  icon: const Icon(Icons.bookmark),
-                                  color: Colors.grey,
-                                  iconSize: 15,
-                                  onPressed: () {},
-                                ),
+                            Center(
+                              child: IconButton(
+                                icon: const Icon(Icons.bookmark),
+                                color: Colors.grey,
+                                iconSize: 30,
+                                onPressed: () {},
                               ),
                             ),
                           ],
@@ -388,45 +410,46 @@ class _ColumnBodyState extends State<ColumnBody> {
                         Container(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
-                            job.stack,
+                            provider.allsearchjobs[index].designation
+                                .toString(),
                             style: const TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
                               fontSize: 20,
                             ),
+                            maxLines: 1,
                           ),
                         ),
                         Container(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
-                            job.shortdescription,
+                            provider.allsearchjobs[index].description
+                                .toString(),
                             style: const TextStyle(
                               color: Colors.white,
                             ),
-                            maxLines: 4,
+                            maxLines: 2,
                           ),
                         ),
-                        Container(
-                          child: Row(
-                            children: [
-                              Container(
-                                padding: const EdgeInsets.all(8.0),
-                                child: const Icon(
-                                  Icons.timer_outlined,
+                        Row(
+                          children: [
+                            Container(
+                              padding: const EdgeInsets.all(8.0),
+                              child: const Icon(
+                                Icons.timer_outlined,
+                                color: Colors.white,
+                              ),
+                            ),
+                            Container(
+                              padding: const EdgeInsets.only(left: 3.0),
+                              child: Text(
+                                '${provider.allsearchjobs[index].createdAt!.day} : ${provider.allsearchjobs[index].createdAt!.month} : ${provider.allsearchjobs[index].createdAt!.year}',
+                                style: const TextStyle(
                                   color: Colors.white,
                                 ),
                               ),
-                              Container(
-                                padding: const EdgeInsets.only(left: 3.0),
-                                child: const Text(
-                                  'Be in the first 20 applicants',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ],
                     ),
@@ -435,7 +458,7 @@ class _ColumnBodyState extends State<ColumnBody> {
               );
             },
             separatorBuilder: (context, index) => const Divider(),
-            itemCount: _list.length,
+            itemCount: provider.allsearchjobs.length,
           ),
         ],
       ),

@@ -15,7 +15,6 @@ class JobScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Postedjobsmodel jobmodel;
     // final JobController provider = context.read<JobController>();
     final provider = Provider.of<JobController>(context);
     return SafeArea(
@@ -76,14 +75,7 @@ class JobScreen extends StatelessWidget {
                                 itemBuilder: (context, index) {
                                   return GestureDetector(
                                     onTap: () {
-                                      // Navigator.of(context).push(
-                                      //   MaterialPageRoute(
-                                      //     builder: (context) => JobFullDetails(
-                                      //       jobs: provider
-                                      //           .getAllJobs(context)[index],
-                                      //     ),
-                                      //   ),
-                                      // );
+                                    
                                       RouteNavigator.pushRoute(
                                           context,
                                           JobFullDetails(
