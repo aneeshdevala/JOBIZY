@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-import 'package:jobizy/app/module/jobsscreen/model/jobmodel.dart';
+import 'package:jobizy/app/module/alljobs/yourjobs/model/jobmodel.dart';
 
 import 'package:jobizy/app/services/jobservice.dart';
 import 'package:jobizy/app/util/connectioncheck.dart';

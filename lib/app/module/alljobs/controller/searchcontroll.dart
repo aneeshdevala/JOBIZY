@@ -1,8 +1,8 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:jobizy/app/module/jobsearch/model/searchmodel.dart';
-import 'package:jobizy/app/module/jobsearch/model/searchrespo.dart';
+import 'package:jobizy/app/module/alljobs/model/searchmodel.dart';
+import 'package:jobizy/app/module/alljobs/model/searchrespo.dart';
 import 'package:jobizy/app/services/searchservice.dart';
 import 'package:jobizy/app/util/connectioncheck.dart';
 import 'package:jobizy/app/util/snackbar.dart';

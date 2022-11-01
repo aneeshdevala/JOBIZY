@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:jobizy/app/module/bottomscreen/view/bottomsrcreen.dart';
-import 'package:jobizy/app/module/jobsscreen/controller/jobcontroller.dart';
-import 'package:jobizy/app/module/jobsscreen/view/addjob.dart/model/jobpostmodel.dart';
-import 'package:jobizy/app/module/jobsscreen/view/addjob.dart/model/response.dart';
-import 'package:jobizy/app/module/jobsscreen/view/addjob.dart/services/jobpostser.dart';
-import 'package:jobizy/app/module/jobsscreen/view/job_screen.dart';
+import 'package:jobizy/app/module/alljobs/yourjobs/controller/jobcontroller.dart';
+import 'package:jobizy/app/module/alljobs/yourjobs/view/addjob.dart/model/jobpostmodel.dart';
+import 'package:jobizy/app/module/alljobs/yourjobs/view/addjob.dart/model/response.dart';
+import 'package:jobizy/app/module/alljobs/yourjobs/view/addjob.dart/services/jobpostser.dart';
+import 'package:jobizy/app/module/alljobs/yourjobs/view/job_screen.dart';
 import 'package:jobizy/app/util/route.dart';
 import 'package:jobizy/app/util/snackbar.dart';
 import 'package:provider/provider.dart';

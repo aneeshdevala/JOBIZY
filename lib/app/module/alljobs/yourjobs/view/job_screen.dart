@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:jobizy/app/module/jobsscreen/controller/jobcontroller.dart';
-import 'package:jobizy/app/module/jobsscreen/jobfullview.dart';
-import 'package:jobizy/app/module/jobsscreen/view/addjob.dart/view/addjob.dart';
+import 'package:jobizy/app/module/alljobs/yourjobs/controller/jobcontroller.dart';
+import 'package:jobizy/app/module/alljobs/yourjobs/jobfullview.dart';
+import 'package:jobizy/app/module/alljobs/yourjobs/view/addjob.dart/view/addjob.dart';
 import 'package:jobizy/app/util/colors.dart';
 import 'package:jobizy/app/util/constraisns.dart';
 import 'package:jobizy/app/util/route.dart';
@@ -157,7 +157,7 @@ class JobScreen extends StatelessWidget {
                                                           left: 3.0),
                                                   child: Text(
                                                     'Posted Date-${provider.alljobs[index].createdAt!.day} : ${provider.alljobs[index].createdAt!.month} : ${provider.alljobs[index].createdAt!.year}',
-                                                    style: TextStyle(
+                                                    style: const TextStyle(
                                                       color: Colors.white,
                                                     ),
                                                   ),
@@ -180,8 +180,9 @@ class JobScreen extends StatelessWidget {
           ),
         ),
         floatingActionButton: Padding(
-          padding: const EdgeInsets.only(bottom: 60),
+          padding: const EdgeInsets.only(bottom: 40),
           child: FloatingActionButton(
+            backgroundColor: mainColor,
             onPressed: () async {
               // await GetAll().getAlljobsFor(context);
               RouteNavigator.pushRoute(context, const AddjobScreen());

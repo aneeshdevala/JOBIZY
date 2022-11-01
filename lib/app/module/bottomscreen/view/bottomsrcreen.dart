@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:jobizy/app/module/bottomscreen/controller/bottomnavcon.dart';
-import 'package:jobizy/app/module/jobsscreen/controller/jobcontroller.dart';
-import 'package:jobizy/app/module/publicjobs/view/viewscreen.dart';
+import 'package:jobizy/app/module/alljobs/yourjobs/controller/jobcontroller.dart';
+import 'package:jobizy/app/module/alljobs/view/viewscreen.dart';
 import 'package:jobizy/app/util/colors.dart';
 import 'package:jobizy/app/module/chatscreen/chatscreen.dart';
 import 'package:jobizy/app/module/homescreen/view/homescreen.dart';
-import 'package:jobizy/app/module/jobsscreen/view/job_screen.dart';
+import 'package:jobizy/app/module/alljobs/yourjobs/view/job_screen.dart';
 import 'package:jobizy/app/module/userprofile/userprofile.dart';
 import 'package:provider/provider.dart';
 
@@ -23,6 +23,8 @@ class BottomScreen extends StatelessWidget {
     // const AccountPage(),
     // const MessagePage()
   ];
+
+  
   @override
   Widget build(BuildContext context) {
     final postedjobspro = Provider.of<JobController>(context);

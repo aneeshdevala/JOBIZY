@@ -1,6 +1,6 @@
  import 'package:flutter/material.dart';
-import 'package:jobizy/app/module/publicjobs/controller/searchcontroll.dart';
-import 'package:jobizy/app/module/publicjobs/view/jobfullview/fullview.dart';
+import 'package:jobizy/app/module/alljobs/controller/searchcontroll.dart';
+import 'package:jobizy/app/module/alljobs/view/jobfullview/fullview.dart';
 
 ListView searchCard(SearchController provider) {
     return ListView.separated(

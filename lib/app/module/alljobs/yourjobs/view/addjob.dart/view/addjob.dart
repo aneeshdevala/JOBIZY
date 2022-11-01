@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:jobizy/app/module/alljobs/yourjobs/view/job_screen.dart';
 import 'package:jobizy/app/module/bottomscreen/controller/bottomnavcon.dart';
 import 'package:jobizy/app/module/bottomscreen/view/bottomsrcreen.dart';
-import 'package:jobizy/app/module/jobsscreen/controller/jobcontroller.dart';
-import 'package:jobizy/app/module/jobsscreen/view/addjob.dart/controller/addjobcon.dart';
-import 'package:jobizy/app/module/jobsscreen/view/addjob.dart/view/widgets/radiobutton.dart';
+import 'package:jobizy/app/module/alljobs/yourjobs/controller/jobcontroller.dart';
+import 'package:jobizy/app/module/alljobs/yourjobs/view/addjob.dart/controller/addjobcon.dart';
+import 'package:jobizy/app/module/alljobs/yourjobs/view/addjob.dart/view/widgets/radiobutton.dart';
 import 'package:jobizy/app/util/colors.dart';
 import 'package:jobizy/app/util/constraisns.dart';
 
@@ -152,7 +153,7 @@ class AddjobScreen extends StatelessWidget {
                                 listen: false)
                             .currentIndex = 0;
                         await RouteNavigator.pushRemoveUntil(
-                            context, BottomScreen());
+                            context, const JobScreen());
                         provider.dispos(context);
                       });
                     },

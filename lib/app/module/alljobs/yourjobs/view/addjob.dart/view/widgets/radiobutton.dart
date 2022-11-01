@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:jobizy/app/module/jobsscreen/view/addjob.dart/controller/addjobcon.dart';
-import 'package:jobizy/app/module/jobsscreen/view/addjob.dart/view/addjob.dart';
+import 'package:jobizy/app/module/alljobs/yourjobs/view/addjob.dart/controller/addjobcon.dart';
+import 'package:jobizy/app/module/alljobs/yourjobs/view/addjob.dart/view/addjob.dart';
 import 'package:jobizy/app/util/colors.dart';
 import 'package:jobizy/app/util/constraisns.dart';
 import 'package:provider/provider.dart';

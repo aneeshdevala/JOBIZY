@@ -3,8 +3,8 @@ import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
-import 'package:jobizy/app/module/jobsearch/model/searchmodel.dart';
-import 'package:jobizy/app/module/jobsearch/model/searchrespo.dart';
+import 'package:jobizy/app/module/alljobs/model/searchmodel.dart';
+import 'package:jobizy/app/module/alljobs/model/searchrespo.dart';
 import 'package:jobizy/app/services/exceptionhandling.dart';
 
 import 'package:jobizy/app/services/interceptor.dart';

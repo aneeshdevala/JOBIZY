@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:jobizy/app/module/jobsearch/model/searchrespo.dart';
+import 'package:jobizy/app/module/alljobs/yourjobs/model/jobmodel.dart';
 import 'package:jobizy/app/util/colors.dart';
-import 'package:jobizy/app/util/constraisns.dart';
 
-class JobFullView extends StatelessWidget {
-  final SearchResponse jobs;
-  const JobFullView({Key? key, required this.jobs}) : super(key: key);
+class JobFullDetails extends StatelessWidget {
+  final Postedjobsmodel jobs;
+  const JobFullDetails({Key? key, required this.jobs}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,23 +12,26 @@ class JobFullView extends StatelessWidget {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(70.0),
         child: AppBar(
-          backgroundColor:kWhite,
+          backgroundColor: Colors.white,
           elevation: 0,
-          leading: GestureDetector(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.grey.shade300,
-                borderRadius: const BorderRadius.all(
-                  Radius.circular(5.0),
+          leading: Padding(
+            padding: const EdgeInsets.all(18.0),
+            child: GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.grey.shade300,
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(5.0),
+                  ),
                 ),
-              ),
-              child: const Icon(
-                Icons.arrow_back_ios_outlined,
-                color: kBlack,
-                size: 15,
+                child: const Icon(
+                  Icons.arrow_back_ios_outlined,
+                  color: kBlack,
+                  size: 15,
+                ),
               ),
             ),
           ),
@@ -42,7 +44,7 @@ class JobFullView extends StatelessWidget {
           actions: const [
             Icon(
               Icons.share,
-              size: 20,
+              size: 25,
               color: kBlack,
             ),
           ],
@@ -62,18 +64,12 @@ class JobFullView extends StatelessWidget {
                   child: Card(
                     elevation: 10.0,
                     child: Container(
-                      margin: const EdgeInsets.all(10.0),
-                      child: jobs.image == null
-                          ? Image.asset(
-                              'assets/image-removebg-preview.png',
-                              width: 70,
-                              height: 70,
-                            )
-                          : Image.network(
-                              jobs.image!,
-                              width: 70,
-                              height: 70,
-                            ),
+                      margin: const EdgeInsets.all(20.0),
+                      child: Image.asset(
+                        "assets/images/3d-fluency-google-logo.png",
+                        width: 50,
+                        height: 50,
+                      ),
                     ),
                   ),
                 ),
@@ -90,32 +86,41 @@ class JobFullView extends StatelessWidget {
                   ),
                 ),
               ),
-              kheight20,
-              Center(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.only(right: 5.0),
-                      child: Text(
-                        jobs.designation.toString(),
+              Container(
+                padding: const EdgeInsets.all(15.0),
+                child: Center(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.only(right: 5.0),
+                        child: Text(
+                          jobs.designation.toString(),
+                          style: TextStyle(
+                            color: Colors.grey.shade400,
+                          ),
+                        ),
+                      ),
+                      Text(
+                        '\u2022',
                         style: TextStyle(
-                            color: Colors.grey.shade600,
-                            fontWeight: FontWeight.bold),
+                          color: Colors.grey.shade400,
+                        ),
                       ),
-                    ),
-                    kheight,
-                    Text(
-                      'JobType : ${jobs.jobType} ',
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
+                      Container(
+                        padding: const EdgeInsets.only(left: 5.0),
+                        child: Text(
+                          jobs.jobType.toString(),
+                          style: TextStyle(
+                            color: Colors.grey.shade400,
+                          ),
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
-              kheight,
               Container(
                 margin: const EdgeInsets.all(5.0),
                 decoration: BoxDecoration(
@@ -156,28 +161,7 @@ class JobFullView extends StatelessWidget {
                           width: 10,
                           color: Colors.grey.shade300,
                         ),
-                        Row(
-                          children: [
-                            const Icon(
-                              Icons.favorite_border_outlined,
-                              color: Color(0xff008080),
-                            ),
-                            Container(
-                              padding: const EdgeInsets.only(left: 5.0),
-                              child: const Text(
-                                '40K Likes',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        VerticalDivider(
-                          thickness: 2,
-                          width: 10,
-                          color: Colors.grey.shade300,
-                        ),
+                      
                         Row(
                           children: [
                             const Icon(
@@ -216,40 +200,12 @@ class JobFullView extends StatelessWidget {
                 ),
               ),
               Container(
-                padding: const EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(5.0),
                 child: Text(
                   jobs.description.toString(),
+                  textScaleFactor: 1.1,
+                  textAlign: TextAlign.justify,
                   maxLines: 8,
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.all(10.0),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Salary upto ${jobs.salaryMin} - ${jobs.salaryMax} LPA',
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.all(10.0),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Experience Level: ${jobs.jobFor} ',
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15,
-                      ),
-                    ),
-                  ],
                 ),
               ),
               Container(
@@ -282,7 +238,7 @@ class JobFullView extends StatelessWidget {
                     Container(
                       padding: const EdgeInsets.only(left: 5.0),
                       child: Text(
-                        "${jobs.place}, ${jobs.state}",
+                        "${jobs.place}, ${jobs.country}",
                         style: const TextStyle(
                           fontSize: 15,
                         ),
@@ -338,7 +294,7 @@ class JobFullView extends StatelessWidget {
                     child: Text(
                       'Apply Now',
                       style: TextStyle(
-                        color: kWhite,
+                        color: Colors.white,
                       ),
                     ),
                   ),

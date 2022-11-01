@@ -1,8 +1,8 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
-import 'package:jobizy/app/module/jobsscreen/view/addjob.dart/model/jobpostmodel.dart';
-import 'package:jobizy/app/module/jobsscreen/view/addjob.dart/model/response.dart';
+import 'package:jobizy/app/module/alljobs/yourjobs/view/addjob.dart/model/jobpostmodel.dart';
+import 'package:jobizy/app/module/alljobs/yourjobs/view/addjob.dart/model/response.dart';
 import 'package:jobizy/app/services/interceptor.dart';
 import 'package:jobizy/app/util/connectioncheck.dart';
 import 'package:jobizy/app/util/url.dart';
