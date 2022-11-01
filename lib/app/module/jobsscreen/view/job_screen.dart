@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jobizy/app/module/jobsscreen/controller/jobcontroller.dart';
 import 'package:jobizy/app/module/jobsscreen/jobfullview.dart';
-import 'package:jobizy/app/module/jobsscreen/model/jobmodel.dart';
 import 'package:jobizy/app/module/jobsscreen/view/addjob.dart/view/addjob.dart';
-import 'package:jobizy/app/module/publicjobs/view/widgets/jobsdetails.dart';
 import 'package:jobizy/app/util/colors.dart';
 import 'package:jobizy/app/util/constraisns.dart';
 import 'package:jobizy/app/util/route.dart';
@@ -20,15 +18,17 @@ class JobScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          elevation: 0,
           backgroundColor: Colors.white,
           title: const Text(
             'Posted Jobs',
             style: TextStyle(
-              fontSize: 30,
+              fontSize: 25,
               color: kBlack,
               fontWeight: FontWeight.bold,
             ),
           ),
+          centerTitle: true,
         ),
         body: SingleChildScrollView(
           child: Column(
@@ -43,31 +43,7 @@ class JobScreen extends StatelessWidget {
                           )
                         : provider.alljobs.isEmpty
                             ? const Text("No jobs")
-                            :
-                            //  ListView.builder(
-                            //     physics: const NeverScrollableScrollPhysics(),
-                            //     shrinkWrap: true,
-                            //     itemCount: provider.alljobs.length,
-                            //     itemBuilder: (context, index) {
-                            //       provider.notifyListeners;
-                            //       return ListTile(
-                            //         leading: Image.asset(
-                            //             'assets/image-removebg-preview.png'),
-                            //         title: Text(
-                            //             provider.alljobs[index].designation
-                            //                 .toString(),
-                            //             style: const TextStyle(
-                            //                 color: Colors.black,
-                            //                 fontWeight: FontWeight.bold)),
-                            //         subtitle: Text(
-                            //             'Posted by: ${provider.alljobs[index].company}'),
-                            //         trailing: ElevatedButton(
-                            //             onPressed: () {},
-                            //             child: const Text("Apply")),
-                            //       );
-                            //     },
-                            //   );
-                            ListView.separated(
+                            : ListView.separated(
                                 padding: EdgeInsets.zero,
                                 physics: const NeverScrollableScrollPhysics(),
                                 scrollDirection: Axis.vertical,
@@ -75,7 +51,6 @@ class JobScreen extends StatelessWidget {
                                 itemBuilder: (context, index) {
                                   return GestureDetector(
                                     onTap: () {
-                                    
                                       RouteNavigator.pushRoute(
                                           context,
                                           JobFullDetails(
@@ -166,31 +141,28 @@ class JobScreen extends StatelessWidget {
                                                 //***************************************** */
                                               ),
                                             ),
-                                            Container(
-                                              child: Row(
-                                                children: [
-                                                  Container(
-                                                    padding:
-                                                        const EdgeInsets.all(
-                                                            8.0),
-                                                    child: const Icon(
-                                                      Icons.timer_outlined,
+                                            Row(
+                                              children: [
+                                                Container(
+                                                  padding:
+                                                      const EdgeInsets.all(8.0),
+                                                  child: const Icon(
+                                                    Icons.timer_outlined,
+                                                    color: Colors.white,
+                                                  ),
+                                                ),
+                                                Container(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 3.0),
+                                                  child: Text(
+                                                    'Posted Date-${provider.alljobs[index].createdAt!.day} : ${provider.alljobs[index].createdAt!.month} : ${provider.alljobs[index].createdAt!.year}',
+                                                    style: TextStyle(
                                                       color: Colors.white,
                                                     ),
                                                   ),
-                                                  Container(
-                                                    padding:
-                                                        const EdgeInsets.only(
-                                                            left: 3.0),
-                                                    child: const Text(
-                                                      'Be in the first 20 applicants',
-                                                      style: TextStyle(
-                                                        color: Colors.white,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
+                                                ),
+                                              ],
                                             ),
                                           ],
                                         ),

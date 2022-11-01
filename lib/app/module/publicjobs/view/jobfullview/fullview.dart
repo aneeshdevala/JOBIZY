@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jobizy/app/module/jobsearch/model/searchrespo.dart';
+import 'package:jobizy/app/util/colors.dart';
 import 'package:jobizy/app/util/constraisns.dart';
 
 class JobFullView extends StatelessWidget {
@@ -12,46 +13,43 @@ class JobFullView extends StatelessWidget {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(70.0),
         child: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor:kWhite,
           elevation: 0,
-          leading: Padding(
-            padding: const EdgeInsets.all(18.0),
-            child: GestureDetector(
-              onTap: () {
-                Navigator.pop(context);
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.grey.shade300,
-                  borderRadius: const BorderRadius.all(
-                    Radius.circular(5.0),
-                  ),
+          leading: GestureDetector(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.grey.shade300,
+                borderRadius: const BorderRadius.all(
+                  Radius.circular(5.0),
                 ),
-                child: const Icon(
-                  Icons.arrow_back_ios_outlined,
-                  color: Colors.black,
-                  size: 15,
-                ),
+              ),
+              child: const Icon(
+                Icons.arrow_back_ios_outlined,
+                color: kBlack,
+                size: 15,
               ),
             ),
           ),
           title: const Text(
             'Job Details',
             style: TextStyle(
-              color: Colors.black,
+              color: kBlack,
             ),
           ),
           actions: const [
             Icon(
               Icons.share,
               size: 20,
-              color: Colors.black,
+              color: kBlack,
             ),
           ],
           centerTitle: true,
         ),
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: kWhite,
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.all(15.0),
@@ -230,7 +228,22 @@ class JobFullView extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Salary upto ${jobs.salaryMax} LPA',
+                      'Salary upto ${jobs.salaryMin} - ${jobs.salaryMax} LPA',
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.all(10.0),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Experience Level: ${jobs.jobFor} ',
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 15,
@@ -245,7 +258,7 @@ class JobFullView extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: const [
                     Text(
-                      'Skills',
+                      'Company Address',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
@@ -268,129 +281,9 @@ class JobFullView extends StatelessWidget {
                     ),
                     Container(
                       padding: const EdgeInsets.only(left: 5.0),
-                      child: const Text(
-                        'UI/UX Designer',
-                        style: TextStyle(
-                          fontSize: 15,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.only(left: 10.0),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const Text(
-                      '\u2022',
-                      style: TextStyle(
-                        fontSize: 30,
-                        color: Color(0xff008080),
-                      ),
-                    ),
-                    Container(
-                      padding: const EdgeInsets.only(left: 5.0),
-                      child: const Text(
-                        'UI/UX Designer',
-                        style: TextStyle(
-                          fontSize: 15,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.only(left: 10.0),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const Text(
-                      '\u2022',
-                      style: TextStyle(
-                        fontSize: 30,
-                        color: Color(0xff008080),
-                      ),
-                    ),
-                    Container(
-                      padding: const EdgeInsets.only(left: 5.0),
-                      child: const Text(
-                        'UI/UX Designer',
-                        style: TextStyle(
-                          fontSize: 15,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.only(left: 10.0),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const Text(
-                      '\u2022',
-                      style: TextStyle(
-                        fontSize: 30,
-                        color: Color(0xff008080),
-                      ),
-                    ),
-                    Container(
-                      padding: const EdgeInsets.only(left: 5.0),
-                      child: const Text(
-                        'UI/UX Designer',
-                        style: TextStyle(
-                          fontSize: 15,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.only(left: 10.0),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const Text(
-                      '\u2022',
-                      style: TextStyle(
-                        fontSize: 30,
-                        color: Color(0xff008080),
-                      ),
-                    ),
-                    Container(
-                      padding: const EdgeInsets.only(left: 5.0),
-                      child: const Text(
-                        'UI/UX Designer',
-                        style: TextStyle(
-                          fontSize: 15,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.only(left: 10.0),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const Text(
-                      '\u2022',
-                      style: TextStyle(
-                        fontSize: 30,
-                        color: Color(0xff008080),
-                      ),
-                    ),
-                    Container(
-                      padding: const EdgeInsets.only(left: 5.0),
-                      child: const Text(
-                        'UI/UX Designer',
-                        style: TextStyle(
+                      child: Text(
+                        "${jobs.place}, ${jobs.state}",
+                        style: const TextStyle(
                           fontSize: 15,
                         ),
                       ),
@@ -445,7 +338,7 @@ class JobFullView extends StatelessWidget {
                     child: Text(
                       'Apply Now',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: kWhite,
                       ),
                     ),
                   ),
