@@ -67,32 +67,8 @@ class HomePage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  RichText(
-                    text: TextSpan(
-                      text: 'Wel',
-                      style: GoogleFonts.poppins(
-                        textStyle: const TextStyle(
-                          color: mainColor,
-                          fontSize: 25,
-                          fontWeight: FontWeight.w800,
-                        ),
-                      ),
-                      children: <TextSpan>[
-                        TextSpan(
-                          text: 'Come\n ${getStorage.read('name')}',
-                          style: GoogleFonts.archivo(
-                            textStyle: const TextStyle(
-                              color: kBlack,
-                              fontSize: 23,
-                              fontWeight: FontWeight.w800,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
                   GestureDetector(
                     onTap: () {
                       homeController.logout(context);
@@ -101,10 +77,56 @@ class HomePage extends StatelessWidget {
                       backgroundColor: Colors.transparent,
                       child: Icon(
                         Icons.person,
-                        size: 30,
+                        size: 50,
                       ),
                     ),
-                  )
+                  ),
+                  kWidth20,
+                  Text(
+                    homeController.greeting(),
+                    style: GoogleFonts.poppins(
+                      textStyle: const TextStyle(
+                          color: kBlack,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                          wordSpacing: 2,
+                          letterSpacing: 1),
+                    ),
+                  ),
+                  Spacer(),
+                  IconButton(
+                      onPressed: () {
+                        homeController.logout(context);
+                      },
+                      icon: const Icon(
+                        Icons.settings,
+                        color: kBlack,
+                      ))
+                  // RichText(
+                  //   text: TextSpan(
+                  //     text: 'Wel',
+                  //     style: GoogleFonts.poppins(
+                  //       textStyle: const TextStyle(
+                  //         color: mainColor,
+                  //         fontSize: 25,
+                  //         fontWeight: FontWeight.w800,
+                  //       ),
+                  //     ),
+                  //     children: <TextSpan>[
+                  //       TextSpan(
+                  //         text: 'Come\n ${getStorage.read('name')}',
+                  //         style: GoogleFonts.archivo(
+                  //           textStyle: const TextStyle(
+                  //             color: kBlack,
+                  //             fontSize: 23,
+                  //             fontWeight: FontWeight.w800,
+                  //           ),
+                  //         ),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
+                  ,
                 ],
               ),
               // kheight,

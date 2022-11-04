@@ -138,6 +138,7 @@ class _ColumnBodyState extends State<ColumnBody> {
                     child: GestureDetector(
                       onTap: () {
                         provider.searchButton(context);
+                       
                       },
                       child: const Icon(
                         Icons.search,

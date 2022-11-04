@@ -35,6 +35,7 @@ class SigninController extends ChangeNotifier {
         return;
       } else if (loginResponse.loggedin == true) {
         resp = loginResponse;
+        print(resp!.token);
         getStorage.write('name', resp!.name);
         await storedatalogin(value: loginResponse);
         RouteNavigator.pushRemoveUntil(context, BottomScreen());
@@ -81,7 +82,7 @@ class SigninController extends ChangeNotifier {
     notifyListeners();
     log(value.name.toString());
     await storage.write(key: 'token', value: value.token!);
-    await storage.write(key: 'name', value: value.name.toString());
+    await storage.write(key: 'name', value: value.name!);
     await storage.write(key: 'id', value: value.id!);
     await storage.write(key: 'loggedin', value: value.loggedin.toString());
     await storage.write(key: 'login', value: "true");
