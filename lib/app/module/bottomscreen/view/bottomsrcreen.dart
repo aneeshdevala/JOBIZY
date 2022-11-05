@@ -5,7 +5,6 @@ import 'package:jobizy/app/module/alljobs/view/viewscreen.dart';
 import 'package:jobizy/app/util/colors.dart';
 import 'package:jobizy/app/module/chatscreen/chatscreen.dart';
 import 'package:jobizy/app/module/homescreen/view/homescreen.dart';
-import 'package:jobizy/app/module/alljobs/yourjobs/view/job_screen.dart';
 import 'package:jobizy/app/module/userprofile/userprofile.dart';
 import 'package:provider/provider.dart';
 

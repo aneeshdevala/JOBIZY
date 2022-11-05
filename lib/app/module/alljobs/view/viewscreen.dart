@@ -1,9 +1,6 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
-import 'package:jobizy/app/module/alljobs/yourjobs/jobfullview.dart';
 import 'package:jobizy/app/module/alljobs/yourjobs/view/job_screen.dart';
 import 'package:jobizy/app/module/alljobs/controller/searchcontroll.dart';
-import 'package:jobizy/app/module/alljobs/view/jobfullview/fullview.dart';
 import 'package:jobizy/app/module/alljobs/view/widgets/searchbylogo.dart';
 import 'package:jobizy/app/module/alljobs/view/widgets/searchcard.dart';
 import 'package:jobizy/app/util/route.dart';
