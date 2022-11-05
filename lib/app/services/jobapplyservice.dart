@@ -10,7 +10,7 @@ import 'package:jobizy/app/util/connectioncheck.dart';
 import 'package:jobizy/app/util/url.dart';
 
 class ApplyService {
-  Future<Applyresponse?> applyjobser(Applymodel data, context) async {
+  Future<Applyresponse?> applyjobservice(Applymodel data, context) async {
     Dio dios = await Interceptorapi().getApiUser();
     if (await connectionCheck()) {
       try {
@@ -19,12 +19,15 @@ class ApplyService {
         if (response.statusCode! >= 200 && response.statusCode! <= 299) {
           log('data posted success');
           return Applyresponse.fromJson(response.data);
+        } else if (response.statusCode! == 400) {
+          return Applyresponse(message: 'Already Applied for this Job');
         } else {
           return Applyresponse(message: 'Something went wrong');
         }
       } on DioError catch (e) {
         final errormsg = DioException.fromDioError(e).toString();
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(errormsg)));
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text(errormsg)));
       }
     }
   }

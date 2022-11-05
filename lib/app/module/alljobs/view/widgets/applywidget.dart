@@ -1,11 +1,17 @@
-
 import 'package:flutter/material.dart';
+import 'package:jobizy/app/module/alljobs/controller/searchcontroll.dart';
+import 'package:jobizy/app/module/alljobs/model/searchrespo.dart';
+import 'package:jobizy/app/module/alljobs/view/jobapply/view/jobapplyscreen.dart';
+import 'package:jobizy/app/util/route.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../util/colors.dart';
 
 class Aplywideget extends StatelessWidget {
+  final SearchResponse jobs;
   const Aplywideget({
     Key? key,
+    required this.jobs,
   }) : super(key: key);
 
   @override
@@ -40,20 +46,30 @@ class Aplywideget extends StatelessWidget {
             ),
             Expanded(
               flex: 2,
-              child: Container(
-                padding: const EdgeInsets.only(left: 10),
-                decoration: const BoxDecoration(
-                  color: Color(0xff008080),
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(15.0),
+              child: GestureDetector(
+                onTap: (() {
+                  RouteNavigator.pushRoute(
+                      context,
+                      ApplyJob(
+                        jobId: jobs,
+                      ));
+                  print(jobs.id);
+                }),
+                child: Container(
+                  padding: const EdgeInsets.only(left: 10),
+                  decoration: const BoxDecoration(
+                    color: Color(0xff008080),
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(15.0),
+                    ),
                   ),
-                ),
-                height: 50.0,
-                child: const Center(
-                  child: Text(
-                    'Apply Now',
-                    style: TextStyle(
-                      color: kWhite,
+                  height: 50.0,
+                  child: const Center(
+                    child: Text(
+                      'Apply Now',
+                      style: TextStyle(
+                        color: kWhite,
+                      ),
                     ),
                   ),
                 ),

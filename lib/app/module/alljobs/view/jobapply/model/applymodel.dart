@@ -6,29 +6,31 @@ Applymodel applymodelFromJson(String str) =>
 String applymodelToJson(Applymodel data) => json.encode(data.toJson());
 
 class Applymodel {
-  Applymodel({
-    this.jobId,
-    this.fname,
-    this.lname,
-    this.email,
-    this.phone,
-    this.experience,
-    this.resume,
-    this.status,
-  });
+  Applymodel(
+      {this.jobId,
+      this.fname,
+      this.lname,
+      this.email,
+      this.phone,
+      this.experience,
+      this.resume,
+      this.status,
+      this.qualification});
 
   String? jobId;
+  String? qualification;
   String? fname;
   String? lname;
   String? status;
   String? email;
-  int? phone;
-  int? experience;
+  String? phone;
+  String? experience;
   String? resume;
 
   factory Applymodel.fromJson(Map<String, dynamic> json) => Applymodel(
         jobId: json["jobId"],
         fname: json["fname"],
+        qualification: json["qualification"],
         lname: json["lname"],
         email: json["email"],
         phone: json["phone"],

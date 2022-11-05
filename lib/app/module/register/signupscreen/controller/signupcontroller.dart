@@ -30,7 +30,7 @@ class SignupController extends ChangeNotifier {
 
       if (registerResponse == null) {
         ScaffoldMessenger.of(context)
-            .showSnackBar(ShowDialogs.popUp('No Response'));
+            .showSnackBar(ShowDialogs.popUp('Something went wrong'));
         _isLoadingFalse();
         return;
       } else if (registerResponse.loggedin == true) {

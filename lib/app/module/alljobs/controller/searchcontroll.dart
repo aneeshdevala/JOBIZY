@@ -11,6 +11,7 @@ class SearchController extends ChangeNotifier {
   List<SearchResponse> allsearchjobs = [];
   final searchKey = GlobalKey<FormState>();
   final searchController = TextEditingController();
+   SearchResponse? jobId;
   bool isloading = false;
   void searchButton(context) async {
     if (await connectionCheck()) {

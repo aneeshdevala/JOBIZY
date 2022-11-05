@@ -243,7 +243,7 @@ class JobFullView extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      " ${jobs.place}, ${jobs.state}",
+                      " ${jobs.place}, ${jobs.country}",
                       style: const TextStyle(
                         fontSize: 15,
                       ),
@@ -255,7 +255,9 @@ class JobFullView extends StatelessWidget {
           ]),
         ),
       ),
-      bottomNavigationBar: const Aplywideget(),
+      bottomNavigationBar: Aplywideget(
+        jobs: jobs,
+      ),
     );
   }
 }
