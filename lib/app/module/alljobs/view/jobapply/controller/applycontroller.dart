@@ -26,9 +26,10 @@ class JobApplyController extends ChangeNotifier {
   }
 
   Future<void> jobApplyButton(SearchResponse jobid, context) async {
+    print('clicked');
     if (applyFormKey.currentState!.validate()) {
       isloading = true;
-
+      print('loading');
       final modelObj = Applymodel(
           jobId: jobid.id,
           fname: fistname.text,
@@ -37,10 +38,10 @@ class JobApplyController extends ChangeNotifier {
           phone: phonecontroller.text,
           experience: experiencecontroller.text,
           qualification: qualificationcontroller.text);
-
+      print(modelObj.email);
       Applyresponse? applyresponse =
           await ApplyService().applyjobservice(modelObj, context);
-
+      print(applyresponse);
       if (applyresponse == null) {
         ScaffoldMessenger.of(context)
             .showSnackBar(ShowDialogs.popUp('some thing went wrong '));
@@ -48,12 +49,12 @@ class JobApplyController extends ChangeNotifier {
         return;
       } else if (applyresponse.applied == true) {
         print('alredy UploDED');
-        ScaffoldMessenger.of(context)
-            .showSnackBar(ShowDialogs.popUp('Already applied'));
+        RouteNavigator.pushReplacement(context, const AllJobs());
         _isLoadingFalse();
       } else if (applyresponse.applied == false) {
         print('job applied done');
-        RouteNavigator.pushReplacement(context, const AllJobs());
+        ScaffoldMessenger.of(context)
+            .showSnackBar(ShowDialogs.popUp('Already applied'));
         _isLoadingFalse();
       }
     }
