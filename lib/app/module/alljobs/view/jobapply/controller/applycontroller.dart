@@ -17,7 +17,7 @@ class JobApplyController extends ChangeNotifier {
   final applyFormKey = GlobalKey<FormState>();
   final experiencecontroller = TextEditingController();
   String resume = '';
-  
+
   bool isloading = false;
 
   void _isLoadingFalse() {
@@ -25,8 +25,7 @@ class JobApplyController extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> 
-  jobApplyButton(SearchResponse jobid,context) async {
+  Future<void> jobApplyButton(SearchResponse jobid, context) async {
     if (applyFormKey.currentState!.validate()) {
       isloading = true;
 
@@ -48,10 +47,12 @@ class JobApplyController extends ChangeNotifier {
         _isLoadingFalse();
         return;
       } else if (applyresponse.applied == true) {
+        print('alredy UploDED');
         ScaffoldMessenger.of(context)
             .showSnackBar(ShowDialogs.popUp('Already applied'));
         _isLoadingFalse();
       } else if (applyresponse.applied == false) {
+        print('job applied done');
         RouteNavigator.pushReplacement(context, const AllJobs());
         _isLoadingFalse();
       }
