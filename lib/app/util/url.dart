@@ -6,4 +6,6 @@ class Url {
   final postedjobs = "http://10.0.2.2:8000/jobs/postedjobs";
   final jobSearch = "http://10.0.2.2:8000/jobs/search";
   final applyjob = "http://10.0.2.2:8000/jobs/apply";
+  final appliedjob = "http://10.0.2.2:8000/jobs/applied";
+
 }

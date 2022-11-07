@@ -35,7 +35,7 @@ class SigninController extends ChangeNotifier {
         return;
       } else if (loginResponse.loggedin == true) {
         resp = loginResponse;
-        print(resp!.token);
+      //  print(resp!.token);
         getStorage.write('name', resp!.name);
         await storedatalogin(value: loginResponse);
         RouteNavigator.pushRemoveUntil(context, BottomScreen());

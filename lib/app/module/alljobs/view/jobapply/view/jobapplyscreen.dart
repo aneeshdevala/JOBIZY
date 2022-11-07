@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jobizy/app/module/alljobs/model/searchrespo.dart';
 import 'package:jobizy/app/module/alljobs/view/jobapply/controller/applycontroller.dart';
-import 'package:jobizy/app/module/alljobs/view/jobapply/model/applyresponce.dart';
 import 'package:jobizy/app/util/colors.dart';
 import 'package:jobizy/app/util/constraisns.dart';
 import 'package:provider/provider.dart';
@@ -83,8 +82,9 @@ class ApplyJob extends StatelessWidget {
                           ElevatedButton(
                               onPressed: () {
                                 provider.jobApplyButton(jobId, context);
+                                //provider.dispose();
                               },
-                              child: Text('Apply'))
+                              child: const Text('Apply'))
                         ]),
                   ),
                 ))));

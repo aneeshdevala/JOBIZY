@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:jobizy/app/module/alljobs/controller/searchcontroll.dart';
 import 'package:jobizy/app/module/alljobs/model/searchrespo.dart';
 import 'package:jobizy/app/module/alljobs/view/jobapply/view/jobapplyscreen.dart';
 import 'package:jobizy/app/util/route.dart';
-import 'package:provider/provider.dart';
-
 import '../../../../util/colors.dart';
 
 class Aplywideget extends StatelessWidget {
