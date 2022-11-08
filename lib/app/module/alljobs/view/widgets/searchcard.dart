@@ -17,6 +17,7 @@ Consumer<SearchController> searchCard(SearchController provider) {
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (context) => JobFullView(
+               
                   jobs: provider.allsearchjobs[index],
                 ),
               ),

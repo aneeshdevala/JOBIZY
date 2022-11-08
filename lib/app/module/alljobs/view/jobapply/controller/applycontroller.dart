@@ -30,15 +30,17 @@ class JobApplyController extends ChangeNotifier {
     if (applyFormKey.currentState!.validate()) {
       isloading = true;
       print('loading');
-      final modelObj = Applymodel(
+      final Applymodel modelObj = Applymodel(
           jobId: jobid.id,
           fname: fistname.text,
           lname: lastname.text,
           email: emailcontroller.text,
           phone: phonecontroller.text,
           experience: experiencecontroller.text,
+          userId: jobid.userId,
           qualification: qualificationcontroller.text);
       print(modelObj.email);
+      print(modelObj.userId);
       Applyresponse? applyresponse =
           await ApplyService().applyjobservice(modelObj, context);
       print(applyresponse);

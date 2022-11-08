@@ -9,6 +9,7 @@ class Applymodel {
   Applymodel(
       {this.jobId,
       this.fname,
+      this.userId,
       this.lname,
       this.email,
       this.phone,
@@ -18,6 +19,7 @@ class Applymodel {
       this.qualification});
 
   String? jobId;
+  String? userId ;
   String? qualification;
   String? fname;
   String? lname;
@@ -29,6 +31,7 @@ class Applymodel {
 
   factory Applymodel.fromJson(Map<String, dynamic> json) => Applymodel(
         jobId: json["jobId"],
+        userId: json["userId"],
         fname: json["fname"],
         qualification: json["qualification"],
         lname: json["lname"],
@@ -41,6 +44,7 @@ class Applymodel {
 
   Map<String, dynamic> toJson() => {
         "jobId": jobId,
+        "userId": userId,
         "fname": fname,
         "lname": lname,
         "email": email,

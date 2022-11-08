@@ -1,18 +1,39 @@
+// ignore_for_file: use_build_context_synchronously
+
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:jobizy/app/module/alljobs/model/searchrespo.dart';
+import 'package:jobizy/app/module/alljobs/view/jobapply/model/applymodel.dart';
 import 'package:jobizy/app/module/alljobs/view/jobapply/view/jobapplyscreen.dart';
+import 'package:jobizy/app/module/register/loginscreen/controller/logincontroller.dart';
 import 'package:jobizy/app/util/route.dart';
+import 'package:provider/provider.dart';
 import '../../../../util/colors.dart';
 
 class Aplywideget extends StatelessWidget {
   final SearchResponse jobs;
+  final Applymodel? user;
+
   const Aplywideget({
     Key? key,
     required this.jobs,
+    required this.user,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    Applymodel applymodel;
+    final userId = GetStorage().read('id');
+    bool canApply = true;
+    for (var element in jobs.applicationStatus) {
+      print(element['userId']);
+      if (element['userId'] == userId) {
+        canApply = false;
+        break;
+      }
+    }
     return BottomAppBar(
       color: Colors.transparent,
       elevation: 0,
@@ -44,13 +65,25 @@ class Aplywideget extends StatelessWidget {
             Expanded(
               flex: 2,
               child: GestureDetector(
-                onTap: (() {
+                onTap: (() async {
+                  if (!canApply) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('You have already applied for this job'),
+                      ),
+                    );
+                    return;
+                  }
+
                   RouteNavigator.pushRoute(
                       context,
                       ApplyJob(
                         jobId: jobs,
                       ));
-                  print(jobs.id);
+                  // print(user?.userId);
+                  print(jobs.userId);
+                  //   print(id);
+                  // print(jobs.id);
                 }),
                 child: Container(
                   padding: const EdgeInsets.only(left: 10),
@@ -61,13 +94,20 @@ class Aplywideget extends StatelessWidget {
                     ),
                   ),
                   height: 50.0,
-                  child: const Center(
-                    child: Text(
-                      'Apply Now',
-                      style: TextStyle(
-                        color: kWhite,
-                      ),
-                    ),
+                  child: Center(
+                    child: !canApply
+                        ? const Text('Alredy Applied',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.bold,
+                            ))
+                        : const Text(
+                            'Apply Now',
+                            style: TextStyle(
+                              color: kWhite,
+                            ),
+                          ),
                   ),
                 ),
               ),
@@ -78,3 +118,5 @@ class Aplywideget extends StatelessWidget {
     );
   }
 }
+
+mixin FlutterSecureStorage {}

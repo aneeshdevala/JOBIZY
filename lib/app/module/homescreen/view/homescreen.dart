@@ -11,7 +11,8 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Provider.of<HomeController>(context, listen: false);
+    final provider =
+        Provider.of<HomeController>(context, listen: false).notifyListeners();
     final HomeController homeController = context.read<HomeController>();
     //  final storage = FlutterSecureStorage();
     final getStorage = GetStorage();

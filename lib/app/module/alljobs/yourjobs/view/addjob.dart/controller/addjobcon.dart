@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:jobizy/app/module/bottomscreen/view/bottomsrcreen.dart';
 import 'package:jobizy/app/module/alljobs/yourjobs/controller/jobcontroller.dart';
 import 'package:jobizy/app/module/alljobs/yourjobs/view/addjob.dart/model/jobpostmodel.dart';
 import 'package:jobizy/app/module/alljobs/yourjobs/view/addjob.dart/model/response.dart';
@@ -25,10 +24,12 @@ class JobPostController extends ChangeNotifier {
   final jobFormKey = GlobalKey<FormState>();
   String dropdownValue = 'Select';
   String jobType = '';
+  bool isloading = false;
 
   Future<void> jobPostButton(context) async {
     if (jobFormKey.currentState!.validate() && jobType.isNotEmpty) {
       isloading = true;
+      notifyListeners();
       final pro = Provider.of<JobController>(context, listen: false);
       pro.getAllJobs(context);
       notifyListeners();
@@ -36,7 +37,7 @@ class JobPostController extends ChangeNotifier {
       // FlutterSecureStorage storage = const FlutterSecureStorage();
       // String? token = await storage.read(key: "token");
 
-      final jobObj = JobPostModel(
+      final JobPostModel jobObj = JobPostModel(
         company: companyName.text,
         country: companyCountry.text,
         description: jobDiscription.text,
@@ -64,6 +65,7 @@ class JobPostController extends ChangeNotifier {
         await Provider.of<JobController>(context).getAllJobs(context);
         _isLoadingFalse();
         notifyListeners();
+        RouteNavigator.pushRemoveUntil(context, const JobScreen());
         return;
       } else if (jobResponseModel.success == false) {
         ScaffoldMessenger.of(context)
@@ -78,6 +80,7 @@ class JobPostController extends ChangeNotifier {
     } else {
       ScaffoldMessenger.of(context)
           .showSnackBar(ShowDialogs.popUp('Please select the Job Type'));
+      _isLoadingFalse();
     }
   }
 
@@ -96,7 +99,6 @@ class JobPostController extends ChangeNotifier {
     }
   }
 
-  bool isloading = false;
   void _isLoadingFalse() {
     isloading = false;
     notifyListeners();

@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:jobizy/app/module/alljobs/view/jobapply/model/applymodel.dart';
 import 'package:jobizy/app/module/register/loginscreen/model/loginmodel.dart';
 import 'package:jobizy/app/module/register/loginscreen/model/loginrespo.dart';
 import 'package:jobizy/app/services/loginservice.dart';
@@ -17,6 +18,7 @@ class SigninController extends ChangeNotifier {
   final getStorage = GetStorage();
   bool isloading = false;
   LoginResponse? resp;
+  Applymodel? applymodel;
 
   void loginButton(context) async {
     if (signinKey.currentState!.validate()) {
@@ -35,8 +37,15 @@ class SigninController extends ChangeNotifier {
         return;
       } else if (loginResponse.loggedin == true) {
         resp = loginResponse;
-      //  print(resp!.token);
+
+        print('++++++++++++++++++++++++++++++++====');
+
+        print(resp!.token);
+        log(resp!.id.toString());
+
         getStorage.write('name', resp!.name);
+        getStorage.write('id', resp!.id);
+        notifyListeners();
         await storedatalogin(value: loginResponse);
         RouteNavigator.pushRemoveUntil(context, BottomScreen());
 

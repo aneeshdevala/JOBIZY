@@ -23,7 +23,7 @@ class LoginResponse {
   factory LoginResponse.fromJson(Map<String, dynamic> json) => LoginResponse(
         message: json["message"] ?? "",
         token: json["token"] ?? "",
-        id: json["id"] ?? "",
+        id: json["_id"] ?? "",
         name: json["name"] ?? "",
         email: json["email"] ?? "",
         loggedin: json["loggedin"] ?? false,

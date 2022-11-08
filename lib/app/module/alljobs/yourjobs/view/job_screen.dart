@@ -179,16 +179,13 @@ class JobScreen extends StatelessWidget {
             ],
           ),
         ),
-        floatingActionButton: Padding(
-          padding: const EdgeInsets.only(bottom: 40),
-          child: FloatingActionButton(
-            backgroundColor: mainColor,
-            onPressed: () async {
-              // await GetAll().getAlljobsFor(context);
-              RouteNavigator.pushRoute(context, const AddjobScreen());
-            },
-            child: const Icon(Icons.add),
-          ),
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: mainColor,
+          onPressed: () async {
+            // await GetAll().getAlljobsFor(context);
+            RouteNavigator.pushRoute(context, const AddjobScreen());
+          },
+          child: const Icon(Icons.add),
         ),
       ),
     );

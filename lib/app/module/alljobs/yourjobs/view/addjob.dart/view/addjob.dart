@@ -14,7 +14,7 @@ class AddjobScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<JobPostController>(context, listen: false);
+    final provider = Provider.of<JobPostController>(context);
     return Scaffold(
       backgroundColor: kWhite,
       appBar: AppBar(
@@ -141,24 +141,23 @@ class AddjobScreen extends StatelessWidget {
                     maxline: 5,
                     validatorErrorMessage: 'Please enter job title'),
                 kheight20,
-
-                ElevatedButton(
-                    onPressed: () async {
-                      await provider
-                          .jobPostButton(context)
-                          .whenComplete(() async {
-                        Provider.of<BottomNavBarController>(context,
-                                listen: false)
-                            .currentIndex = 0;
-                        await RouteNavigator.pushRemoveUntil(
-                            context, const JobScreen());
-                        provider.dispos(context);
-                      });
-                    },
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: mainColor,
-                        minimumSize: const Size(100, 50)),
-                    child: const Text('Post')),
+                provider.isloading
+                    ? const Center(
+                        child: CircularProgressIndicator(),
+                      )
+                    : ElevatedButton(
+                        onPressed: () async {
+                          await provider.jobPostButton(context).whenComplete(()async {
+                             Provider.of<BottomNavBarController>(context,
+                                    listen: false)
+                                .currentIndex = 0;
+                            //provider.dispos(context);
+                          });
+                        },
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: mainColor,
+                            minimumSize: const Size(100, 50)),
+                        child: const Text('Post')),
               ],
             ),
           ),

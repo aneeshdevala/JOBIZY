@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jobizy/app/module/alljobs/model/searchrespo.dart';
+import 'package:jobizy/app/module/alljobs/view/jobapply/model/applymodel.dart';
+import 'package:jobizy/app/module/register/loginscreen/model/loginrespo.dart';
 import 'package:jobizy/app/util/colors.dart';
 import 'package:jobizy/app/util/constraisns.dart';
 
@@ -7,7 +9,8 @@ import '../widgets/applywidget.dart';
 
 class JobFullView extends StatelessWidget {
   final SearchResponse jobs;
-  const JobFullView({Key? key, required this.jobs}) : super(key: key);
+  final Applymodel? user;
+  const JobFullView({Key? key, required this.jobs, this.user}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -256,6 +259,7 @@ class JobFullView extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: Aplywideget(
+       user: user,
         jobs: jobs,
       ),
     );

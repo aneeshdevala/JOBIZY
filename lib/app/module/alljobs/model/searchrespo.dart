@@ -42,7 +42,7 @@ class SearchResponse {
     this.jobType,
     this.salaryMin,
     this.salaryMax,
-    this.applicationStatus,
+    required this.applicationStatus,
     this.isBlocked,
     this.isOpen,
     this.reportMessages,
@@ -68,7 +68,7 @@ class SearchResponse {
   int? salaryMin;
   String? message;
   int? salaryMax;
-  List<dynamic>? applicationStatus;
+  List<Map<String, dynamic>> applicationStatus;
   bool? isBlocked;
   bool? isOpen;
   List<dynamic>? reportMessages;
@@ -96,8 +96,8 @@ class SearchResponse {
         jobType: json["jobType"],
         salaryMin: json["salaryMin"],
         salaryMax: json["salaryMax"],
-        applicationStatus:
-            List<dynamic>.from(json["applicationStatus"].map((x) => x)),
+        applicationStatus: 
+            List<Map<String, dynamic>>.from(json["applicationStatus"].map((x) => x)), 
         isBlocked: json["isBlocked"],
         isOpen: json["isOpen"],
         reportMessages:

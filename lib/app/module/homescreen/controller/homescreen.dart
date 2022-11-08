@@ -1,11 +1,16 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:jobizy/app/util/route.dart';
 import 'package:jobizy/app/module/bottomscreen/view/bottomsrcreen.dart';
 import 'package:jobizy/app/module/register/loginscreen/view/loginscreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:recase/recase.dart';
+
+import '../../../util/colors.dart';
 
 class HomeController extends ChangeNotifier {
   FlutterSecureStorage storage = const FlutterSecureStorage();
@@ -27,12 +32,27 @@ class HomeController extends ChangeNotifier {
   String greeting() {
     var hour = DateTime.now().hour;
     if (hour < 12) {
-      return 'Gd Morning\n${getStorage.read("name")}'.pascalCase;
+      notifyListeners();
+      return Text(
+        'Good Morning \n${getStorage.read('name')}'.titleCase,
+        style: GoogleFonts.poppins(
+            color: kBlack, fontSize: 20, fontWeight: FontWeight.w500),
+      ).data!;
+    } else if (hour < 17) {
+      notifyListeners();
+      return Text(
+        'Good Afternoon \n${getStorage.read('name')}'.titleCase,
+        style: GoogleFonts.poppins(
+            color: kBlack, fontSize: 20, fontWeight: FontWeight.w500),
+      ).data!;
+    } else {
+      notifyListeners();
+      return Text(
+        'Good Evening \n${getStorage.read('name')}'.titleCase,
+        style: GoogleFonts.poppins(
+            color: kBlack, fontSize: 20, fontWeight: FontWeight.w500),
+      ).data!;
     }
-    if (hour < 17) {
-      return ' Gd Afternoon \n ${getStorage.read('name')}'.titleCase;
-    }
-    return 'Gd Evening \n ${getStorage.read('name')}'.titleCase;
   }
   // RichText(
   //   text: TextSpan(
