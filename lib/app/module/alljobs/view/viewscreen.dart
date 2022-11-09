@@ -135,7 +135,6 @@ class _ColumnBodyState extends State<ColumnBody> {
                     child: GestureDetector(
                       onTap: () {
                         provider.searchButton(context);
-                       
                       },
                       child: const Icon(
                         Icons.search,
@@ -163,32 +162,32 @@ class _ColumnBodyState extends State<ColumnBody> {
               ),
             ),
           ),
-          Container(
-            padding: const EdgeInsets.only(bottom: 20.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                Text(
-                  'Browse By Company',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(right: 8.0),
-                  child: Text(
-                    'See more',
-                    style: TextStyle(
-                      color: Color(0xff008080),
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          browsbylogowidget(),
+          // Container(
+          //   padding: const EdgeInsets.only(bottom: 20.0),
+          //   child: Row(
+          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //     children: const [
+          //       Text(
+          //         'Browse By Company',
+          //         style: TextStyle(
+          //           fontSize: 20,
+          //           fontWeight: FontWeight.bold,
+          //         ),
+          //       ),
+          //       Padding(
+          //         padding: EdgeInsets.only(right: 8.0),
+          //         child: Text(
+          //           'See more',
+          //           style: TextStyle(
+          //             color: Color(0xff008080),
+          //             fontWeight: FontWeight.bold,
+          //           ),
+          //         ),
+          //       ),
+          //     ],
+          //   ),
+          // ),
+          // browsbylogowidget(),
           Container(
             padding: const EdgeInsets.only(bottom: 15.0, top: 15.0),
             child: Row(
@@ -212,7 +211,27 @@ class _ColumnBodyState extends State<ColumnBody> {
               ],
             ),
           ),
-          searchCard(provider),
+          provider.searchController.text.isEmpty
+              ? Center(
+                  child: Column(
+                  children: [
+                    Image.asset(
+                      'assets/searching.png',
+                      height: 200,
+                      width: 200,
+                    ),
+                    const Text(
+                      'Search for a job',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ))
+              : provider.isloading
+                  ? const Center(child: CircularProgressIndicator())
+                  : searchCard(provider),
           const SizedBox(
             height: 50,
           )
@@ -220,6 +239,4 @@ class _ColumnBodyState extends State<ColumnBody> {
       ),
     );
   }
-
- 
 }

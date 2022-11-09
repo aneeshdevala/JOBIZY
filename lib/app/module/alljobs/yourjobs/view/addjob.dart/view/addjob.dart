@@ -45,38 +45,38 @@ class AddjobScreen extends StatelessWidget {
                 kheight20,
                 TextFormWidget(
                     keyboardtype: TextInputType.text,
-                    text: "Job Title",
+                    label: "Job Title",
                     controller: provider.jobDesignation,
                     validatorErrorMessage: 'Please enter job title'),
                 kheight20,
                 TextFormWidget(
                     keyboardtype: TextInputType.text,
-                    text: "Company Name",
+                    label: "Company Name",
                     controller: provider.companyName,
                     validatorErrorMessage: 'Please enter Company Name'),
                 kheight20,
                 TextFormWidget(
                     keyboardtype: TextInputType.text,
-                    text: "Job Location",
+                    label: "Job Location",
                     controller: provider.companyPlace,
                     validatorErrorMessage: 'Please enter Company Place'),
                 kheight20,
                 TextFormWidget(
                     keyboardtype: TextInputType.text,
-                    text: "State",
+                    label: "State",
                     controller: provider.companystate,
                     validatorErrorMessage: 'Please enter Company Place'),
                 kheight20,
                 TextFormWidget(
                     keyboardtype: TextInputType.text,
-                    text: "country",
+                    label: "country",
                     controller: provider.companyCountry,
                     validatorErrorMessage: 'Please enter Company Place'),
                 kheight20,
 
                 TextFormWidget(
                     keyboardtype: TextInputType.text,
-                    text: "Job Vacancies",
+                    label: "Job Vacancies",
                     controller: provider.jobVaccancies,
                     validatorErrorMessage: 'Please Enter Job Vacancies'),
 
@@ -115,7 +115,7 @@ class AddjobScreen extends StatelessWidget {
                       child: TextFormWidget(
                           keyboardtype: TextInputType.number,
                           validatorErrorMessage: 'Required',
-                          text: '₹ Min Salary',
+                          label: '₹ Min Salary',
                           controller: provider.minSalary)),
                   kWidth10,
                   const Text(
@@ -127,13 +127,13 @@ class AddjobScreen extends StatelessWidget {
                       child: TextFormWidget(
                           keyboardtype: TextInputType.number,
                           validatorErrorMessage: 'Required',
-                          text: '₹ Max Salary',
+                          label: '₹ Max Salary',
                           controller: provider.maxSalary))
                 ]),
                 kheight20,
                 TextFormWidget(
                     keyboardtype: TextInputType.multiline,
-                    text: "Job Description....",
+                    label: "Job Description....",
                     textstyle: 20,
 
                     //maxlength: 200,
@@ -147,11 +147,13 @@ class AddjobScreen extends StatelessWidget {
                       )
                     : ElevatedButton(
                         onPressed: () async {
-                          await provider.jobPostButton(context).whenComplete(()async {
-                             Provider.of<BottomNavBarController>(context,
+                          await provider
+                              .jobPostButton(context)
+                              .whenComplete(() async {
+                            Provider.of<BottomNavBarController>(context,
                                     listen: false)
                                 .currentIndex = 0;
-                            //provider.dispos(context);
+                            provider.dispos(context);
                           });
                         },
                         style: ElevatedButton.styleFrom(
@@ -170,14 +172,14 @@ class AddjobScreen extends StatelessWidget {
 class TextFormWidget extends StatelessWidget {
   const TextFormWidget(
       {Key? key,
-      required this.text,
+      required this.label,
       required this.controller,
       required this.validatorErrorMessage,
       this.maxline = 1,
       this.keyboardtype = TextInputType.number,
       this.textstyle = 15})
       : super(key: key);
-  final String text;
+  final String label;
   final TextEditingController controller;
   final String validatorErrorMessage;
   final TextInputType keyboardtype;
@@ -191,10 +193,12 @@ class TextFormWidget extends StatelessWidget {
       keyboardType: keyboardtype,
       controller: controller,
       decoration: InputDecoration(
-          hintText: text,
-          hintStyle: textstyle == 15
-              ? const TextStyle(fontSize: 15, fontWeight: FontWeight.w400)
-              : const TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
+          labelText: label,
+          
+          labelStyle: const TextStyle(fontSize: 16, color: kGrey),
+          hintStyle: textstyle == 12
+              ? const TextStyle(fontSize: 12, fontWeight: FontWeight.w400)
+              : const TextStyle(fontSize: 13, fontWeight: FontWeight.w400),
           enabledBorder: OutlineInputBorder(
               borderSide: const BorderSide(width: 3, color: mainColor),
               borderRadius: BorderRadius.circular(15)),

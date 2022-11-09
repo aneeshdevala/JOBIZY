@@ -22,6 +22,7 @@ class RadioButton extends StatelessWidget {
           children: [
             Expanded(
               child: RadioListTile(
+                selected: true,
                 activeColor: mainColor,
                 title: const Text('Fresher'),
                 value: "Fresher",
@@ -58,7 +59,7 @@ class RadioButton extends StatelessWidget {
                         height: 70,
                         child: TextFormWidget(
                             validatorErrorMessage: 'Required',
-                            text: '  Mix Exp  ',
+                            label: '  Mix Exp  ',
                             controller: provider.minExp))),
                 kWidth20,
                 const Text(
@@ -71,7 +72,7 @@ class RadioButton extends StatelessWidget {
                         height: 70,
                         child: TextFormWidget(
                             validatorErrorMessage: 'Required',
-                            text: '  Max Exp  ',
+                            label: '  Max Exp  ',
                             controller: provider.maxExp))),
               ],
             ))

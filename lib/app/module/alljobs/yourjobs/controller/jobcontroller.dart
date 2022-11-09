@@ -29,6 +29,7 @@ class JobController extends ChangeNotifier {
         return;
       } else if (postedresponse.isEmpty) {
         ShowDialogs.popUp("Nothing returned");
+        isLoadingFalse();
         return;
       } else if (postedresponse.isNotEmpty) {
         alljobs.clear();

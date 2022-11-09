@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jobizy/app/module/alljobs/model/searchrespo.dart';
 import 'package:jobizy/app/module/alljobs/view/jobapply/model/applymodel.dart';
-import 'package:jobizy/app/module/register/loginscreen/model/loginrespo.dart';
 import 'package:jobizy/app/util/colors.dart';
 import 'package:jobizy/app/util/constraisns.dart';
 

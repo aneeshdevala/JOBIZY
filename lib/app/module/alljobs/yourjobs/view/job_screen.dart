@@ -30,14 +30,15 @@ class JobScreen extends StatelessWidget {
           ),
           centerTitle: true,
         ),
-        body: SingleChildScrollView(
+        body: 
+        SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               kheight40,
               Selector<JobController, bool>(
                   builder: ((context, isloading, _) {
-                    return provider.isLoading
+                    return provider.isLoading==true
                         ? const Center(
                             child: CircularProgressIndicator(),
                           )

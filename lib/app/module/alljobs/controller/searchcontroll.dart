@@ -28,6 +28,8 @@ class SearchController extends ChangeNotifier {
         ScaffoldMessenger.of(context)
             .showSnackBar(ShowDialogs.popUp('No Response'));
         log('null');
+        isloading = false;
+        notifyListeners();
         return;
       } else {
         allsearchjobs.clear();
@@ -35,6 +37,7 @@ class SearchController extends ChangeNotifier {
         log(allsearchjobs.first.designation.toString());
         //  log(searchResponse.toString());
         isloading = false;
+        notifyListeners();
         return;
       }
     }

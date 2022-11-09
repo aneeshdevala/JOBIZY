@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:jobizy/app/module/alljobs/yourjobs/controller/jobcontroller.dart';
 import 'package:jobizy/app/module/alljobs/yourjobs/model/jobmodel.dart';
 import 'package:jobizy/app/util/colors.dart';
+import 'package:provider/provider.dart';
 
 class JobFullDetails extends StatelessWidget {
   final Postedjobsmodel jobs;
@@ -8,6 +10,7 @@ class JobFullDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<JobController>(context, listen: false);
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(70.0),
@@ -58,22 +61,26 @@ class JobFullDetails extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Center(
-                child: Container(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Card(
-                    elevation: 10.0,
-                    child: Container(
-                      margin: const EdgeInsets.all(20.0),
-                      child: Image.asset(
-                        "assets/images/3d-fluency-google-logo.png",
-                        width: 50,
-                        height: 50,
+              provider.isLoading == true
+                  ? const Center(
+                      child: CircularProgressIndicator(),
+                    )
+                  : Center(
+                      child: Container(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Card(
+                          elevation: 10.0,
+                          child: Container(
+                            margin: const EdgeInsets.all(20.0),
+                            child: Image.asset(
+                              "assets/images/3d-fluency-google-logo.png",
+                              width: 50,
+                              height: 50,
+                            ),
+                          ),
+                        ),
                       ),
                     ),
-                  ),
-                ),
-              ),
               Container(
                 padding: const EdgeInsets.all(10.0),
                 child: Center(
@@ -161,7 +168,6 @@ class JobFullDetails extends StatelessWidget {
                           width: 10,
                           color: Colors.grey.shade300,
                         ),
-                      
                         Row(
                           children: [
                             const Icon(
@@ -245,59 +251,6 @@ class JobFullDetails extends StatelessWidget {
                       ),
                     ),
                   ],
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-      bottomNavigationBar: BottomAppBar(
-        color: Colors.transparent,
-        elevation: 0,
-        child: Container(
-          padding: const EdgeInsets.all(15.0),
-          height: 80.0,
-          child: Row(
-            children: [
-              Container(
-                padding: const EdgeInsets.only(right: 10.0),
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(10.0),
-                  ),
-                ),
-                child: Card(
-                  elevation: 5.0,
-                  shadowColor: const Color(0xff008080),
-                  child: Container(
-                    margin: const EdgeInsets.all(5.0),
-                    child: const Icon(
-                      Icons.bookmark,
-                      color: Color(0xff008080),
-                      size: 30,
-                    ),
-                  ),
-                ),
-              ),
-              Expanded(
-                flex: 2,
-                child: Container(
-                  padding: const EdgeInsets.only(left: 10),
-                  decoration: const BoxDecoration(
-                    color: Color(0xff008080),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(15.0),
-                    ),
-                  ),
-                  height: 50.0,
-                  child: const Center(
-                    child: Text(
-                      'Apply Now',
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
                 ),
               ),
             ],

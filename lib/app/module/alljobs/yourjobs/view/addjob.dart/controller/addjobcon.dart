@@ -84,7 +84,7 @@ class JobPostController extends ChangeNotifier {
     }
   }
 
-  String groupValue = '';
+  String groupValue = 'Fresher';
   radioButton(value) {
     groupValue = value;
     notifyListeners();
