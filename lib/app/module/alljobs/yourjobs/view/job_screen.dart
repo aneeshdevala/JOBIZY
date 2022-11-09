@@ -30,15 +30,14 @@ class JobScreen extends StatelessWidget {
           ),
           centerTitle: true,
         ),
-        body: 
-        SingleChildScrollView(
+        body: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               kheight40,
               Selector<JobController, bool>(
                   builder: ((context, isloading, _) {
-                    return provider.isLoading==true
+                    return provider.isLoading
                         ? const Center(
                             child: CircularProgressIndicator(),
                           )
@@ -47,7 +46,7 @@ class JobScreen extends StatelessWidget {
                             : ListView.separated(
                                 padding: EdgeInsets.zero,
                                 physics: const NeverScrollableScrollPhysics(),
-                                scrollDirection: Axis.vertical,
+                                scrollDirection: Axis.horizontal,
                                 shrinkWrap: true,
                                 itemBuilder: (context, index) {
                                   return GestureDetector(
