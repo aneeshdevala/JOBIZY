@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:jobizy/app/module/alljobs/model/searchrespo.dart';
+import 'package:jobizy/app/module/alljobs/savedjobs/controller/savedcontroller.dart';
 import 'package:jobizy/app/module/alljobs/view/jobapply/model/applymodel.dart';
 import 'package:jobizy/app/util/colors.dart';
 import 'package:jobizy/app/util/constraisns.dart';
+import 'package:provider/provider.dart';
 
 import '../widgets/applywidget.dart';
 
 class JobFullView extends StatelessWidget {
   final SearchResponse jobs;
   final Applymodel? user;
-  const JobFullView({Key? key, required this.jobs, this.user}) : super(key: key);
+  const JobFullView({Key? key, required this.jobs, this.user})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final provide = Provider.of<JobSaveController>(context);
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(70.0),
@@ -43,12 +47,16 @@ class JobFullView extends StatelessWidget {
               color: kBlack,
             ),
           ),
-          actions: const [
-            Icon(
-              Icons.share,
-              size: 20,
-              color: kBlack,
-            ),
+          actions: [
+            IconButton(
+                onPressed: () {
+                  provide.postSaveButton(context, jobs);
+                },
+                icon: const Icon(
+                  Icons.bookmark_border_rounded,
+                  color: kBlack,
+                  size: 28,
+                ))
           ],
           centerTitle: true,
         ),
@@ -134,28 +142,6 @@ class JobFullView extends StatelessWidget {
                                     child: Text(
                                       '${jobs.vacancy} Vacancies',
                                       style: const TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              VerticalDivider(
-                                thickness: 2,
-                                width: 10,
-                                color: Colors.grey.shade300,
-                              ),
-                              Row(
-                                children: [
-                                  const Icon(
-                                    Icons.favorite_border_outlined,
-                                    color: Color(0xff008080),
-                                  ),
-                                  Container(
-                                    padding: const EdgeInsets.only(left: 5.0),
-                                    child: const Text(
-                                      '40K Likes',
-                                      style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
@@ -258,7 +244,7 @@ class JobFullView extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: Aplywideget(
-       user: user,
+        user: user,
         jobs: jobs,
       ),
     );
