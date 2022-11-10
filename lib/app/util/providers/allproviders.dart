@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:jobizy/app/module/alljobs/getsavedjibs/controller/getsaved.dart';
 import 'package:jobizy/app/module/alljobs/savejobs/controller/savedcontroller.dart';
 import 'package:jobizy/app/module/alljobs/view/jobapply/controller/applycontroller.dart';
 import 'package:jobizy/app/module/bottomscreen/controller/bottomnavcon.dart';
@@ -18,6 +19,8 @@ class AllProviders {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => JobSaveController()),
+        ChangeNotifierProvider(
+            create: (context) => SavedJobsController(context)),
         ChangeNotifierProvider(create: (_) => JobApplyController()),
         ChangeNotifierProvider(create: (_) => SearchController()),
         ChangeNotifierProvider(create: (context) => JobController(context)),

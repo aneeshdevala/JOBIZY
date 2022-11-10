@@ -45,78 +45,7 @@ class _ColumnBodyState extends State<ColumnBody> {
         // mainAxisAlignment: MainAxisAlignment.start,
         // crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Container(
-          //   padding: const EdgeInsets.only(top: 40.0),
-          //   child: SizedBox(
-          //     child: Row(
-          //       crossAxisAlignment: CrossAxisAlignment.center,
-          //       children: [
-          //         Container(
-          //           padding: const EdgeInsets.all(10.0),
-          //           decoration: BoxDecoration(
-          //             color: Colors.grey.shade300,
-          //             borderRadius: const BorderRadius.all(
-          //               Radius.circular(10.0),
-          //             ),
-          //           ),
-          //           child: const Icon(
-          //             Icons.grid_view_sharp,
-          //             color: Colors.black,
-          //             size: 25,
-          //           ),
-          //         ),
-          //         const Spacer(),
-          //         Container(
-          //           padding: const EdgeInsets.all(10.0),
-          //           decoration: BoxDecoration(
-          //             color: Colors.grey.shade300,
-          //             borderRadius: const BorderRadius.all(
-          //               Radius.circular(10.0),
-          //             ),
-          //           ),
-          //           child: ElevatedButton(
-          //             style: ElevatedButton.styleFrom(
-          //               elevation: 0,
-          //               backgroundColor: Colors.grey.shade300,
-          //             ),
-          //             onPressed: () {
-          //               RouteNavigator.pushRoute(context, const JobScreen());
-          //             },
-          //             child: const Text('Your Jobs',
-          //                 style: TextStyle(
-          //                     color: Colors.black,
-          //                     fontSize: 18,
-          //                     fontWeight: FontWeight.bold)),
-          //           ),
-          //         )
-          //       ],
-          //     ),
-          //   ),
-          // ),
-          // Container(
-          //   padding: const EdgeInsets.only(top: 15.0),
-          //   child: Column(
-          //     mainAxisAlignment: MainAxisAlignment.start,
-          //     crossAxisAlignment: CrossAxisAlignment.start,
-          //     children: const [
-          //       Text(
-          //         'Find the worlds most',
-          //         style: TextStyle(
-          //           fontSize: 35,
-          //           fontWeight: FontWeight.bold,
-          //         ),
-          //       ),
-          //       Text(
-          //         'Amazing job',
-          //         style: TextStyle(
-          //           fontSize: 35,
-          //           fontWeight: FontWeight.bold,
-          //         ),
-          //       ),
-          //     ],
-          //   ),
-          // ),
-
+         
           const SearchCard1(),
           //*************************************************** */
           // Padding(
