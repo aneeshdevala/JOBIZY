@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:jobizy/app/module/alljobs/savedjobs/controller/savedcontroller.dart';
+import 'package:jobizy/app/module/alljobs/savejobs/controller/savedcontroller.dart';
 import 'package:jobizy/app/module/alljobs/view/jobapply/controller/applycontroller.dart';
 import 'package:jobizy/app/module/bottomscreen/controller/bottomnavcon.dart';
 import 'package:jobizy/app/module/homescreen/controller/homescreen.dart';

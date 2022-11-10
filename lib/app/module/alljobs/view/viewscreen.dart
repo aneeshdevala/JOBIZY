@@ -217,7 +217,8 @@ class _ColumnBodyState extends State<ColumnBody> {
               ],
             ),
           ),
-          const LimitedBox(maxHeight: 40, child: ChoiceChipSearch()),
+          
+          const LimitedBox(maxHeight: 40, child: ChoiceChipSearch( )),
           kheight20,
 
           //  const JobScreen(),

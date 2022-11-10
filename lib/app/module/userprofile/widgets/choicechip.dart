@@ -20,7 +20,7 @@ class _ChoiceChipSearchState extends State<ChoiceChipSearch> {
         itemBuilder: (context, index) => GestureDetector(
               onTap: () {
                 setState(() {
-                  selectedList = 2;
+                  selectedList = index;
                 });
               },
               child: Container(

@@ -3,8 +3,8 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:jobizy/app/module/alljobs/model/searchrespo.dart';
-import 'package:jobizy/app/module/alljobs/savedjobs/model/savemodel.dart';
-import 'package:jobizy/app/module/alljobs/savedjobs/model/saveresponce.dart';
+import 'package:jobizy/app/module/alljobs/savejobs/model/savemodel.dart';
+import 'package:jobizy/app/module/alljobs/savejobs/model/saveresponce.dart';
 import 'package:jobizy/app/services/savedjobs.dart';
 import 'package:jobizy/app/util/connectioncheck.dart';
 import 'package:jobizy/app/util/snackbar.dart';
