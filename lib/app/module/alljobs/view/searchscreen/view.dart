@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 import 'package:jobizy/app/module/alljobs/controller/searchcontroll.dart';
 import 'package:jobizy/app/module/alljobs/view/widgets/searchcard.dart';
 import 'package:jobizy/app/util/constraisns.dart';

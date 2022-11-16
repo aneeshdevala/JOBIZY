@@ -118,4 +118,8 @@ class JobPostController extends ChangeNotifier {
     maxExp.clear();
     notifyListeners();
   }
+  void imageController() {
+    
+ 
+  }
 }

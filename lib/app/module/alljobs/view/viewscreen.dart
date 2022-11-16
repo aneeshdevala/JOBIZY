@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jobizy/app/module/alljobs/yourjobs/controller/jobcontroller.dart';
 import 'package:jobizy/app/module/alljobs/yourjobs/jobfullview.dart';
+import 'package:jobizy/app/module/alljobs/yourjobs/view/addjob.dart/view/addjob.dart';
 import 'package:jobizy/app/module/userprofile/widgets/choicechip.dart';
 import 'package:jobizy/app/module/userprofile/widgets/searchcard.dart';
 import 'package:jobizy/app/util/constraisns.dart';
@@ -45,7 +46,6 @@ class _ColumnBodyState extends State<ColumnBody> {
         // mainAxisAlignment: MainAxisAlignment.start,
         // crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-         
           const SearchCard1(),
           //*************************************************** */
           // Padding(
@@ -123,31 +123,32 @@ class _ColumnBodyState extends State<ColumnBody> {
           //   ),
           // ),
           // browsbylogowidget(),
-          Container(
-            padding: const EdgeInsets.only(bottom: 15.0, top: 15.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                Text(
-                  'Browse By Company',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(right: 10.0),
-                  child: Text(
-                    'See more',
-                    style: TextStyle(
-                        color: Color(0xff008080), fontWeight: FontWeight.bold),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          
-          const LimitedBox(maxHeight: 40, child: ChoiceChipSearch( )),
+          // Container(
+          //   padding: const EdgeInsets.only(bottom: 15.0, top: 15.0),
+          //   child: Row(
+          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //     children: [
+          //       const Text(
+          //         'Browse By Company',
+          //         style: TextStyle(
+          //           fontSize: 20,
+          //           fontWeight: FontWeight.bold,
+          //         ),
+          //       ),
+          //       GestureDetector(onTap: () {
+          //         RouteNavigator.pushRoute(context, const AddjobScreen());
+          //         const Text(
+          //           'See more',
+          //           style: TextStyle(
+          //               color: Color.fromARGB(255, 0, 0, 0),
+          //               fontWeight: FontWeight.bold),
+          //         );
+          //       }),
+          //     ],
+          //   ),
+          // ),
+
+          const LimitedBox(maxHeight: 40, child: ChoiceChipSearch()),
           kheight20,
 
           //  const JobScreen(),
@@ -316,6 +317,12 @@ class _ColumnBodyState extends State<ColumnBody> {
                           );
               }),
               selector: ((_, obj) => obj.isLoading)),
+          kheight20,
+          ElevatedButton(
+              onPressed: () {
+                RouteNavigator.pushRoute(context, AddjobScreen());
+              },
+              child: Text('Post Job'))
         ],
       ),
     );

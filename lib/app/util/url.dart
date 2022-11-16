@@ -8,5 +8,5 @@ class Url {
   final applyjob = "http://10.0.2.2:8000/jobs/apply";
   final appliedjob = "http://10.0.2.2:8000/jobs/applied";
   final postSave = "http://10.0.2.2:8000/jobs/save";
-
+  final imageUpload = "http://10.0.2.2:8000/upload/uploadimage";
 }

@@ -15,7 +15,7 @@ class BottomScreen extends StatelessWidget {
     const HomePage(),
     const AllJobs(),
     // const AddPost(),
-    const UserProfile(),
+    UserProfile(),
     const ChatScreen(),
     // const JobsPage(),
     // const CreatePage(),
@@ -23,7 +23,6 @@ class BottomScreen extends StatelessWidget {
     // const MessagePage()
   ];
 
-  
   @override
   Widget build(BuildContext context) {
     final postedjobspro = Provider.of<JobController>(context);

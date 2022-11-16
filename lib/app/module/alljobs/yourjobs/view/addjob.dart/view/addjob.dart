@@ -42,7 +42,27 @@ class AddjobScreen extends StatelessWidget {
                         color: kBlack,
                         fontSize: 25,
                         fontWeight: FontWeight.w600)),
+
                 kheight20,
+                Row(
+                  children: [
+                    const Text('Company Logo',
+                        style: TextStyle(
+                            color: kBlack,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600)),
+                    kWidth10,
+                    Container(
+                        width: 100,
+                        height: 100,
+                        decoration: BoxDecoration(
+                            color: kWhite,
+                            border: Border.all(color: kBlack),
+                            borderRadius: BorderRadius.circular(10)),
+                        child: const Icon(Icons.add_a_photo)),
+                  ],
+                ),
+                kheight,
                 TextFormWidget(
                     keyboardtype: TextInputType.text,
                     label: "Job Title",
@@ -194,7 +214,6 @@ class TextFormWidget extends StatelessWidget {
       controller: controller,
       decoration: InputDecoration(
           labelText: label,
-          
           labelStyle: const TextStyle(fontSize: 16, color: kGrey),
           hintStyle: textstyle == 12
               ? const TextStyle(fontSize: 12, fontWeight: FontWeight.w400)
