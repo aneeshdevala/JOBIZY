@@ -61,26 +61,28 @@ class JobFullDetails extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              provider.isLoading == true
-                  ? const Center(
-                      child: CircularProgressIndicator(),
-                    )
-                  : Center(
-                      child: Container(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Card(
-                          elevation: 10.0,
-                          child: Container(
-                            margin: const EdgeInsets.all(20.0),
-                            child: Image.asset(
-                              "assets/images/3d-fluency-google-logo.png",
-                              width: 50,
-                              height: 50,
-                            ),
+              for (int i = 1; i < 10;i++)
+                if (provider.isLoading == true)
+                  const Center(
+                    child: CircularProgressIndicator(),
+                  )
+                else
+                  Center(
+                    child: Container(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Card(
+                        elevation: 10.0,
+                        child: Container(
+                          margin: const EdgeInsets.all(20.0),
+                          child: Image.asset(
+                            "assets/images/3d-fluency-google-logo.png",
+                            width: 50,
+                            height: 50,
                           ),
                         ),
                       ),
                     ),
+                  ),
               Container(
                 padding: const EdgeInsets.all(10.0),
                 child: Center(
@@ -250,6 +252,7 @@ class JobFullDetails extends StatelessWidget {
                         ),
                       ),
                     ),
+                    
                   ],
                 ),
               ),
