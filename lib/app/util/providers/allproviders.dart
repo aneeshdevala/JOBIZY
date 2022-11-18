@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:jobizy/app/module/alljobs/getsavedjibs/controller/getsaved.dart';
 import 'package:jobizy/app/module/alljobs/savejobs/controller/savedcontroller.dart';
 import 'package:jobizy/app/module/alljobs/view/jobapply/controller/applycontroller.dart';
+import 'package:jobizy/app/module/alljobs/yourjobs/view/addjob.dart/controller/imagecontroller.dart';
 import 'package:jobizy/app/module/bottomscreen/controller/bottomnavcon.dart';
 import 'package:jobizy/app/module/homescreen/controller/homescreen.dart';
 import 'package:jobizy/app/module/alljobs/controller/searchcontroll.dart';
@@ -29,6 +30,7 @@ class AllProviders {
         ChangeNotifierProvider(create: (_) => HomeController()),
         ChangeNotifierProvider(create: (_) => SigninController()),
         ChangeNotifierProvider(create: (_) => SignupController()),
+        ChangeNotifierProvider(create: (_) => UserImagePovHome()),
         ChangeNotifierProvider(create: (_) => BottomNavBarController()),
       ],
       child: const MyApp(),

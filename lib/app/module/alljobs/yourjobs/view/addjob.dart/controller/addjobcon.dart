@@ -1,4 +1,7 @@
+
+
 import 'package:flutter/material.dart';
+
 import 'package:jobizy/app/module/alljobs/yourjobs/controller/jobcontroller.dart';
 import 'package:jobizy/app/module/alljobs/yourjobs/view/addjob.dart/model/jobpostmodel.dart';
 import 'package:jobizy/app/module/alljobs/yourjobs/view/addjob.dart/model/response.dart';
@@ -118,8 +121,6 @@ class JobPostController extends ChangeNotifier {
     maxExp.clear();
     notifyListeners();
   }
-  void imageController() {
-    
- 
-  }
+
+  void imageController() {}
 }

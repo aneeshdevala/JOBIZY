@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:jobizy/app/module/alljobs/view/jobapply/model/imageuploadmodel.dart';
 import 'package:jobizy/app/services/exceptionhandling.dart';
 import 'package:jobizy/app/services/interceptor.dart';
@@ -10,14 +9,18 @@ import 'package:jobizy/app/util/snackbar.dart';
 import 'package:jobizy/app/util/url.dart';
 
 class ImageUploadservice {
-  Future<ImageUploadModel>? imageservice(data,context) async {
+  Future<ImageUploadModel>? imageservice(data, context) async {
+    FormData formData = FormData.fromMap({
+      "profile_photo": await MultipartFile.fromFile(data.profilePhoto,
+          filename: data.profilePhoto.split('/').last),
+    });
     if (await connectionCheck()) {
       Dio dio = await Interceptorapi().getApiUser();
       try {
-        final response = await dio.post(Url().imageUpload, data: data);
-            // var file = await dio.MultipartFile.fromFile(image.path,
-            // filename: basename(image.path),
-            // contentType: MediaType("image", basename(image.path)));
+        final response = await dio.post(Url().imageUpload, data: formData);
+        // var file = await dio.MultipartFile.fromFile(image.path,
+        // filename: basename(image.path),
+        // contentType: MediaType("image", basename(image.path)));
         if (response.statusCode! >= 200 && response.statusCode! <= 299) {
           return response.data;
         } else {
@@ -35,6 +38,7 @@ class ImageUploadservice {
         }
       }
     }
-    return ImageUploadModel(response: 'Something went wrong ! Please try again later');
+    return ImageUploadModel(
+        response: 'Something went wrong ! Please try again later');
   }
 }

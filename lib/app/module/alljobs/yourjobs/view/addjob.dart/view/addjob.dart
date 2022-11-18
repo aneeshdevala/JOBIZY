@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jobizy/app/module/alljobs/yourjobs/view/addjob.dart/controller/imagecontroller.dart';
 import 'package:jobizy/app/module/alljobs/yourjobs/view/job_screen.dart';
 import 'package:jobizy/app/module/bottomscreen/controller/bottomnavcon.dart';
 import 'package:jobizy/app/module/alljobs/yourjobs/view/addjob.dart/controller/addjobcon.dart';
@@ -14,6 +15,7 @@ class AddjobScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final imagePro = Provider.of<UserImagePovHome>(context, listen: false);
     final provider = Provider.of<JobPostController>(context);
     return Scaffold(
       backgroundColor: kWhite,
@@ -52,14 +54,23 @@ class AddjobScreen extends StatelessWidget {
                             fontSize: 20,
                             fontWeight: FontWeight.w600)),
                     kWidth10,
-                    Container(
-                        width: 100,
-                        height: 100,
-                        decoration: BoxDecoration(
-                            color: kWhite,
-                            border: Border.all(color: kBlack),
-                            borderRadius: BorderRadius.circular(10)),
-                        child: const Icon(Icons.add_a_photo)),
+                    GestureDetector(
+                      onTap: () {
+                        context.read<UserImagePovHome>().pickSource(context);
+                      },
+                      child: Consumer<UserImagePovHome>(
+                          builder: ((context, value, child) => Container(
+                                width: 100,
+                                height: 100,
+                                decoration: BoxDecoration(
+                                    color: kWhite,
+                                    border: Border.all(color: kBlack),
+                                    borderRadius: BorderRadius.circular(10)),
+                                child: value.imageFile == null
+                                    ? const Icon(Icons.add_a_photo)
+                                    : Image.file(value.imageFile!),
+                              ))),
+                    ),
                   ],
                 ),
                 kheight,
