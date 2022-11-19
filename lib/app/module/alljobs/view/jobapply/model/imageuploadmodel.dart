@@ -1,7 +1,7 @@
 class ImageUploadModel {
   ImageUploadModel({this.file, this.path, required String response});
 
-  dynamic file;
+  String? file;
   String? path;
   String? response;
 

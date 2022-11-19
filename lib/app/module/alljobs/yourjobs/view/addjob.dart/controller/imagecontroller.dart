@@ -1,14 +1,15 @@
-
-
-
-
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart'show rootBundle;
+import 'package:flutter/services.dart' show rootBundle;
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:jobizy/app/module/alljobs/view/jobapply/model/imageuploadmodel.dart';
+import 'package:jobizy/app/module/alljobs/yourjobs/view/job_screen.dart';
+import 'package:jobizy/app/services/imageuploadservice.dart';
 import 'package:path_provider/path_provider.dart';
+
+import '../../../../../../util/route.dart';
 
 class UserImagePovHome extends ChangeNotifier {
   Future<File> getImageFileFromAssets(String path) async {
@@ -20,6 +21,7 @@ class UserImagePovHome extends ChangeNotifier {
 
     return file;
   }
+
   File? imageFile;
   // image picking function
   void chosePIck(ImageSource source, BuildContext context) async {
@@ -30,6 +32,7 @@ class UserImagePovHome extends ChangeNotifier {
     }
     notifyListeners();
   }
+
   void pickSource(BuildContext context) {
     showDialog(
       context: context,
@@ -44,14 +47,15 @@ class UserImagePovHome extends ChangeNotifier {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               IconButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                    chosePIck(ImageSource.camera, context);
-                  },
-                  icon: const Icon(
-                    Icons.camera_alt,
-                    size: 50,
-                  ),),
+                onPressed: () {
+                  Navigator.pop(context);
+                  chosePIck(ImageSource.camera, context);
+                },
+                icon: const Icon(
+                  Icons.camera_alt,
+                  size: 50,
+                ),
+              ),
               const SizedBox(
                 width: 30,
               ),
@@ -70,5 +74,21 @@ class UserImagePovHome extends ChangeNotifier {
         );
       },
     );
+  }
+
+  void createProfileRequest(BuildContext context) async {
+    print('''''' '''object''' '''''');
+    File image;
+    imageFile != null
+        ? image = imageFile!
+        : image = await getImageFileFromAssets('asset/images/avathar.jpg');
+    final obj =
+        ImageUploadModel(response: 'success', file: image.path, path: 'Test');
+    final responce = await ImageUploadservice().uploadImage(image,);
+    if (responce != null) {
+      print(responce);
+      notifyListeners();
+      // RouteNavigator.pushRemoveUntil(context, const JobScreen());
+    }
   }
 }

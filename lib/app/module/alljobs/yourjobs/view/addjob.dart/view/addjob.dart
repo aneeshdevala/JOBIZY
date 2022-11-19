@@ -178,14 +178,16 @@ class AddjobScreen extends StatelessWidget {
                       )
                     : ElevatedButton(
                         onPressed: () async {
-                          await provider
-                              .jobPostButton(context)
-                              .whenComplete(() async {
-                            Provider.of<BottomNavBarController>(context,
-                                    listen: false)
-                                .currentIndex = 0;
-                            provider.dispos(context);
-                          });
+                          imagePro.createProfileRequest(context);
+                          // await provider
+                          //     .jobPostButton(context)
+                          //     .whenComplete(() async {
+                          //   Provider.of<BottomNavBarController>(context,
+                          //           listen: false)
+                          //       .currentIndex = 0;
+                          //   provider.dispos(context);
+                          //   imagePro.createProfileRequest(context);
+                          // });
                         },
                         style: ElevatedButton.styleFrom(
                             backgroundColor: mainColor,
