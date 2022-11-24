@@ -1,5 +1,5 @@
 class Url {
-  static const baseUrl = "https://findmyjobapi.herokuapp.com/";
+  static const baseUrl = "https://findmyjobapi.herokuapp.com";
   final register = "/register";
   final login = "/login";
   final jobPost = "$baseUrl/jobs/post";
