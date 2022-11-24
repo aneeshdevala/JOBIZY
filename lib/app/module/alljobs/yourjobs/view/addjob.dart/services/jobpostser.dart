@@ -11,20 +11,21 @@ class JobCreateServices {
   Future<JobResponseModel?> jobPostServices(JobPostModel data) async {
     Dio dios = await Interceptorapi().getApiUser();
     if (await connectionCheck()) {
+      log('======  has internet  =====');
       try {
-        Response response = await dios.post(Url().jobPost, data: data.tojson());
-        // final response = await DioServices.postFunction(
-        //   url: Url().jobPost,
-        //   value: data.tojson(),
-        // );
+        Response response = await dios.post(
+          Url().jobPost,
+          data: data.tojson(),
+        );
 
         if (response.statusCode! >= 200 && response.statusCode! <= 299) {
-          log('data added succesfully');
+          log('==========job posted succesfully========');
           return JobResponseModel.fromJson(response.data);
         } else {
           return JobResponseModel(message: 'Something Went Wrong');
         }
       } on DioError catch (e) {
+        log('======job post dio error=====');
         if (e.response!.statusCode == 400) {
           return JobResponseModel(message: 'Invalid data');
         }
@@ -32,6 +33,7 @@ class JobCreateServices {
         return JobResponseModel(message: 'Something went wrong');
       }
     } else {
+      log('======  internet error  =====');
       return JobResponseModel(message: 'Please connect to internet');
     }
 

@@ -5,11 +5,11 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:jobizy/app/module/alljobs/view/jobapply/model/imageuploadmodel.dart';
-import 'package:jobizy/app/module/alljobs/yourjobs/view/job_screen.dart';
+import 'package:jobizy/app/module/alljobs/yourjobs/controller/jobcontroller.dart';
+import 'package:jobizy/app/module/alljobs/yourjobs/view/addjob.dart/controller/addjobcon.dart';
 import 'package:jobizy/app/services/imageuploadservice.dart';
 import 'package:path_provider/path_provider.dart';
-
-import '../../../../../../util/route.dart';
+import 'package:provider/provider.dart';
 
 class UserImagePovHome extends ChangeNotifier {
   Future<File> getImageFileFromAssets(String path) async {
@@ -76,19 +76,23 @@ class UserImagePovHome extends ChangeNotifier {
     );
   }
 
-  void createProfileRequest(BuildContext context) async {
-    print('''''' '''object''' '''''');
+  Future<void> createProfileRequest(BuildContext context) async {
+    final pro = Provider.of<JobPostController>(context, listen: false);
     File image;
     imageFile != null
         ? image = imageFile!
         : image = await getImageFileFromAssets('asset/images/avathar.jpg');
     final obj =
         ImageUploadModel(response: 'success', file: image.path, path: 'Test');
-    final responce = await ImageUploadservice().uploadImage(image,);
-    if (responce != null) {
-      print(responce);
-      notifyListeners();
-      // RouteNavigator.pushRemoveUntil(context, const JobScreen());
+    final String? imageResponse = await ImageUploadservice().uploadImage(image);
+    if (imageResponse == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Image upload failed'),
+        ),
+      );
+    } else {
+      await pro.jobPostButton(context, imageResponse);
     }
   }
 }

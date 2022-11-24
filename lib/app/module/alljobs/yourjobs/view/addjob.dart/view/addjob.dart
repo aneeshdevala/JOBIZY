@@ -172,27 +172,29 @@ class AddjobScreen extends StatelessWidget {
                     maxline: 5,
                     validatorErrorMessage: 'Please enter job title'),
                 kheight20,
-                provider.isloading
-                    ? const Center(
-                        child: CircularProgressIndicator(),
-                      )
-                    : ElevatedButton(
-                        onPressed: () async {
-                          imagePro.createProfileRequest(context);
-                          // await provider
-                          //     .jobPostButton(context)
-                          //     .whenComplete(() async {
-                          //   Provider.of<BottomNavBarController>(context,
-                          //           listen: false)
-                          //       .currentIndex = 0;
-                          //   provider.dispos(context);
-                          //   imagePro.createProfileRequest(context);
-                          // });
-                        },
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: mainColor,
-                            minimumSize: const Size(100, 50)),
-                        child: const Text('Post')),
+                // provider.isloading
+                //     ? const Center(
+                //         child: CircularProgressIndicator(),
+                //       )
+                //     :
+                ElevatedButton(
+                    onPressed: () {
+                      imagePro.createProfileRequest(context);
+                      //  provider.jobPostButton(context);
+                      // await provider
+                      //     .jobPostButton(context)
+                      //     .whenComplete(() async {
+                      //   Provider.of<BottomNavBarController>(context,
+                      //           listen: false)
+                      //       .currentIndex = 0;
+                      //provider.dispos(context);
+                      //   // imagePro.createProfileRequest(context);
+                      // });
+                    },
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: mainColor,
+                        minimumSize: const Size(100, 50)),
+                    child: const Text('Post')),
               ],
             ),
           ),

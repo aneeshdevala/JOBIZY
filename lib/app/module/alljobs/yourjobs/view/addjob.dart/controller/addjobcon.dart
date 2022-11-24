@@ -1,6 +1,7 @@
-
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:jobizy/app/module/alljobs/view/viewscreen.dart';
 
 import 'package:jobizy/app/module/alljobs/yourjobs/controller/jobcontroller.dart';
 import 'package:jobizy/app/module/alljobs/yourjobs/view/addjob.dart/model/jobpostmodel.dart';
@@ -29,7 +30,8 @@ class JobPostController extends ChangeNotifier {
   String jobType = '';
   bool isloading = false;
 
-  Future<void> jobPostButton(context) async {
+  Future<void> jobPostButton(context, String imgUrl) async {
+    log('======job post started=====');
     if (jobFormKey.currentState!.validate() && jobType.isNotEmpty) {
       isloading = true;
       notifyListeners();
@@ -54,21 +56,23 @@ class JobPostController extends ChangeNotifier {
         vacancy: jobVaccancies.text,
         expMax: minExp.text,
         expMin: minExp.text,
+        image: imgUrl,
       );
-
       JobResponseModel? jobResponseModel =
           await JobCreateServices().jobPostServices(jobObj);
 
       if (jobResponseModel == null) {
+        log('======job post nullllllllllll=====');
         ScaffoldMessenger.of(context)
             .showSnackBar(ShowDialogs.popUp('No Response.....'));
         _isLoadingFalse();
         return;
       } else if (jobResponseModel.success == true) {
-        await Provider.of<JobController>(context).getAllJobs(context);
+        await Provider.of<JobController>(context, listen: false)
+            .getAllJobs(context);
         _isLoadingFalse();
         notifyListeners();
-        RouteNavigator.pushRemoveUntil(context, const JobScreen());
+        RouteNavigator.pushRemoveUntil(context, const AllJobs());
         return;
       } else if (jobResponseModel.success == false) {
         ScaffoldMessenger.of(context)
@@ -110,6 +114,8 @@ class JobPostController extends ChangeNotifier {
   void dispos(context) {
     jobFormKey.currentState!.reset();
     companyCountry.clear();
+    jobVaccancies.clear();
+    jobType = '';
     companyName.clear();
     companyPlace.clear();
     companystate.clear();

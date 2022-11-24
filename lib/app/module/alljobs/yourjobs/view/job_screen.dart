@@ -43,136 +43,145 @@ class JobScreen extends StatelessWidget {
                           )
                         : provider.alljobs.isEmpty
                             ? const Text("No jobs")
-                            : ListView.separated(
-                                padding: EdgeInsets.zero,
-                                physics: const NeverScrollableScrollPhysics(),
-                                scrollDirection: Axis.horizontal,
-                                shrinkWrap: true,
-                                itemBuilder: (context, index) {
-                                  return GestureDetector(
-                                    onTap: () {
-                                      RouteNavigator.pushRoute(
-                                          context,
-                                          JobFullDetails(
-                                            jobs: provider.alljobs[index],
-                                          ));
+                            : Expanded(
+                                child: SizedBox(
+                                  height: 300,
+                                  child: ListView.separated(
+                                    padding: EdgeInsets.zero,
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
+                                    scrollDirection: Axis.horizontal,
+                                    shrinkWrap: true,
+                                    itemBuilder: (context, index) {
+                                      return GestureDetector(
+                                        onTap: () {
+                                          RouteNavigator.pushRoute(
+                                              context,
+                                              JobFullDetails(
+                                                jobs: provider.alljobs[index],
+                                              ));
+                                        },
+                                        child: Card(
+                                          color: const Color(0xff008080),
+                                          elevation: 5,
+                                          shape: const RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.all(
+                                              Radius.circular(15.0),
+                                            ),
+                                          ),
+                                          child: Container(
+                                            margin: const EdgeInsets.all(15.0),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Row(
+                                                  children: [
+                                                    Container(
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              8.0),
+                                                      child: Image.asset(
+                                                        'assets/images/3d-fluency-google-logo.png',
+                                                        width: 30,
+                                                        height: 30,
+                                                      ),
+                                                    ),
+                                                    Container(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              left: 5.0),
+                                                      child: Text(
+                                                        "Company : ${provider.alljobs[index].company.toString()}",
+                                                        style: const TextStyle(
+                                                          color: Colors.white,
+                                                          fontSize: 18,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    const Spacer(),
+                                                    Container(
+                                                      height: 30,
+                                                      decoration:
+                                                          const BoxDecoration(
+                                                        color: Colors.white,
+                                                        shape: BoxShape.circle,
+                                                      ),
+                                                      child: Center(
+                                                        child: IconButton(
+                                                          icon: const Icon(
+                                                              Icons.bookmark),
+                                                          color: Colors.grey,
+                                                          iconSize: 15,
+                                                          onPressed: () {},
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                                Container(
+                                                  padding:
+                                                      const EdgeInsets.all(8.0),
+                                                  child: Text(
+                                                    provider.alljobs[index]
+                                                        .designation
+                                                        .toString(),
+                                                    style: const TextStyle(
+                                                      color: Colors.white,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 20,
+                                                    ),
+                                                  ),
+                                                ),
+                                                Container(
+                                                  padding:
+                                                      const EdgeInsets.all(8.0),
+                                                  child: Text(
+                                                    //********************************* */
+                                                    "Job Description : ${provider.alljobs[index].description.toString()}",
+                                                    style: const TextStyle(
+                                                      color: Colors.white,
+                                                    ),
+                                                    maxLines: 4,
+                                                    //***************************************** */
+                                                  ),
+                                                ),
+                                                Row(
+                                                  children: [
+                                                    Container(
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              8.0),
+                                                      child: const Icon(
+                                                        Icons.timer_outlined,
+                                                        color: Colors.white,
+                                                      ),
+                                                    ),
+                                                    Container(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              left: 3.0),
+                                                      child: Text(
+                                                        'Posted Date-${provider.alljobs[index].createdAt!.day} : ${provider.alljobs[index].createdAt!.month} : ${provider.alljobs[index].createdAt!.year}',
+                                                        style: const TextStyle(
+                                                          color: Colors.white,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      );
                                     },
-                                    child: Card(
-                                      color: const Color(0xff008080),
-                                      elevation: 5,
-                                      shape: const RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.all(
-                                          Radius.circular(15.0),
-                                        ),
-                                      ),
-                                      child: Container(
-                                        margin: const EdgeInsets.all(15.0),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Row(
-                                              children: [
-                                                Container(
-                                                  padding:
-                                                      const EdgeInsets.all(8.0),
-                                                  child: Image.asset(
-                                                    'assets/images/3d-fluency-google-logo.png',
-                                                    width: 30,
-                                                    height: 30,
-                                                  ),
-                                                ),
-                                                Container(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          left: 5.0),
-                                                  child: Text(
-                                                    "Company : ${provider.alljobs[index].company.toString()}",
-                                                    style: const TextStyle(
-                                                      color: Colors.white,
-                                                      fontSize: 18,
-                                                    ),
-                                                  ),
-                                                ),
-                                                const Spacer(),
-                                                Container(
-                                                  height: 30,
-                                                  decoration:
-                                                      const BoxDecoration(
-                                                    color: Colors.white,
-                                                    shape: BoxShape.circle,
-                                                  ),
-                                                  child: Center(
-                                                    child: IconButton(
-                                                      icon: const Icon(
-                                                          Icons.bookmark),
-                                                      color: Colors.grey,
-                                                      iconSize: 15,
-                                                      onPressed: () {},
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                            Container(
-                                              padding:
-                                                  const EdgeInsets.all(8.0),
-                                              child: Text(
-                                                provider
-                                                    .alljobs[index].designation
-                                                    .toString(),
-                                                style: const TextStyle(
-                                                  color: Colors.white,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 20,
-                                                ),
-                                              ),
-                                            ),
-                                            Container(
-                                              padding:
-                                                  const EdgeInsets.all(8.0),
-                                              child: Text(
-                                                //********************************* */
-                                                "Job Description : ${provider.alljobs[index].description.toString()}",
-                                                style: const TextStyle(
-                                                  color: Colors.white,
-                                                ),
-                                                maxLines: 4,
-                                                //***************************************** */
-                                              ),
-                                            ),
-                                            Row(
-                                              children: [
-                                                Container(
-                                                  padding:
-                                                      const EdgeInsets.all(8.0),
-                                                  child: const Icon(
-                                                    Icons.timer_outlined,
-                                                    color: Colors.white,
-                                                  ),
-                                                ),
-                                                Container(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          left: 3.0),
-                                                  child: Text(
-                                                    'Posted Date-${provider.alljobs[index].createdAt!.day} : ${provider.alljobs[index].createdAt!.month} : ${provider.alljobs[index].createdAt!.year}',
-                                                    style: const TextStyle(
-                                                      color: Colors.white,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  );
-                                },
-                                separatorBuilder: (context, index) =>
-                                    const Divider(),
-                                itemCount: provider.alljobs.length,
+                                    separatorBuilder: (context, index) =>
+                                        const Divider(),
+                                    itemCount: provider.alljobs.length,
+                                  ),
+                                ),
                               );
                   }),
                   selector: ((context, obj) => obj.isLoading)),
