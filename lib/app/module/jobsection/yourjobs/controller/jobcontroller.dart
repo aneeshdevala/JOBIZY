@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:jobizy/app/module/jobsection/getsavedjobs/view/getsaved.dart';
 
 import 'package:jobizy/app/module/jobsection/yourjobs/model/jobmodel.dart';
 import 'package:jobizy/app/module/userprofile/widgets/yourjobs.dart';
@@ -61,11 +62,7 @@ class JobController extends ChangeNotifier {
 
   Widget newWidget() {
     if (listchange == 0) {
-      return Container(
-        height: 200,
-        width: 200,
-        color: kGrey,
-      );
+      return SavedJobPage();
     } else if (listchange == 1) {
       return Container(
         height: 200,
