@@ -81,11 +81,27 @@ class JobScreen extends StatelessWidget {
                                                       padding:
                                                           const EdgeInsets.all(
                                                               8.0),
-                                                      child: Image.asset(
-                                                        'assets/images/3d-fluency-google-logo.png',
-                                                        width: 30,
-                                                        height: 30,
-                                                      ),
+                                                      child: provider
+                                                                  .alljobs[
+                                                                      index]
+                                                                  .image ==
+                                                              null
+                                                          ? Image.asset(
+                                                              'assets/images/3d-fluency-google-logo.png',
+                                                              width: 30,
+                                                              height: 30,
+                                                            )
+                                                            
+                                                          : Image.network(
+                                                              provider
+                                                                  .alljobs[
+                                                                      index]
+                                                                  .image
+                                                                  .toString(),
+                                                              height: 30,
+                                                              width: 30,
+                                                            ),
+                                                            
                                                     ),
                                                     Container(
                                                       padding:

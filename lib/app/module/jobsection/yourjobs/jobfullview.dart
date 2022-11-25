@@ -73,11 +73,18 @@ class JobFullDetails extends StatelessWidget {
                       elevation: 10.0,
                       child: Container(
                         margin: const EdgeInsets.all(20.0),
-                        child: Image.asset(
-                          "assets/images/3d-fluency-google-logo.png",
-                          width: 50,
-                          height: 50,
-                        ),
+                        child: jobs.image == null
+                            ? Image.asset(
+                                "assets/images/3d-fluency-google-logo.png",
+                                width: 50,
+                                height: 50,
+                              )
+                            : Image.network(
+                                jobs.image.toString(),
+                                height: 50,
+                                width: 50,
+                                fit: BoxFit.contain,
+                              ),
                       ),
                     ),
                   ),
