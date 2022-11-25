@@ -1,0 +1,132 @@
+import 'dart:developer';
+
+import 'package:flutter/material.dart';
+import 'package:jobizy/app/module/jobsection/mainscreen/viewscreen.dart';
+
+import 'package:jobizy/app/module/jobsection/yourjobs/controller/jobcontroller.dart';
+import 'package:jobizy/app/module/jobsection/yourjobs/view/addjob.dart/model/jobpostmodel.dart';
+import 'package:jobizy/app/module/jobsection/yourjobs/view/addjob.dart/model/response.dart';
+import 'package:jobizy/app/module/jobsection/yourjobs/view/addjob.dart/services/jobpostser.dart';
+import 'package:jobizy/app/module/jobsection/yourjobs/view/job_screen.dart';
+import 'package:jobizy/app/util/route.dart';
+import 'package:jobizy/app/util/snackbar.dart';
+import 'package:provider/provider.dart';
+
+class JobPostController extends ChangeNotifier {
+  final companyName = TextEditingController();
+  final companyPlace = TextEditingController();
+  final companystate = TextEditingController();
+  final companyCountry = TextEditingController();
+  final jobDesignation = TextEditingController();
+  final jobVaccancies = TextEditingController();
+  final minSalary = TextEditingController();
+  final maxSalary = TextEditingController();
+  final jobDiscription = TextEditingController();
+  final minExp = TextEditingController();
+  final maxExp = TextEditingController();
+  bool displayNewTextfield = false;
+  final jobFormKey = GlobalKey<FormState>();
+  String dropdownValue = 'Select';
+  String jobType = '';
+  bool isloading = false;
+
+  Future<void> jobPostButton(context, String imgUrl) async {
+    log('======job post started=====');
+    if (jobFormKey.currentState!.validate() && jobType.isNotEmpty) {
+      isloading = true;
+      notifyListeners();
+      final pro = Provider.of<JobController>(context, listen: false);
+      pro.getAllJobs(context);
+      notifyListeners();
+
+      // FlutterSecureStorage storage = const FlutterSecureStorage();
+      // String? token = await storage.read(key: "token");
+
+      final JobPostModel jobObj = JobPostModel(
+        company: companyName.text,
+        country: companyCountry.text,
+        description: jobDiscription.text,
+        designation: jobDesignation.text,
+        jobFor: dropdownValue,
+        jobType: jobType,
+        place: companyPlace.text,
+        salaryMax: maxSalary.text,
+        salaryMin: minSalary.text,
+        state: companystate.text,
+        vacancy: jobVaccancies.text,
+        expMax: minExp.text,
+        expMin: minExp.text,
+        image: imgUrl,
+      );
+      JobResponseModel? jobResponseModel =
+          await JobCreateServices().jobPostServices(jobObj);
+
+      if (jobResponseModel == null) {
+        log('======job post nullllllllllll=====');
+        ScaffoldMessenger.of(context)
+            .showSnackBar(ShowDialogs.popUp('No Response.....'));
+        _isLoadingFalse();
+        return;
+      } else if (jobResponseModel.success == true) {
+        await Provider.of<JobController>(context, listen: false)
+            .getAllJobs(context);
+        _isLoadingFalse();
+        notifyListeners();
+        RouteNavigator.pushRemoveUntil(context, const AllJobs());
+        return;
+      } else if (jobResponseModel.success == false) {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(ShowDialogs.popUp('Invalid Data'));
+        _isLoadingFalse();
+        return;
+      } else {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(ShowDialogs.popUp('Something Went Wrong'));
+        _isLoadingFalse();
+      }
+    } else {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(ShowDialogs.popUp('Please select the Job Type'));
+      _isLoadingFalse();
+    }
+  }
+
+  String groupValue = 'Fresher';
+  radioButton(value) {
+    groupValue = value;
+    notifyListeners();
+  }
+
+  validator(context) {
+    if (jobFormKey.currentState!.validate() && jobType.isNotEmpty) {
+      RouteNavigator.pushRoute(context, const JobScreen());
+    } else {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(ShowDialogs.popUp('Please select the Job Type'));
+    }
+  }
+
+  void _isLoadingFalse() {
+    isloading = false;
+    notifyListeners();
+  }
+
+  void dispos(context) {
+    jobFormKey.currentState!.reset();
+    companyCountry.clear();
+    jobVaccancies.clear();
+    jobType = '';
+    companyName.clear();
+    companyPlace.clear();
+    companystate.clear();
+    jobDesignation.clear();
+    jobDiscription.clear();
+    minSalary.clear();
+    maxSalary.clear();
+    minExp.clear();
+    maxExp.clear();
+    notifyListeners();
+  }
+
+  void imageController() {}
+}

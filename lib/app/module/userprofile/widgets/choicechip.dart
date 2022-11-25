@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:jobizy/app/module/alljobs/getsavedjibs/model/getsaved.dart';
-import 'package:jobizy/app/module/alljobs/getsavedjibs/view/getsaved.dart';
+import 'package:jobizy/app/module/jobsection/getsavedjobs/model/getsaved.dart';
+import 'package:jobizy/app/module/jobsection/getsavedjobs/view/getsaved.dart';
 import 'package:jobizy/app/util/route.dart';
 
 class ChoiceChipSearch extends StatefulWidget {

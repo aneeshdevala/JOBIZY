@@ -2,8 +2,8 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:jobizy/app/module/alljobs/view/jobapply/model/applymodel.dart';
-import 'package:jobizy/app/module/alljobs/view/jobapply/model/applyresponce.dart';
+import 'package:jobizy/app/module/jobsection/jobapply/model/applymodel.dart';
+import 'package:jobizy/app/module/jobsection/jobapply/model/applyresponce.dart';
 import 'package:jobizy/app/services/exceptionhandling.dart';
 import 'package:jobizy/app/services/interceptor.dart';
 import 'package:jobizy/app/util/connectioncheck.dart';

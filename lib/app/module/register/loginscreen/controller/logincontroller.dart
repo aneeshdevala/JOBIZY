@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:jobizy/app/module/alljobs/view/jobapply/model/applymodel.dart';
+import 'package:jobizy/app/module/jobsection/jobapply/model/applymodel.dart';
 import 'package:jobizy/app/module/register/loginscreen/model/loginmodel.dart';
 import 'package:jobizy/app/module/register/loginscreen/model/loginrespo.dart';
 import 'package:jobizy/app/services/loginservice.dart';
