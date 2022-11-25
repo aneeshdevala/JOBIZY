@@ -3,7 +3,7 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:jobizy/app/module/alljobs/getsavedjibs/model/getsaved.dart';
+import 'package:jobizy/app/module/jobsection/getsavedjobs/model/getsaved.dart';
 import 'package:jobizy/app/services/exceptionhandling.dart';
 import 'package:jobizy/app/services/interceptor.dart';
 import 'package:jobizy/app/util/connectioncheck.dart';

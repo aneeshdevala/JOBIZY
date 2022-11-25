@@ -1,13 +1,14 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:jobizy/app/module/alljobs/savejobs/model/savemodel.dart';
+
 import 'package:jobizy/app/services/exceptionhandling.dart';
 import 'package:jobizy/app/services/interceptor.dart';
 import 'package:jobizy/app/util/connectioncheck.dart';
 import 'package:jobizy/app/util/snackbar.dart';
 import 'package:jobizy/app/util/url.dart';
 
-import '../module/alljobs/savejobs/model/saveresponce.dart';
+import '../module/jobsection/savejobs/model/savemodel.dart';
+import '../module/jobsection/savejobs/model/saveresponce.dart';
 
 class JobSaveServices {
   Future<JobSaveResponseModel?> saveServices(JobSaveModel data, context) async {

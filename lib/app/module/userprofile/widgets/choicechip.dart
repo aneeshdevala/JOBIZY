@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:jobizy/app/module/alljobs/getsavedjibs/model/getsaved.dart';
-import 'package:jobizy/app/module/alljobs/getsavedjibs/view/getsaved.dart';
+import 'package:jobizy/app/module/jobsection/getsavedjobs/model/getsaved.dart';
+import 'package:jobizy/app/module/jobsection/getsavedjobs/view/getsaved.dart';
+import 'package:jobizy/app/module/jobsection/yourjobs/controller/jobcontroller.dart';
 import 'package:jobizy/app/util/route.dart';
+import 'package:provider/provider.dart';
 
 class ChoiceChipSearch extends StatefulWidget {
   const ChoiceChipSearch({Key? key}) : super(key: key);
@@ -22,12 +24,8 @@ class _ChoiceChipSearchState extends State<ChoiceChipSearch> {
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) => GestureDetector(
               onTap: () {
-                setState(() {
-                  selectedList = index;
-                });
-                if (selectedList == 1) {
-                  RouteNavigator.pushRoute(context, SavedJobPage());
-                }
+                                  context.read<JobController>().listchanges(index);
+
               },
               child: Container(
                 padding:
@@ -54,5 +52,3 @@ class _ChoiceChipSearchState extends State<ChoiceChipSearch> {
         itemCount: taglist.length);
   }
 }
-
-

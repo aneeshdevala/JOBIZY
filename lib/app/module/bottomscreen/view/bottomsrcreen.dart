@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jobizy/app/module/bottomscreen/controller/bottomnavcon.dart';
-import 'package:jobizy/app/module/alljobs/yourjobs/controller/jobcontroller.dart';
-import 'package:jobizy/app/module/alljobs/view/viewscreen.dart';
+import 'package:jobizy/app/module/jobsection/yourjobs/controller/jobcontroller.dart';
+import 'package:jobizy/app/module/jobsection/mainscreen/viewscreen.dart';
 import 'package:jobizy/app/util/colors.dart';
 import 'package:jobizy/app/module/chatscreen/chatscreen.dart';
 import 'package:jobizy/app/module/homescreen/view/homescreen.dart';

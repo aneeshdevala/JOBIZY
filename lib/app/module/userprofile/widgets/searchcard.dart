@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jobizy/app/module/alljobs/view/searchscreen/view.dart';
+import 'package:jobizy/app/module/jobsection/searchscreen/view/view.dart';
 
 class SearchCard1 extends StatelessWidget {
   const SearchCard1({Key? key}) : super(key: key);

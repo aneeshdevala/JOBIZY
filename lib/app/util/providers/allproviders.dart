@@ -1,17 +1,17 @@
 import 'package:flutter/widgets.dart';
-import 'package:jobizy/app/module/alljobs/getsavedjibs/controller/getsaved.dart';
-import 'package:jobizy/app/module/alljobs/savejobs/controller/savedcontroller.dart';
-import 'package:jobizy/app/module/alljobs/view/jobapply/controller/applycontroller.dart';
-import 'package:jobizy/app/module/alljobs/yourjobs/view/addjob.dart/controller/imagecontroller.dart';
+import 'package:jobizy/app/module/jobsection/getsavedjobs/controller/getsaved.dart';
+import 'package:jobizy/app/module/jobsection/savejobs/controller/savedcontroller.dart';
+import 'package:jobizy/app/module/jobsection/jobapply/controller/applycontroller.dart';
+import 'package:jobizy/app/module/jobsection/yourjobs/view/addjob.dart/controller/imagecontroller.dart';
 import 'package:jobizy/app/module/bottomscreen/controller/bottomnavcon.dart';
 import 'package:jobizy/app/module/homescreen/controller/homescreen.dart';
-import 'package:jobizy/app/module/alljobs/controller/searchcontroll.dart';
+import 'package:jobizy/app/module/jobsection/searchscreen/controller/searchcontroll.dart';
 import 'package:jobizy/app/module/register/signupscreen/controller/signupcontroller.dart';
 import 'package:provider/provider.dart';
 
 import '../../../main.dart';
-import '../../module/alljobs/yourjobs/controller/jobcontroller.dart';
-import '../../module/alljobs/yourjobs/view/addjob.dart/controller/addjobcon.dart';
+import '../../module/jobsection/yourjobs/controller/jobcontroller.dart';
+import '../../module/jobsection/yourjobs/view/addjob.dart/controller/addjobcon.dart';
 import '../../module/register/loginscreen/controller/logincontroller.dart';
 import '../../module/splash&onboard/splashacreen.dart';
 
