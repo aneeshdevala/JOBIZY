@@ -6,7 +6,7 @@ import 'package:jobizy/app/services/interceptor.dart';
 import 'package:jobizy/app/util/url.dart';
 
 class GetPostService{
-  Future<List<Getpostmodel>?> getAppliedJobs(context) async {
+  Future<List<Getpostmodel>?> getallPost(context) async {
     Dio dios = await Interceptorapi().getApiUser();
 
     try {
