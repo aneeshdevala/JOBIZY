@@ -46,13 +46,12 @@ class _ColumnBodyState extends State<ColumnBody> {
         // crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SearchCard1(),
-          LimitedBox(maxHeight: 40, child: ChoiceChipSearch()),
+          LimitedBox(maxHeight: 40, child: ChoiceCard()),
           kheight20,
           context.watch<JobController>().newWidget(),
-            
 
-              //  const JobScreen(),
-              //yourJobs(jobprovider, context),
+          //  const JobScreen(),
+          //yourJobs(jobprovider, context),
           kheight20,
           ElevatedButton(
               onPressed: () {
@@ -63,5 +62,4 @@ class _ColumnBodyState extends State<ColumnBody> {
       ),
     );
   }
-
 }

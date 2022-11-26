@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_storage/get_storage.dart';
@@ -22,7 +20,7 @@ class HomeController extends ChangeNotifier {
   final getStorage = GetStorage();
 
   FlutterSecureStorage storage = const FlutterSecureStorage();
-  homeController(context) {
+  HomeController(context) {
     getAllpost(context);
   }
 
@@ -37,6 +35,7 @@ class HomeController extends ChangeNotifier {
         return;
       } else if (response.isNotEmpty) {
         allpost.clear();
+        print(response);
         allpost.addAll(response);
         isLoadingFalse();
         notifyListeners();
@@ -68,31 +67,27 @@ class HomeController extends ChangeNotifier {
   //fetch user details
   void userdetails() {}
   //Greetings
-  String greeting() {
+  Future<void> greeting() async {
     var hour = DateTime.now().hour;
     if (hour < 12) {
+      greetings =
+          "Good Mornig\n${await storage.read(key: 'name') ?? ''}".toString();
       notifyListeners();
-      return Text(
-        'Good Morning \n${getStorage.read('name')}'.titleCase,
-        style: GoogleFonts.poppins(
-            color: kBlack, fontSize: 20, fontWeight: FontWeight.w500),
-      ).data!;
+   
     } else if (hour < 17) {
+      greetings =
+          "Good Noon\n${await storage.read(key: 'name') ?? ''}".toString();
       notifyListeners();
-      return Text(
-        'Good Afternoon \n${getStorage.read('name')}'.titleCase,
-        style: GoogleFonts.poppins(
-            color: kBlack, fontSize: 20, fontWeight: FontWeight.w500),
-      ).data!;
+     
     } else {
+      greetings =
+          "Good Evening\n${await storage.read(key: 'name') ?? ''}".toString();
       notifyListeners();
-      return Text(
-        'Good Evening \n${getStorage.read('name')}'.titleCase,
-        style: GoogleFonts.poppins(
-            color: kBlack, fontSize: 20, fontWeight: FontWeight.w500),
-      ).data!;
+     
     }
   }
+
+  String greetings = '';
 
   void isLoadingFalse() {
     isLoading = false;

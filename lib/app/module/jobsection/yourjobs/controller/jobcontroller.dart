@@ -63,13 +63,15 @@ class JobController extends ChangeNotifier {
 
   Widget newWidget() {
     if (listchange == 0) {
-      return SavedJobPage();
+      return const SavedJobPage();
     } else if (listchange == 1) {
-      return AppliedJobs();
+      return const AppliedJobs();
     } else if (listchange == 2) {
-      return Yourjobswidget();
+      return const Yourjobswidget();
     } else {
       return Container();
     }
   }
+
+  notifyListeners();
 }
