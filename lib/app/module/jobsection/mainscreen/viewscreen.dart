@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:jobizy/app/module/jobsection/yourjobs/controller/jobcontroller.dart';
-import 'package:jobizy/app/module/jobsection/yourjobs/jobfullview.dart';
 import 'package:jobizy/app/module/jobsection/yourjobs/view/addjob.dart/view/addjob.dart';
 import 'package:jobizy/app/module/userprofile/widgets/choicechip.dart';
 import 'package:jobizy/app/module/userprofile/widgets/searchcard.dart';
-import 'package:jobizy/app/util/colors.dart';
 import 'package:jobizy/app/util/constraisns.dart';
 import 'package:jobizy/app/util/route.dart';
 import 'package:provider/provider.dart';

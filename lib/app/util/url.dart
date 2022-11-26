@@ -9,4 +9,5 @@ class Url {
   final appliedjob = "$baseUrl/jobs/applied";
   final postSave = "$baseUrl/jobs/save";
   final imageUpload = "$baseUrl/upload/uploadimage";
+  final getpost="$baseUrl/post/posts";
 }
