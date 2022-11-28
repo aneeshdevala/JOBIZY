@@ -5,11 +5,13 @@ import 'package:jobizy/app/services/exceptionhandling.dart';
 import 'package:jobizy/app/services/interceptor.dart';
 import 'package:jobizy/app/util/url.dart';
 
-class GetPostService{
+class GetPostService {
   Future<List<Getpostmodel>?> getallPost(context) async {
     Dio dios = await Interceptorapi().getApiUser();
+    print('++++++++++++++===');
 
     try {
+      print('try');
       final Response response = await dios.get(Url().getpost);
       if (response.statusCode! >= 200 || response.statusCode! <= 299) {
         final postList = (response.data as List)

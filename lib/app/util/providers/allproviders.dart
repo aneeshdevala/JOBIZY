@@ -29,7 +29,7 @@ class AllProviders {
         ChangeNotifierProvider(create: (context) => JobController(context)),
         ChangeNotifierProvider(create: (_) => SplashProvider()),
         ChangeNotifierProvider(create: (_) => JobPostController()),
-        ChangeNotifierProvider(create: (_) => HomeController()),
+        ChangeNotifierProvider(create: (context) => HomeController(context)),
         ChangeNotifierProvider(create: (_) => SigninController()),
         ChangeNotifierProvider(create: (_) => SignupController()),
         ChangeNotifierProvider(create: (_) => UserImagePovHome()),
