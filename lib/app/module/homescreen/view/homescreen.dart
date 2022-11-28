@@ -211,7 +211,7 @@ class HomePage extends StatelessWidget {
                             itemCount: provider.allpost.length,
                             separatorBuilder:
                                 (BuildContext context, int index) {
-                              return Divider();
+                              return const Divider();
                             },
                           )),
               ],
@@ -222,98 +222,74 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget buildPostShimmer() =>  ListView.separated(
-                            itemBuilder: (context, index) {
-                              return Card(
-                                  elevation: 0,
-                                  color: kGrey,
-                                  margin: const EdgeInsets.all(16),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        ListTile(
-                                          contentPadding:
-                                              const EdgeInsets.all(0),
-                                          leading: const CircleAvatar(
-                                            radius: 30,
-                                            backgroundImage: AssetImage(
-                                                "assets/casual-life-3d-man-searching-music-with-phone.png"),
-                                          ),
-                                          title: Container(height: 18,),
-                                          subtitle: Container(height: 18,)
-                                        
-                                        ),
-                                        Container(height: 10,width: double.infinity,
-                                        color: kGrey,)]
-                                              ),
-                                        kheight,
-                                        ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          child: Container(
-                                            height: 200,
-                                            
-                                          )
-                                        ),
-                                        kheight,
-                                        Text(
-                                          provider.allpost[index].likes!.isEmpty
-                                              ? 'You are the first one to like this'
-                                              : '${provider.allpost[index].likes!.length}  others Like this',
-                                          textAlign: TextAlign.center,
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyText2!
-                                              .copyWith(
-                                                  fontSize: 17,
-                                                  fontWeight: FontWeight.normal,
-                                                  color: Colors.grey[800]),
-                                          overflow: TextOverflow.ellipsis,
-                                          maxLines: 2,
-                                        ),
-                                        Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Row(
-                                                children: [
-                                                  IconButton(
-                                                      onPressed: null,
-                                                      icon: Icon(
-                                                          Icons.favorite_border,
-                                                          color:
-                                                              Theme.of(context)
-                                                                  .iconTheme
-                                                                  .color)),
-                                                  IconButton(
-                                                      onPressed: null,
-                                                      icon: Icon(Icons.comment,
-                                                          color:
-                                                              Theme.of(context)
-                                                                  .iconTheme
-                                                                  .color))
-                                                ],
-                                              ),
-                                              IconButton(
-                                                  onPressed: null,
-                                                  icon: Icon(
-                                                    Icons.share,
-                                                    color: Theme.of(context)
-                                                        .iconTheme
-                                                        .color,
-                                                  )),
-                                            ]),
-                                      ],
-                                    ),
-                                  ));
-                            },
-                            itemCount: provider.allpost.length,
-                            separatorBuilder:
-                                (BuildContext context, int index) {
-                              return Divider();
-                            },
+  Widget buildPostShimmer() => ListView.separated(
+        shrinkWrap: true,
+        itemBuilder: (context, index) {
+          return Card(
+            elevation: 0,
+            color: kGrey,
+            margin: const EdgeInsets.all(16),
+            child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ListTile(
+                          contentPadding: const EdgeInsets.all(0),
+                          leading: const CircleAvatar(
+                            radius: 30,
+                            backgroundImage: AssetImage(
+                                "assets/casual-life-3d-man-searching-music-with-phone.png"),
+                          ),
+                          title: Container(
+                            height: 18,
+                          ),
+                          subtitle: Container(
+                            height: 18,
                           )),
+                      Container(
+                        height: 10,
+                        width: double.infinity,
+                        color: kGrey,
+                      ),
+                      kheight,
+                      ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: Container(
+                            height: 200,
+                          )),
+                      kheight,
+                      SizedBox(height: 10, width: double.infinity),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                IconButton(
+                                    onPressed: null,
+                                    icon: Icon(Icons.favorite_border,
+                                        color:
+                                            Theme.of(context).iconTheme.color)),
+                                IconButton(
+                                    onPressed: null,
+                                    icon: Icon(Icons.comment,
+                                        color:
+                                            Theme.of(context).iconTheme.color))
+                              ],
+                            ),
+                            IconButton(
+                                onPressed: null,
+                                icon: Icon(
+                                  Icons.share,
+                                  color: Theme.of(context).iconTheme.color,
+                                )),
+                          ]),
+                    ])),
+          );
+        },
+        itemCount: 2,
+        separatorBuilder: (BuildContext context, int index) {
+          return Divider();
+        },
+      );
 }
