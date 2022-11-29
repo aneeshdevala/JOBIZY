@@ -8,6 +8,7 @@ import 'package:jobizy/app/module/bottomscreen/controller/bottomnavcon.dart';
 import 'package:jobizy/app/module/homescreen/controller/homescreen.dart';
 import 'package:jobizy/app/module/jobsection/searchscreen/controller/searchcontroll.dart';
 import 'package:jobizy/app/module/register/signupscreen/controller/signupcontroller.dart';
+import 'package:jobizy/app/module/userprofile/controller/createpostcontroller.dart';
 import 'package:provider/provider.dart';
 
 import '../../../main.dart';
@@ -20,6 +21,7 @@ class AllProviders {
   static Widget providers() {
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider(create: (context) => CreatePostController()),
         ChangeNotifierProvider(create: (context) => ApliedController(context)),
         ChangeNotifierProvider(create: (_) => JobSaveController()),
         ChangeNotifierProvider(

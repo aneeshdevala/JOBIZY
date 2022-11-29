@@ -15,7 +15,7 @@ class BottomScreen extends StatelessWidget {
     const HomePage(),
     const AllJobs(),
     // const AddPost(),
-    UserProfile(),
+    const CreatePost(),
     const ChatScreen(),
     // const JobsPage(),
     // const CreatePage(),
