@@ -10,4 +10,5 @@ class Url {
   final postSave = "$baseUrl/jobs/save";
   final imageUpload = "$baseUrl/upload/uploadimage";
   final getpost = "$baseUrl/post/posts";
+   final createPost = "$baseUrl/post/post";
 }

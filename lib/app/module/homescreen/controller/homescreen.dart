@@ -73,17 +73,14 @@ class HomeController extends ChangeNotifier {
       greetings =
           "Good Mornig\n${await storage.read(key: 'name') ?? ''}".toString();
       notifyListeners();
-   
     } else if (hour < 17) {
       greetings =
           "Good Noon\n${await storage.read(key: 'name') ?? ''}".toString();
       notifyListeners();
-     
     } else {
       greetings =
           "Good Evening\n${await storage.read(key: 'name') ?? ''}".toString();
       notifyListeners();
-     
     }
   }
 
