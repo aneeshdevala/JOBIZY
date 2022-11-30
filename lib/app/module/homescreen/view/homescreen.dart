@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jobizy/app/module/homescreen/controller/homescreen.dart';
-import 'package:jobizy/app/module/homescreen/widgets/shimmer.dart';
 import 'package:jobizy/app/util/colors.dart';
 import 'package:jobizy/app/util/constraisns.dart';
 import 'package:provider/provider.dart';
@@ -65,7 +63,7 @@ class HomePage extends StatelessWidget {
                             provider.logout(context);
                           },
                           icon: const Icon(
-                            Icons.settings,
+                            Icons.logout,
                             color: kBlack,
                           ),
                         ),
@@ -79,8 +77,8 @@ class HomePage extends StatelessWidget {
                   child: ListView(
                     shrinkWrap: true,
                     children: [
-                      ElevatedButton(
-                          onPressed: () {}, child: const Text('Your Posts')),
+                      // ElevatedButton(
+                      //     onPressed: () {}, child: const Text('Your Posts')),
                       provider.isLoading
                           ? ListView.builder(
                               physics: const NeverScrollableScrollPhysics(),
@@ -123,7 +121,9 @@ class HomePage extends StatelessWidget {
                                                         fontSize: 18,
                                                         fontWeight:
                                                             FontWeight.w600)),
-                                            subtitle: Text('4 Hours Ago',
+                                            subtitle: Text(
+                                                '${provider.allpost[index].createdAt!.hour} Hours ago'
+                                                    .toString(),
                                                 style: Theme.of(context)
                                                     .textTheme
                                                     .bodyText2!
@@ -150,26 +150,22 @@ class HomePage extends StatelessWidget {
                                                   overflow:
                                                       TextOverflow.ellipsis,
                                                   maxLines: 2,
+                                                  style: const TextStyle(
+                                                      fontSize: 18,
+                                                      fontWeight:
+                                                          FontWeight.w600),
                                                 ),
                                           kheight,
                                           ClipRRect(
                                             borderRadius:
                                                 BorderRadius.circular(10),
-                                            child: provider
-                                                        .allpost[index].image ==
-                                                    null
-                                                ? Image.asset(
-                                                    'assets/homeimage.jpg',
-                                                    height: 200,
-                                                    width:
-                                                        MediaQuery.of(context)
-                                                            .size
-                                                            .width,
-                                                    fit: BoxFit.cover,
-                                                  )
-                                                : Image.network(provider
-                                                    .allpost[index].image
-                                                    .toString()),
+                                            child:
+                                                provider.allpost[index].image ==
+                                                        null
+                                                    ? const SizedBox()
+                                                    : Image.network(provider
+                                                        .allpost[index].image
+                                                        .toString()),
                                           ),
                                           kheight,
                                           Text(
@@ -182,7 +178,7 @@ class HomePage extends StatelessWidget {
                                                 .textTheme
                                                 .bodyText2!
                                                 .copyWith(
-                                                    fontSize: 17,
+                                                    fontSize: 14,
                                                     fontWeight:
                                                         FontWeight.normal,
                                                     color: Colors.grey[800]),
@@ -280,8 +276,7 @@ class HomePage extends StatelessWidget {
                           contentPadding: const EdgeInsets.all(0),
                           leading: const CircleAvatar(
                             radius: 30,
-                            backgroundImage: AssetImage(
-                                "assets/casual-life-3d-man-searching-music-with-phone.png"),
+                            backgroundImage: AssetImage(""),
                           ),
                           title: Container(
                             height: 18,

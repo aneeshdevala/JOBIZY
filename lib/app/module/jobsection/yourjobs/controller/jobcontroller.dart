@@ -2,12 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:jobizy/app/module/jobsection/appliedjobs/view/appliedscreen.dart';
 import 'package:jobizy/app/module/jobsection/getsavedjobs/view/getsaved.dart';
-
 import 'package:jobizy/app/module/jobsection/yourjobs/model/jobmodel.dart';
 import 'package:jobizy/app/module/userprofile/widgets/yourjobs.dart';
-
 import 'package:jobizy/app/services/jobservice.dart';
-import 'package:jobizy/app/util/colors.dart';
 import 'package:jobizy/app/util/connectioncheck.dart';
 import 'package:jobizy/app/util/snackbar.dart';
 
@@ -69,9 +66,9 @@ class JobController extends ChangeNotifier {
     } else if (listchange == 2) {
       return const Yourjobswidget();
     } else {
+  notifyListeners();
       return Container();
     }
   }
 
-  notifyListeners();
 }

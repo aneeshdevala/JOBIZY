@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:jobizy/app/module/jobsection/appliedjobs/controller/appliedcontroller.dart';
 import 'package:jobizy/app/util/constraisns.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 
 class AppliedJobs extends StatelessWidget {
@@ -11,8 +12,9 @@ class AppliedJobs extends StatelessWidget {
   Widget build(BuildContext context) {
     final provider = Provider.of<ApliedController>(context);
     
-    return provider.alljobs.isEmpty
-        ? const Text('no datas added')
+    return provider.isLoading
+        ? Lottie.asset('assets/images/98096-washer-waiting.json',
+            height: 200, width: 200)
         : LimitedBox(
             maxHeight: 200,
             maxWidth: 310,

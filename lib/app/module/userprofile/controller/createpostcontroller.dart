@@ -4,17 +4,16 @@ import 'package:jobizy/app/module/homescreen/model/createpostres.dart';
 import 'package:jobizy/app/services/homeservices/createpostservice.dart';
 import 'package:jobizy/app/util/snackbar.dart';
 
-
 class CreatePostController extends ChangeNotifier {
   final textController = TextEditingController();
   bool isloading = false;
 
-  Future<void> CreatePostButton(context) async {
-    print('======job post started=====');
+  Future<void> createPostButton(context) async {
+  //  print('======job post started=====');
     if (textController.text.isNotEmpty) {
-      print('======job post started=====');
+    //  print('======job post started=====');
       final Postmodel postObj = Postmodel(
-          title: textController.text, image: '', likes: [], comments: []);
+          title: textController.text, image: null, likes: [], comments: []);
       Postresponcemodel? postResponceModel =
           await PostService().postcreateService(postObj);
       if (postResponceModel == null) {
@@ -22,8 +21,8 @@ class CreatePostController extends ChangeNotifier {
             .showSnackBar(ShowDialogs.popUp('No Response'));
         _isLoadingFalse();
         return;
-      }else {
-     ScaffoldMessenger.of(context)
+      } else {
+        ScaffoldMessenger.of(context)
             .showSnackBar(ShowDialogs.popUp('Post Created'));
       }
     }

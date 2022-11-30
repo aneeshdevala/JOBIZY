@@ -4,12 +4,12 @@ import 'package:jobizy/app/services/getsavedservice.dart';
 import 'package:jobizy/app/util/connectioncheck.dart';
 import 'package:jobizy/app/util/snackbar.dart';
 
-
 class SavedJobsController extends ChangeNotifier {
   List<GetSaved> alljobs = [];
   bool isLoading = false;
   bool buttonColor = false;
-
+ 
+   
   SavedJobsController(context) {
     getAllSavedJobs(context);
   }

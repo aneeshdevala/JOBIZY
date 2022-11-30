@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:jobizy/app/module/jobsection/searchscreen/model/searchrespo.dart';
 import 'package:jobizy/app/module/jobsection/jobapply/model/applymodel.dart';
 import 'package:jobizy/app/module/jobsection/jobapply/model/applyresponce.dart';
@@ -26,10 +25,10 @@ class JobApplyController extends ChangeNotifier {
   }
 
   Future<void> jobApplyButton(SearchResponse jobid, context) async {
-    print('clicked');
+  //  print('clicked');
     if (applyFormKey.currentState!.validate()) {
       isloading = true;
-      print('loading');
+    //  print('loading');
       final Applymodel modelObj = Applymodel(
           jobId: jobid.id,
           fname: fistname.text,
@@ -39,22 +38,22 @@ class JobApplyController extends ChangeNotifier {
           experience: experiencecontroller.text,
           userId: jobid.userId,
           qualification: qualificationcontroller.text);
-      print(modelObj.email);
-      print(modelObj.userId);
+      // print(modelObj.email);
+      // print(modelObj.userId);
       Applyresponse? applyresponse =
           await ApplyService().applyjobservice(modelObj, context);
-      print(applyresponse);
+    //  print(applyresponse);
       if (applyresponse == null) {
         ScaffoldMessenger.of(context)
             .showSnackBar(ShowDialogs.popUp('some thing went wrong '));
         _isLoadingFalse();
         return;
       } else if (applyresponse.applied == true) {
-        print('alredy UploDED');
+     //   print('alredy UploDED');
         RouteNavigator.pushReplacement(context, const AllJobs());
         _isLoadingFalse();
       } else if (applyresponse.applied == false) {
-        print('job applied done');
+      //  print('job applied done');
         ScaffoldMessenger.of(context)
             .showSnackBar(ShowDialogs.popUp('Already applied'));
         _isLoadingFalse();

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:jobizy/app/module/jobsection/yourjobs/view/addjob.dart/controller/imagecontroller.dart';
-import 'package:jobizy/app/module/jobsection/yourjobs/view/job_screen.dart';
-import 'package:jobizy/app/module/bottomscreen/controller/bottomnavcon.dart';
 import 'package:jobizy/app/module/jobsection/yourjobs/view/addjob.dart/controller/addjobcon.dart';
 import 'package:jobizy/app/module/jobsection/yourjobs/view/addjob.dart/view/widgets/radiobutton.dart';
 import 'package:jobizy/app/util/colors.dart';

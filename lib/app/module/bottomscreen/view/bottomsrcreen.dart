@@ -13,9 +13,9 @@ class BottomScreen extends StatelessWidget {
 
   final pages = [
     const HomePage(),
+    const CreatePost(),
     const AllJobs(),
     // const AddPost(),
-    const CreatePost(),
     const ChatScreen(),
     // const JobsPage(),
     // const CreatePage(),
@@ -76,9 +76,9 @@ class BottomScreen extends StatelessWidget {
                         label: 'Home'),
                     BottomNavigationBarItem(
                         icon: Icon(
-                          Icons.supervised_user_circle_rounded,
+                          Icons.add_box_outlined,
                         ),
-                        label: 'Jobs'),
+                        label: 'Create'),
                     // BottomNavigationBarItem(
                     //     icon: Icon(
                     //       Icons.add,

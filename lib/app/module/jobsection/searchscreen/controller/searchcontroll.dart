@@ -42,7 +42,7 @@ class SearchController extends ChangeNotifier {
       }
     }
     notifyListeners();
-    void _isLoadingFalse() {
+    void isLoadingFalse() {
       isloading = false;
       notifyListeners();
     }

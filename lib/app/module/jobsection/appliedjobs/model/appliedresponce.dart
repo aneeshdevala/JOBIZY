@@ -66,11 +66,11 @@ class ApplicationStatus {
         lname: json["lname"],
         email: json["email"],
         phone: json["phone"],
-        experience: json["experience"] == null ? null : json["experience"],
+        experience: json["experience"],
         resume: json["resume"],
         userId: json["userId"],
         appliedAt: DateTime.parse(json["appliedAt"]),
-        status: json["status"] == null ? null : json["status"],
+        status: json["status"],
         id: json["_id"],
     );
 
@@ -79,11 +79,11 @@ class ApplicationStatus {
         "lname": lname,
         "email": email,
         "phone": phone,
-        "experience": experience == null ? null : experience,
+        "experience": experience,
         "resume": resume,
         "userId": userId,
         "appliedAt": appliedAt?.toIso8601String(),
-        "status": status == null ? null : status,
+        "status": status,
         "_id": id,
     };
 }

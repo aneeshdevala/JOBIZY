@@ -20,7 +20,7 @@ class HomeAPpBar extends StatelessWidget {
                     TextStyle(fontWeight: FontWeight.bold, color: Colors.grey),
               ),
               Text(
-                'Arham Javed',
+                'A',
                 style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
               ),
             ],
@@ -28,11 +28,11 @@ class HomeAPpBar extends StatelessWidget {
           Row(
             children: [
               Container(
-                margin: EdgeInsets.only(top: 30, right: 10),
+                margin: const EdgeInsets.only(top: 30, right: 10),
                 transform: Matrix4.rotationZ(100),
                 child: Stack(
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.notifications_none_outlined,
                       size: 30,
                       color: Colors.grey,
@@ -41,15 +41,15 @@ class HomeAPpBar extends StatelessWidget {
                       right: 0,
                       top: 0,
                       child: Container(
-                        padding: EdgeInsets.all(4),
-                        decoration: BoxDecoration(
+                        padding: const EdgeInsets.all(4),
+                        decoration: const BoxDecoration(
                             color: Colors.red, shape: BoxShape.circle),
                       ),
                     ),
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 20,
               ),
               ClipOval(

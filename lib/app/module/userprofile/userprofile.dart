@@ -1,13 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:jobizy/app/module/bottomscreen/view/bottomsrcreen.dart';
-import 'package:jobizy/app/module/homescreen/view/homescreen.dart';
 import 'package:jobizy/app/module/userprofile/controller/createpostcontroller.dart';
 import 'package:jobizy/app/util/constraisns.dart';
 import 'package:jobizy/app/util/route.dart';
 import 'package:provider/provider.dart';
 
-import '../jobsection/yourjobs/view/addjob.dart/view/addjob.dart';
 
 class CreatePost extends StatelessWidget {
   const CreatePost({Key? key}) : super(key: key);
@@ -131,7 +128,7 @@ class CreatePost extends StatelessWidget {
               kheight20,
               ElevatedButton(
                   onPressed: () {
-                    provider.CreatePostButton(context);
+                    provider.createPostButton(context);
                     //RouteNavigator.pushRoute(context, HomePage());
                   },
                   child: Text('Create Post'))

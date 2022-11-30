@@ -5,11 +5,9 @@ class SavedScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return const SafeArea(
       child: Scaffold(
-        body: Container(
-          child: Text('Saved Screen'),
-        ),
+        body: Text('Saved Screen'),
       ),
     );
   }
