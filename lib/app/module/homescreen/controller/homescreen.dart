@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:jobizy/app/module/homescreen/model/getpost.dart';
 import 'package:jobizy/app/services/homeservices/getallpost.dart';
 import 'package:jobizy/app/util/route.dart';
@@ -9,8 +8,6 @@ import 'package:jobizy/app/module/bottomscreen/view/bottomsrcreen.dart';
 import 'package:jobizy/app/module/register/loginscreen/view/loginscreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:recase/recase.dart';
-
-import '../../../util/colors.dart';
 import '../../../util/connectioncheck.dart';
 import '../../../util/snackbar.dart';
 
@@ -35,7 +32,7 @@ class HomeController extends ChangeNotifier {
         return;
       } else if (response.isNotEmpty) {
         allpost.clear();
-        print(response);
+      //  print(response);
         allpost.addAll(response);
         isLoadingFalse();
         notifyListeners();
@@ -70,12 +67,14 @@ class HomeController extends ChangeNotifier {
   Future<void> greeting() async {
     var hour = DateTime.now().hour;
     if (hour < 12) {
-      greetings =
-          "Good Mornig\n${await storage.read(key: 'name') ?? ''}".toString();
+      greetings = "Good Mornig\n${await storage.read(key: 'name') ?? ''}"
+          .toString()
+          .headerCase;
       notifyListeners();
     } else if (hour < 17) {
-      greetings =
-          "Good Noon\n${await storage.read(key: 'name') ?? ''}".toString();
+      greetings = "Good Noon\n${await storage.read(key: 'name') ?? ''}"
+          .toString()
+          .headerCase;
       notifyListeners();
     } else {
       greetings =

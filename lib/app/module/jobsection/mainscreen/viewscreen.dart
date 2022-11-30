@@ -38,7 +38,7 @@ class ColumnBody extends StatefulWidget {
 class _ColumnBodyState extends State<ColumnBody> {
   @override
   Widget build(BuildContext context) {
-    final jobprovider = Provider.of<JobController>(context, listen: false);
+  //  final jobprovider = Provider.of<JobController>(context, listen: false);
     //final provider = Provider.of<SearchController>(context, listen: false);
     return SingleChildScrollView(
       child: Column(
@@ -55,9 +55,9 @@ class _ColumnBodyState extends State<ColumnBody> {
           kheight20,
           ElevatedButton(
               onPressed: () {
-                RouteNavigator.pushRoute(context, AddjobScreen());
+                RouteNavigator.pushRoute(context, const AddjobScreen());
               },
-              child: Text('Post Job'))
+              child: const Text('Post Job'))
         ],
       ),
     );

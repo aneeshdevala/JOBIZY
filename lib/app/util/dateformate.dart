@@ -1,7 +1,3 @@
-import 'dart:js';
-
-import 'package:jobizy/app/module/jobsection/jobapply/controller/applycontroller.dart';
-import 'package:provider/provider.dart';
 
 class DateFormate{
 

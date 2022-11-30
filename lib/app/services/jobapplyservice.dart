@@ -11,12 +11,12 @@ import 'package:jobizy/app/util/url.dart';
 
 class ApplyService {
   Future<Applyresponse?> applyjobservice(Applymodel data, context) async {
-    print('startedapplying');
+  //  print('startedapplying');
     Dio dios = await Interceptorapi().getApiUser();
     if (await connectionCheck()) {
-      print('connected');
+     // print('connected');
       try {
-        print(data.toJson());
+       // print(data.toJson());
         Response response =
             await dios.post(Url().applyjob, data: data.toJson());
         log(response.toString());

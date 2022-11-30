@@ -8,10 +8,10 @@ import 'package:jobizy/app/util/url.dart';
 class GetPostService {
   Future<List<Getpostmodel>?> getallPost(context) async {
     Dio dios = await Interceptorapi().getApiUser();
-    print('++++++++++++++===');
+   // print('++++++++++++++===');
 
     try {
-      print('try');
+    //  print('try');
       final Response response = await dios.get(Url().getpost);
       if (response.statusCode! >= 200 || response.statusCode! <= 299) {
         final postList = (response.data as List)

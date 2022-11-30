@@ -3,6 +3,7 @@
   import 'package:flutter/material.dart';
 import 'package:jobizy/app/util/constraisns.dart';
 import 'package:jobizy/app/util/route.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 
 import '../../jobsection/yourjobs/controller/jobcontroller.dart';
@@ -18,11 +19,9 @@ class Yourjobswidget extends StatelessWidget {
     return Selector<JobController, bool>(
     builder: ((_, isloading, __) {
           return jobprovider.isLoading
-              ? const Center(
-                  child: CircularProgressIndicator(),
-                )
-              : jobprovider.alljobs.isEmpty
-                  ? const Text("No jobs")
+        ? Lottie.asset('assets/images/98096-washer-waiting.json',
+            height: 200, width: 200)
+            
                   : LimitedBox(
                       maxHeight: 200,
                       maxWidth: 310,

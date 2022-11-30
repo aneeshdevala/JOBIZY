@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:jobizy/app/module/jobsection/jobapply/model/imageuploadmodel.dart';
-import 'package:jobizy/app/module/jobsection/yourjobs/controller/jobcontroller.dart';
 import 'package:jobizy/app/module/jobsection/yourjobs/view/addjob.dart/controller/addjobcon.dart';
 import 'package:jobizy/app/services/imageuploadservice.dart';
 import 'package:path_provider/path_provider.dart';
@@ -82,8 +80,6 @@ class UserImagePovHome extends ChangeNotifier {
     imageFile != null
         ? image = imageFile!
         : image = await getImageFileFromAssets('asset/images/avathar.jpg');
-    final obj =
-        ImageUploadModel(response: 'success', file: image.path, path: 'Test');
     final String? imageResponse = await ImageUploadservice().uploadImage(image);
     if (imageResponse == null) {
       ScaffoldMessenger.of(context).showSnackBar(

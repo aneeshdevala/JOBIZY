@@ -38,9 +38,9 @@ class SigninController extends ChangeNotifier {
       } else if (loginResponse.loggedin == true) {
         resp = loginResponse;
 
-        print('++++++++++++++++++++++++++++++++====');
+     //   print('++++++++++++++++++++++++++++++++====');
 
-        print(resp!.token);
+     //   print(resp!.token);
         log(resp!.id.toString());
 
         getStorage.write('name', resp!.name);
